@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# stray local Claude Code session directory (can appear outside project root)
+/data/.claude/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
