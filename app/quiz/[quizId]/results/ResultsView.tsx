@@ -13,7 +13,6 @@ import {
 } from "@/lib/scoring";
 import ResultCard from "@/components/ResultCard";
 import CategoryBreakdown from "@/components/CategoryBreakdown";
-import ChildResultCard from "@/components/ChildResultCard";
 import SiblingTipCard from "@/components/SiblingTipCard";
 import HouseholdChildrenForm from "@/components/HouseholdChildrenForm";
 import ModernAccent from "@/components/ModernAccent";
@@ -342,38 +341,28 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
       quiz={quiz}
       retakeHref={`/quiz/${quiz.quizId}`}
       retakeLabel={`Manage ${subjectLabelPlural} & retake`}
-      maxWidthClass={children.length > 1 ? "max-w-4xl" : "max-w-3xl"}
+      maxWidthClass="max-w-3xl"
     >
-      {children.length === 1 ? (
-        <div className="flex flex-col gap-6">
-          <ResultCard
-            result={children[0].dominant}
-            eyebrow={`${children[0].name}'s result`}
-          />
-          {children[0].secondary && (
-            <div className="rounded-lg border border-border bg-card p-5">
-              <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">
-                Secondary blend
-              </span>
-              <h3 className="mt-1 text-2xl font-bold text-walnut">
-                {children[0].secondary.title}
-              </h3>
-            </div>
-          )}
-        </div>
-      ) : (
-        <>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {children.map((c) => (
-              <ChildResultCard
-                key={c.name}
-                name={c.name}
-                dominantTitle={c.dominant.title}
-                secondaryTitle={c.secondary?.title ?? null}
-              />
-            ))}
+      <div className="flex flex-col gap-10">
+        {children.map((c) => (
+          <div key={c.name} className="flex flex-col gap-6">
+            <ResultCard result={c.dominant} eyebrow={`${c.name}'s result`} />
+            {c.secondary && (
+              <div className="rounded-lg border border-border bg-card p-5">
+                <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">
+                  Secondary blend
+                </span>
+                <h3 className="mt-1 text-2xl font-bold text-walnut">
+                  {c.secondary.title}
+                </h3>
+              </div>
+            )}
           </div>
+        ))}
+      </div>
 
+      {children.length > 1 && (
+        <>
           <div className="mt-10 flex flex-col gap-4">
             <h2 className="text-2xl font-bold text-walnut">Sibling tips</h2>
             {pairs(children).map(([a, b]) => (
