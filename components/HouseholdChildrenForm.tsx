@@ -62,7 +62,7 @@ export default function HouseholdChildrenForm({
       <h3 className="text-2xl font-bold text-walnut">
         Parenting Your Household
       </h3>
-      <p className="mt-1 text-lg text-walnut-soft">
+      <p className="mt-1 text-lg text-walnut-soft print:hidden">
         Add each child&apos;s name, age, and temperament to get parenting
         tips built around your style and each child.
       </p>
@@ -86,7 +86,7 @@ export default function HouseholdChildrenForm({
               <button
                 type="button"
                 onClick={() => removeChild(i)}
-                className="text-sm text-walnut-soft hover:text-sienna"
+                className="text-sm text-walnut-soft hover:text-sienna print:hidden"
                 aria-label={`Remove ${c.name}`}
               >
                 Remove
@@ -96,7 +96,7 @@ export default function HouseholdChildrenForm({
         </div>
       )}
 
-      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end">
+      <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end print:hidden">
         <div className="flex-1">
           <label className="block text-sm font-medium text-walnut-soft">
             Name

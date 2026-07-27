@@ -93,7 +93,7 @@ export default function HouseholdTipsCard({
           type="button"
           onClick={fetchTips}
           disabled={loading}
-          className="mt-4 text-sm font-medium text-walnut-soft hover:text-sienna disabled:opacity-50"
+          className="mt-4 text-sm font-medium text-walnut-soft hover:text-sienna disabled:opacity-50 print:hidden"
         >
           {loading ? "Regenerating…" : "Regenerate"}
         </button>
@@ -102,7 +102,7 @@ export default function HouseholdTipsCard({
   }
 
   return (
-    <div className="rounded-lg border border-dashed border-border bg-card/60 p-5">
+    <div className="rounded-lg border border-dashed border-border bg-card/60 p-5 print:hidden">
       {error && (
         <p className="mb-2 text-base text-sienna">
           Couldn&apos;t generate tips right now — try again.

@@ -117,30 +117,39 @@ function ResultsShell({
   return (
     <div className="flex-1 overflow-x-hidden bg-paper pb-16">
       <div className="relative overflow-hidden border-b border-border bg-card">
-        <ModernAccent variant="blob" color={GOLD} width="120px" rotate={-8} opacity={0.6} className="absolute hidden sm:block" style={{ position: "absolute", top: "6%", right: "5%" }} />
-        <ModernAccent variant="ring" color={SIENNA} width="90px" opacity={0.55} className="absolute hidden md:block" style={{ position: "absolute", bottom: "8%", left: "5%" }} />
-        <ModernAccent variant="dots" dotSet="a" color={FOREST} width="70px" opacity={0.7} className="absolute hidden xl:block" style={{ position: "absolute", top: "55%", left: "4%" }} />
+        <ModernAccent variant="blob" color={GOLD} width="120px" rotate={-8} opacity={0.6} className="absolute hidden sm:block print:hidden" style={{ position: "absolute", top: "6%", right: "5%" }} />
+        <ModernAccent variant="ring" color={SIENNA} width="90px" opacity={0.55} className="absolute hidden md:block print:hidden" style={{ position: "absolute", bottom: "8%", left: "5%" }} />
+        <ModernAccent variant="dots" dotSet="a" color={FOREST} width="70px" opacity={0.7} className="absolute hidden xl:block print:hidden" style={{ position: "absolute", top: "55%", left: "4%" }} />
 
         <div className={`relative mx-auto ${maxWidthClass} px-6 py-8`}>
           <Link
             href="/"
-            className="text-sm font-medium text-walnut-soft hover:text-sienna"
+            className="text-sm font-medium text-walnut-soft hover:text-sienna print:hidden"
           >
             ← All quizzes
           </Link>
-          <h1 className="mt-2 text-4xl font-bold text-walnut sm:text-5xl">
-            {quiz.title} — Your Results
-          </h1>
+          <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
+            <h1 className="text-4xl font-bold text-walnut sm:text-5xl">
+              {quiz.title} — Your Results
+            </h1>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="font-times shrink-0 rounded border border-forest px-4 py-2 text-lg text-forest hover:bg-forest-soft print:hidden"
+            >
+              Download as PDF
+            </button>
+          </div>
         </div>
       </div>
 
       <div className={`relative mx-auto ${maxWidthClass} px-6 py-8`}>
-        <ModernAccent variant="arc" color={SIENNA} width="100px" rotate={14} opacity={0.6} className="absolute hidden xl:block" style={{ position: "absolute", top: "8%", right: "-13%" }} />
-        <ModernAccent variant="halfDisc" color={FOREST} width="90px" rotate={100} opacity={0.5} className="absolute hidden xl:block" style={{ position: "absolute", top: "55%", left: "-14%" }} />
+        <ModernAccent variant="arc" color={SIENNA} width="100px" rotate={14} opacity={0.6} className="absolute hidden xl:block print:hidden" style={{ position: "absolute", top: "8%", right: "-13%" }} />
+        <ModernAccent variant="halfDisc" color={FOREST} width="90px" rotate={100} opacity={0.5} className="absolute hidden xl:block print:hidden" style={{ position: "absolute", top: "55%", left: "-14%" }} />
 
         {children}
 
-        <div className="mt-10 flex flex-col items-center gap-4">
+        <div className="mt-10 flex flex-col items-center gap-4 print:hidden">
           <Link
             href={retakeHref}
             className="font-times text-2xl text-sienna hover:text-forest"
