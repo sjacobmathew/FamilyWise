@@ -1,0 +1,95 @@
+{
+  "quizId": "love-languages-child",
+  "title": "Love Languages Quiz (Child/Teen)",
+  "description": "Answered by the child/teen themselves — a forced-choice quiz where they pick which of two statements fits them better, to discover how they naturally feel loved.",
+  "flow": "forced-choice-then-result",
+  "category": "Parenting",
+  "instructions": "For each pair, pick the statement that sounds more like you. There's no wrong answer.",
+  "questions": [
+    { "id": "q1", "optionA": { "text": "I like it when someone tells me I did a good job.", "language": "words" }, "optionB": { "text": "I like doing something just with one person, with no one else around.", "language": "time" } },
+    { "id": "q2", "optionA": { "text": "I feel loved when someone helps me with something hard.", "language": "service" }, "optionB": { "text": "I like getting a small surprise for no reason.", "language": "gifts" } },
+    { "id": "q3", "optionA": { "text": "I feel happy when someone gives me their full attention.", "language": "time" }, "optionB": { "text": "I like getting hugs.", "language": "touch" } },
+    { "id": "q4", "optionA": { "text": "I feel happy when people say nice things about me.", "language": "words" }, "optionB": { "text": "I feel happy when someone remembers what I wanted and gets it for me.", "language": "gifts" } },
+    { "id": "q5", "optionA": { "text": "I like it when someone fixes something for me without me asking.", "language": "service" }, "optionB": { "text": "I like sitting close to someone I love.", "language": "touch" } },
+    { "id": "q6", "optionA": { "text": "I like playing games together instead of alone.", "language": "time" }, "optionB": { "text": "I like unwrapping presents, even small ones.", "language": "gifts" } },
+    { "id": "q7", "optionA": { "text": "I like getting notes that say something kind.", "language": "words" }, "optionB": { "text": "I feel cared for when someone helps me clean up.", "language": "service" } },
+    { "id": "q8", "optionA": { "text": "I like keeping things people give me in a special place.", "language": "gifts" }, "optionB": { "text": "I like high-fives when I do something well.", "language": "touch" } },
+    { "id": "q9", "optionA": { "text": "I like when someone sits with me and just talks.", "language": "time" }, "optionB": { "text": "I like it when someone helps me finish my homework.", "language": "service" } },
+    { "id": "q10", "optionA": { "text": "I like it when someone says \"I'm proud of you.\"", "language": "words" }, "optionB": { "text": "I like it when someone holds my hand.", "language": "touch" } },
+    { "id": "q11", "optionA": { "text": "I feel special when someone clears time to be with just me.", "language": "time" }, "optionB": { "text": "I feel good when someone makes my favorite food for me.", "language": "service" } },
+    { "id": "q12", "optionA": { "text": "I feel good when people compliment what I made.", "language": "words" }, "optionB": { "text": "I like getting a pat on the back.", "language": "touch" } },
+    { "id": "q13", "optionA": { "text": "I like when someone packs my bag or gets things ready for me.", "language": "service" }, "optionB": { "text": "I feel loved when someone brings me something from a trip.", "language": "gifts" } },
+    { "id": "q14", "optionA": { "text": "I like being told \"I love you\" out loud.", "language": "words" }, "optionB": { "text": "I like long car rides together with someone I love.", "language": "time" } },
+    { "id": "q15", "optionA": { "text": "I like getting a treat just because someone was thinking of me.", "language": "gifts" }, "optionB": { "text": "I like cuddling before bed.", "language": "touch" } },
+    { "id": "q16", "optionA": { "text": "I like it when someone puts their phone away to be with me.", "language": "time" }, "optionB": { "text": "I like it when someone ruffles my hair or gives me a squeeze.", "language": "touch" } },
+    { "id": "q17", "optionA": { "text": "I like it when someone tells me exactly what they liked about what I did.", "language": "words" }, "optionB": { "text": "I like picking out gifts for other people too.", "language": "gifts" } },
+    { "id": "q18", "optionA": { "text": "I feel happy when someone helps me look for something I lost.", "language": "service" }, "optionB": { "text": "I like sitting on someone's lap.", "language": "touch" } },
+    { "id": "q19", "optionA": { "text": "I feel close to someone when we do something together, just us two.", "language": "time" }, "optionB": { "text": "I feel special when someone gives me something they made themselves.", "language": "gifts" } },
+    { "id": "q20", "optionA": { "text": "I feel better after someone says something encouraging to me.", "language": "words" }, "optionB": { "text": "I like it when someone does a chore for me when I'm tired.", "language": "service" } },
+    { "id": "q21", "optionA": { "text": "I like getting a card with a small gift inside.", "language": "gifts" }, "optionB": { "text": "I feel safe when someone hugs me tight.", "language": "touch" } },
+    { "id": "q22", "optionA": { "text": "I like it when someone brags about me to others.", "language": "words" }, "optionB": { "text": "I feel cared for when someone drives me somewhere I need to go.", "language": "service" } },
+    { "id": "q23", "optionA": { "text": "I like planning something fun to do with just one person.", "language": "time" }, "optionB": { "text": "I feel happy opening something even if it's small.", "language": "gifts" } },
+    { "id": "q24", "optionA": { "text": "I like it when someone helps me get ready in the morning.", "language": "service" }, "optionB": { "text": "I like a hug hello and a hug goodbye.", "language": "touch" } },
+    { "id": "q25", "optionA": { "text": "I feel good when someone says \"thank you\" to me.", "language": "words" }, "optionB": { "text": "I feel happy when someone picks me to hang out with.", "language": "time" } },
+    { "id": "q26", "optionA": { "text": "I feel loved when someone fixes my broken toy or things.", "language": "service" }, "optionB": { "text": "I like it when someone saves me a treat for later.", "language": "gifts" } },
+    { "id": "q27", "optionA": { "text": "I like hearing someone say I'm smart or kind.", "language": "words" }, "optionB": { "text": "I like leaning on someone when I'm tired.", "language": "touch" } },
+    { "id": "q28", "optionA": { "text": "I like it when someone asks me to tell them about my day.", "language": "time" }, "optionB": { "text": "I like when someone helps me carry something heavy.", "language": "service" } },
+    { "id": "q29", "optionA": { "text": "I like quiet time together, even just sitting near each other.", "language": "time" }, "optionB": { "text": "I like piggyback rides or being carried.", "language": "touch" } },
+    { "id": "q30", "optionA": { "text": "I like it when someone cheers for me out loud.", "language": "words" }, "optionB": { "text": "I feel loved when someone gives me something that shows they know me.", "language": "gifts" } }
+  ],
+  "scoring": {
+    "method": "count how many times each language letter was picked across all 30 questions; highest count = primary love language, second-highest = secondary"
+  },
+  "results": {
+    "words": {
+      "title": "Words of Affirmation",
+      "description": "You feel most loved through specific praise, encouragement, and verbal affection — hearing it said matters as much as it being true.",
+      "tips": [
+        "Praise the specific effort or choice, not just \"good job\" — \"I noticed you helped your sister without being asked\" lands much harder",
+        "Say \"I love you\" and why fairly often — they may need to hear it more than other kids to feel secure",
+        "Be careful with harsh or joking criticism — it can land harder for this language than intended",
+        "Write small notes in a lunchbox or leave a sticky note — they'll likely keep it longer than you'd expect"
+      ]
+    },
+    "time": {
+      "title": "Quality Time",
+      "description": "You feel most loved through focused one-on-one attention — presence matters more than gifts or words to you.",
+      "tips": [
+        "Protect small pockets of undistracted one-on-one time, even 10-15 minutes daily, over occasional big outings",
+        "Let them choose the activity sometimes — the point is your attention, not the activity itself",
+        "Put your phone away during their time — partial attention often registers to kids as no attention",
+        "Follow up later on something they told you — it shows you were really present, not just physically there"
+      ]
+    },
+    "service": {
+      "title": "Acts of Service",
+      "description": "You feel most loved when someone actively helps you with something — actions communicate care more than words to you.",
+      "tips": [
+        "Offer to help before they have to ask twice — jumping in shows attentiveness",
+        "Let them see you doing something for them, not just doing it invisibly — narrate it briefly (\"I fixed this for you\")",
+        "Avoid sighing or complaining while helping — for this language, the spirit of the help matters as much as the help itself",
+        "Teach them to do things eventually, but in the moment, doing it with or for them often means more than making them do it alone"
+      ]
+    },
+    "gifts": {
+      "title": "Receiving Gifts",
+      "description": "You feel most loved through small tangible tokens — not about cost, but about being thought of.",
+      "tips": [
+        "Small, frequent surprises land better than one big gift occasionally — a favorite snack or small item shows ongoing thoughtfulness",
+        "Let them keep meaningful small items rather than tidying them away — the object is tied to the memory of feeling loved",
+        "Involve them in giving gifts to others too — it reinforces the positive side of this love language",
+        "Be mindful not to substitute gifts for time or affection — pair a gift with a moment together when you can"
+      ]
+    },
+    "touch": {
+      "title": "Physical Touch",
+      "description": "You feel most loved through physical affection and closeness — touch reassures you more directly than words.",
+      "tips": [
+        "Build in small physical rituals — a hug before school, a specific bedtime routine — consistency matters as much as intensity",
+        "Offer physical comfort first when they're upset, before jumping to talking it through",
+        "Respect that this need may last longer than peers their age expect — that's normal, not something to discourage",
+        "A hand on the shoulder or a quick hug before something stressful (a test, a new situation) can steady them noticeably"
+      ]
+    }
+  }
+}

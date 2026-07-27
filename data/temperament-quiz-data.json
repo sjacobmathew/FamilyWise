@@ -1,0 +1,366 @@
+{
+  "quizId": "temperament",
+  "title": "Temperament Quiz",
+  "description": "Discover your natural personality style and what it means for how you relate to your family.",
+  "flow": "rating-scale-then-result",
+  "category": "Personality",
+  "answerOptions": [
+    {
+      "label": "Always",
+      "points": 3
+    },
+    {
+      "label": "Often",
+      "points": 2
+    },
+    {
+      "label": "Sometimes",
+      "points": 1
+    },
+    {
+      "label": "Never",
+      "points": 0
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Gets excited fast",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q2",
+      "text": "Takes charge naturally",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q3",
+      "text": "Notices small details",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q4",
+      "text": "Keeps the peace",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q5",
+      "text": "Makes friends quickly",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q6",
+      "text": "Finds the fastest path",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q7",
+      "text": "Values doing it right",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q8",
+      "text": "Content with little",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q9",
+      "text": "Bounces back fast",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q10",
+      "text": "Leads without asking",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q11",
+      "text": "Needs real alone time",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q12",
+      "text": "Goes with the group",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q13",
+      "text": "Talks things out loud",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q14",
+      "text": "Speaks bluntly",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q15",
+      "text": "Replays conversations",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q16",
+      "text": "Stays calm under pressure",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q17",
+      "text": "Loves spontaneous plans",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q18",
+      "text": "Thrives under pressure",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q19",
+      "text": "Feels things deeply",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q20",
+      "text": "Puts off decisions",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q21",
+      "text": "Forgets promises easily",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q22",
+      "text": "Gets impatient easily",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q23",
+      "text": "Thinks before deciding",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q24",
+      "text": "Avoids conflict",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q25",
+      "text": "Tells stories often",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q26",
+      "text": "Trusts own judgment",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q27",
+      "text": "Holds onto hurt",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q28",
+      "text": "Easy to get along with",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q29",
+      "text": "Fills awkward silence",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q30",
+      "text": "Struggles to apologize first",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q31",
+      "text": "Sets high standards",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q32",
+      "text": "Prefers routine",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q33",
+      "text": "Forgives quickly",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q34",
+      "text": "Steps up in a crisis",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q35",
+      "text": "Prefers deep talks",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q36",
+      "text": "Stays quiet unless asked",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q37",
+      "text": "Prefers winning arguments",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q38",
+      "text": "Senses relationship tension",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q39",
+      "text": "Needs a nudge to start",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q40",
+      "text": "Tries everything once",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q41",
+      "text": "Hates unnecessary changes",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q42",
+      "text": "Worries about mistakes",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q43",
+      "text": "Goes along with others' picks",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q44",
+      "text": "Finishes others' sentences",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q45",
+      "text": "Fixes problems solo",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q46",
+      "text": "Processes privately",
+      "temperament": "melancholic"
+    },
+    {
+      "id": "q47",
+      "text": "Needs quiet after stress",
+      "temperament": "phlegmatic"
+    },
+    {
+      "id": "q48",
+      "text": "Opens up to strangers",
+      "temperament": "sanguine"
+    },
+    {
+      "id": "q49",
+      "text": "Sets the pace",
+      "temperament": "choleric"
+    },
+    {
+      "id": "q50",
+      "text": "Craves being around people",
+      "temperament": "melancholic"
+    }
+  ],
+  "scoring": {
+    "method": "sum points per temperament tag, highest total = dominant result, second-highest = secondary blend"
+  },
+  "results": {
+    "sanguine": {
+      "title": "Sanguine — The Connector",
+      "inFamily": "Brings energy into a room, makes everyone laugh, turns errands into an adventure. Struggles with follow-through and can talk over quieter family members without meaning to.",
+      "strengths": [
+        "warm",
+        "spontaneous",
+        "quick to forgive",
+        "natural storyteller",
+        "makes others feel included"
+      ],
+      "growthEdges": [
+        "finishing what they start",
+        "sitting with repetitive or boring tasks",
+        "listening as much as talking"
+      ],
+      "tips": [
+        "Give them your full attention when they're talking — being heard matters more to them than being right",
+        "Keep instructions short and let them add their own flair",
+        "Don't take a mood swing personally; it passes in minutes",
+        "Pair them with tasks that involve people, not solo paperwork"
+      ]
+    },
+    "choleric": {
+      "title": "Choleric — The Driver",
+      "inFamily": "Organizes the road trip, sets the house rules, gets things done when everyone else is stalling. Can come across as bossy or impatient with slower processes.",
+      "strengths": [
+        "decisive",
+        "resilient",
+        "natural problem-solver",
+        "protective of the people they love"
+      ],
+      "growthEdges": [
+        "slowing down for others' pace",
+        "softening delivery",
+        "accepting help without seeing it as losing control"
+      ],
+      "tips": [
+        "Get to the point — they respect efficiency over small talk",
+        "Let them own a task fully rather than micromanaging their process",
+        "Give credit for what they accomplish; it's how they feel valued",
+        "Pick your battles — arguing every point wears them down for the ones that matter"
+      ]
+    },
+    "melancholic": {
+      "title": "Melancholic — The Thinker",
+      "inFamily": "Remembers everyone's birthday, notices when someone's upset before they say anything, needs a real reason before agreeing to a plan. Can seem withdrawn or overly critical under stress.",
+      "strengths": [
+        "thoughtful",
+        "loyal",
+        "high standards",
+        "deeply empathetic once they open up"
+      ],
+      "growthEdges": [
+        "not spiraling on mistakes",
+        "asking for reassurance instead of assuming the worst",
+        "accepting \"good enough\""
+      ],
+      "tips": [
+        "Don't rush them into decisions — give processing time",
+        "Respect their need for alone time; it's not rejection",
+        "Be specific and sincere with praise — vague compliments feel hollow to them",
+        "Give advance notice of changes to plans; surprises unsettle them"
+      ]
+    },
+    "phlegmatic": {
+      "title": "Phlegmatic — The Steady One",
+      "inFamily": "Diffuses tension, goes along with whatever the group wants, rarely raises their voice. Can avoid conflict to the point of not sharing what they actually want.",
+      "strengths": [
+        "calm",
+        "dependable",
+        "easy to live with",
+        "a natural mediator"
+      ],
+      "growthEdges": [
+        "voicing their own preferences, not just keeping the peace at their own expense",
+        "taking initiative instead of waiting"
+      ],
+      "tips": [
+        "Ask directly what they want — they won't always volunteer it",
+        "Don't mistake their calm for not caring",
+        "Give them time to warm up to change rather than springing it on them",
+        "Check in privately — they're less likely to speak up in a group setting"
+      ]
+    }
+  }
+}

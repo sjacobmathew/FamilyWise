@@ -1,0 +1,589 @@
+{
+  "quizId": "marriage-compatibility",
+  "title": "Our Marriage — Where Do We Stand?",
+  "description": "A satisfaction check-in across 13 areas of married life. Rate each item honestly, based on where things stand right now, not how you wish they were.",
+  "flow": "rating-scale-by-category",
+  "category": "Relationships",
+  "multiSubject": { "subjectLabel": "spouse", "subjectLabelPlural": "spouses" },
+  "answerOptions": [
+    {
+      "label": "Dissatisfied",
+      "points": 1
+    },
+    {
+      "label": "Somewhat satisfied",
+      "points": 2
+    },
+    {
+      "label": "Satisfied",
+      "points": 3
+    },
+    {
+      "label": "More than satisfied",
+      "points": 4
+    },
+    {
+      "label": "Extremely satisfied",
+      "points": 5
+    }
+  ],
+  "categories": [
+    {
+      "id": "overall",
+      "name": "Overall Satisfaction"
+    },
+    {
+      "id": "emotional",
+      "name": "Emotional Connection"
+    },
+    {
+      "id": "communication",
+      "name": "Communication"
+    },
+    {
+      "id": "time",
+      "name": "Time Together"
+    },
+    {
+      "id": "finances",
+      "name": "Finances"
+    },
+    {
+      "id": "sexual",
+      "name": "Sexual Relationship"
+    },
+    {
+      "id": "parenting",
+      "name": "Parenting"
+    },
+    {
+      "id": "intimacy",
+      "name": "Emotional Intimacy & Vulnerability"
+    },
+    {
+      "id": "acceptance",
+      "name": "Acceptance"
+    },
+    {
+      "id": "forgiveness",
+      "name": "Forgiveness"
+    },
+    {
+      "id": "spirituality",
+      "name": "Shared Values & Spirituality"
+    },
+    {
+      "id": "friendship",
+      "name": "Friendship"
+    },
+    {
+      "id": "family",
+      "name": "Extended Family & Friends"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "text": "How satisfied I feel with our marriage on an average day",
+      "category": "overall"
+    },
+    {
+      "id": "q2",
+      "text": "How happy I generally feel in this relationship",
+      "category": "overall"
+    },
+    {
+      "id": "q3",
+      "text": "How well my spouse and I get along day to day",
+      "category": "overall"
+    },
+    {
+      "id": "q4",
+      "text": "How committed I feel we both are to this marriage",
+      "category": "overall"
+    },
+    {
+      "id": "q5",
+      "text": "How often I feel truly content in our relationship",
+      "category": "overall"
+    },
+    {
+      "id": "q6",
+      "text": "How rarely I feel lonely even when we're in the same room",
+      "category": "overall"
+    },
+    {
+      "id": "q7",
+      "text": "How proud I feel of what we've built together",
+      "category": "overall"
+    },
+    {
+      "id": "q8",
+      "text": "How confident I feel in the future of our marriage",
+      "category": "overall"
+    },
+    {
+      "id": "q9",
+      "text": "How often my spouse tells me they love me",
+      "category": "emotional"
+    },
+    {
+      "id": "q10",
+      "text": "How affectionate we are with each other day to day",
+      "category": "emotional"
+    },
+    {
+      "id": "q11",
+      "text": "How easy it is for me to share my feelings with my spouse",
+      "category": "emotional"
+    },
+    {
+      "id": "q12",
+      "text": "How comfortable my spouse seems sharing their feelings with me",
+      "category": "emotional"
+    },
+    {
+      "id": "q13",
+      "text": "How well we understand what the other is feeling without needing it spelled out",
+      "category": "emotional"
+    },
+    {
+      "id": "q14",
+      "text": "How rarely resentment builds up between us",
+      "category": "emotional"
+    },
+    {
+      "id": "q15",
+      "text": "How well we comfort each other during hard times",
+      "category": "emotional"
+    },
+    {
+      "id": "q16",
+      "text": "How emotionally close I feel to my spouse right now",
+      "category": "emotional"
+    },
+    {
+      "id": "q17",
+      "text": "How well we resolve disagreements when they come up",
+      "category": "communication"
+    },
+    {
+      "id": "q18",
+      "text": "How well we understand each other's point of view, even in conflict",
+      "category": "communication"
+    },
+    {
+      "id": "q19",
+      "text": "How comfortable we are discussing difficult topics",
+      "category": "communication"
+    },
+    {
+      "id": "q20",
+      "text": "How rarely we raise our voices at each other",
+      "category": "communication"
+    },
+    {
+      "id": "q21",
+      "text": "How well my spouse listens when I need to talk",
+      "category": "communication"
+    },
+    {
+      "id": "q22",
+      "text": "How well I feel heard when I bring up a concern",
+      "category": "communication"
+    },
+    {
+      "id": "q23",
+      "text": "How respectfully we speak to each other, even when frustrated",
+      "category": "communication"
+    },
+    {
+      "id": "q24",
+      "text": "How openly we share what we each need from the other",
+      "category": "communication"
+    },
+    {
+      "id": "q25",
+      "text": "How rarely conversations turn defensive",
+      "category": "communication"
+    },
+    {
+      "id": "q26",
+      "text": "How much quality time we spend together in a typical week",
+      "category": "time"
+    },
+    {
+      "id": "q27",
+      "text": "How involved we are in each other's daily lives",
+      "category": "time"
+    },
+    {
+      "id": "q28",
+      "text": "How much we still enjoy doing things together",
+      "category": "time"
+    },
+    {
+      "id": "q29",
+      "text": "How often we make time just to enjoy each other's company",
+      "category": "time"
+    },
+    {
+      "id": "q30",
+      "text": "How well we prioritize time together over other demands",
+      "category": "time"
+    },
+    {
+      "id": "q31",
+      "text": "How much we still have to talk about",
+      "category": "time"
+    },
+    {
+      "id": "q32",
+      "text": "How often we do something fun together, just the two of us",
+      "category": "time"
+    },
+    {
+      "id": "q33",
+      "text": "How rested I feel our relationship is, not just busy",
+      "category": "time"
+    },
+    {
+      "id": "q34",
+      "text": "How rarely we argue about money",
+      "category": "finances"
+    },
+    {
+      "id": "q35",
+      "text": "How much I trust my spouse with our finances",
+      "category": "finances"
+    },
+    {
+      "id": "q36",
+      "text": "How comfortable we are discussing money together",
+      "category": "finances"
+    },
+    {
+      "id": "q37",
+      "text": "How well we work as a team on financial decisions",
+      "category": "finances"
+    },
+    {
+      "id": "q38",
+      "text": "How aligned we are on saving versus spending",
+      "category": "finances"
+    },
+    {
+      "id": "q39",
+      "text": "How fairly we've divided our financial responsibilities",
+      "category": "finances"
+    },
+    {
+      "id": "q40",
+      "text": "How often we sit down together to review our finances",
+      "category": "finances"
+    },
+    {
+      "id": "q41",
+      "text": "How little financial stress affects our relationship",
+      "category": "finances"
+    },
+    {
+      "id": "q42",
+      "text": "How emotionally close I feel to my spouse during intimacy",
+      "category": "sexual"
+    },
+    {
+      "id": "q43",
+      "text": "How satisfied I am with our physical relationship overall",
+      "category": "sexual"
+    },
+    {
+      "id": "q44",
+      "text": "How comfortable I feel initiating intimacy",
+      "category": "sexual"
+    },
+    {
+      "id": "q45",
+      "text": "How openly we talk about our physical relationship",
+      "category": "sexual"
+    },
+    {
+      "id": "q46",
+      "text": "How comfortable I feel expressing what I want and need physically",
+      "category": "sexual"
+    },
+    {
+      "id": "q47",
+      "text": "How connected intimacy makes me feel to my spouse afterward",
+      "category": "sexual"
+    },
+    {
+      "id": "q48",
+      "text": "How much effort we both put into keeping this part of our relationship healthy",
+      "category": "sexual"
+    },
+    {
+      "id": "q49",
+      "text": "How much it feels like we're a team when it comes to raising our kids",
+      "category": "parenting"
+    },
+    {
+      "id": "q50",
+      "text": "How well we parent together day to day",
+      "category": "parenting"
+    },
+    {
+      "id": "q51",
+      "text": "How respected I feel as a parent by my spouse",
+      "category": "parenting"
+    },
+    {
+      "id": "q52",
+      "text": "How much I respect my spouse's parenting",
+      "category": "parenting"
+    },
+    {
+      "id": "q53",
+      "text": "How aligned we are on our children's values and upbringing",
+      "category": "parenting"
+    },
+    {
+      "id": "q54",
+      "text": "How well we divide the daily work of parenting",
+      "category": "parenting"
+    },
+    {
+      "id": "q55",
+      "text": "How united we stay when outside opinions challenge our parenting choices",
+      "category": "parenting"
+    },
+    {
+      "id": "q56",
+      "text": "How prepared I feel for the parenting decisions ahead of us",
+      "category": "parenting"
+    },
+    {
+      "id": "q57",
+      "text": "How safe I feel being fully myself with my spouse",
+      "category": "intimacy"
+    },
+    {
+      "id": "q58",
+      "text": "How comfortable I am telling my spouse things I wouldn't tell anyone else",
+      "category": "intimacy"
+    },
+    {
+      "id": "q59",
+      "text": "How easily I can talk to my spouse when I'm upset",
+      "category": "intimacy"
+    },
+    {
+      "id": "q60",
+      "text": "How secure I feel in this relationship, even after a disagreement",
+      "category": "intimacy"
+    },
+    {
+      "id": "q61",
+      "text": "How comfortable I am comforting my spouse when they're struggling",
+      "category": "intimacy"
+    },
+    {
+      "id": "q62",
+      "text": "How comfortable I feel sharing my hopes and fears with my spouse",
+      "category": "intimacy"
+    },
+    {
+      "id": "q63",
+      "text": "How little I feel the need to guard myself emotionally around my spouse",
+      "category": "intimacy"
+    },
+    {
+      "id": "q64",
+      "text": "How known I feel by my spouse",
+      "category": "intimacy"
+    },
+    {
+      "id": "q65",
+      "text": "How accepted I feel by my spouse, flaws included",
+      "category": "acceptance"
+    },
+    {
+      "id": "q66",
+      "text": "How much my spouse embraces who I really am",
+      "category": "acceptance"
+    },
+    {
+      "id": "q67",
+      "text": "How comfortable I feel being myself around my spouse",
+      "category": "acceptance"
+    },
+    {
+      "id": "q68",
+      "text": "How liked I feel by my spouse, not just loved",
+      "category": "acceptance"
+    },
+    {
+      "id": "q69",
+      "text": "How rarely I feel judged or criticized by my spouse",
+      "category": "acceptance"
+    },
+    {
+      "id": "q70",
+      "text": "How well we've made peace with each other's rough edges",
+      "category": "acceptance"
+    },
+    {
+      "id": "q71",
+      "text": "How little I feel I have to perform or pretend around my spouse",
+      "category": "acceptance"
+    },
+    {
+      "id": "q72",
+      "text": "How easily we forgive each other after a conflict",
+      "category": "forgiveness"
+    },
+    {
+      "id": "q73",
+      "text": "How rarely we hold grudges",
+      "category": "forgiveness"
+    },
+    {
+      "id": "q74",
+      "text": "How easily we apologize when we're wrong",
+      "category": "forgiveness"
+    },
+    {
+      "id": "q75",
+      "text": "How free our relationship feels of old, unresolved hurts",
+      "category": "forgiveness"
+    },
+    {
+      "id": "q76",
+      "text": "How quickly we tend to reconnect after an argument",
+      "category": "forgiveness"
+    },
+    {
+      "id": "q77",
+      "text": "How little we try to get back at each other when hurt",
+      "category": "forgiveness"
+    },
+    {
+      "id": "q78",
+      "text": "How safe it feels to admit a mistake to my spouse",
+      "category": "forgiveness"
+    },
+    {
+      "id": "q79",
+      "text": "How supportive my spouse is of my personal faith or values",
+      "category": "spirituality"
+    },
+    {
+      "id": "q80",
+      "text": "How supportive I am of my spouse's personal faith or values",
+      "category": "spirituality"
+    },
+    {
+      "id": "q81",
+      "text": "How much our relationship feels like it's growing us both, spiritually or morally",
+      "category": "spirituality"
+    },
+    {
+      "id": "q82",
+      "text": "How comfortable we are talking about deeper meaning or faith together",
+      "category": "spirituality"
+    },
+    {
+      "id": "q83",
+      "text": "How intentional we are about shared values in how we raise our family",
+      "category": "spirituality"
+    },
+    {
+      "id": "q84",
+      "text": "How united we feel in the beliefs that matter most to us",
+      "category": "spirituality"
+    },
+    {
+      "id": "q85",
+      "text": "How much space we give shared reflection or quiet time together",
+      "category": "spirituality"
+    },
+    {
+      "id": "q86",
+      "text": "How aligned we feel in what we're building our life around",
+      "category": "spirituality"
+    },
+    {
+      "id": "q87",
+      "text": "How much we feel like genuine friends, not just partners",
+      "category": "friendship"
+    },
+    {
+      "id": "q88",
+      "text": "How easily we laugh together",
+      "category": "friendship"
+    },
+    {
+      "id": "q89",
+      "text": "How much we simply enjoy each other's company",
+      "category": "friendship"
+    },
+    {
+      "id": "q90",
+      "text": "How light and playful our relationship can be",
+      "category": "friendship"
+    },
+    {
+      "id": "q91",
+      "text": "How easy it is for us to have fun together",
+      "category": "friendship"
+    },
+    {
+      "id": "q92",
+      "text": "How much I look forward to spending time with my spouse",
+      "category": "friendship"
+    },
+    {
+      "id": "q93",
+      "text": "How well my spouse knows my sense of humor",
+      "category": "friendship"
+    },
+    {
+      "id": "q94",
+      "text": "How well we've each made space for the other over our birth families",
+      "category": "family"
+    },
+    {
+      "id": "q95",
+      "text": "How respectful we are of both sides of the family equally",
+      "category": "family"
+    },
+    {
+      "id": "q96",
+      "text": "How healthy the boundaries are that we've set with our parents",
+      "category": "family"
+    },
+    {
+      "id": "q97",
+      "text": "How united we are in decisions about helping extended family",
+      "category": "family"
+    },
+    {
+      "id": "q98",
+      "text": "How comfortable I am with my spouse's friendships",
+      "category": "family"
+    },
+    {
+      "id": "q99",
+      "text": "How comfortable my spouse is with mine",
+      "category": "family"
+    },
+    {
+      "id": "q100",
+      "text": "How mutually positive our shared friendships are for our marriage",
+      "category": "family"
+    }
+  ],
+  "scoring": {
+    "method": "average the 1-5 scores within each category; also compute an overall average across all 100 items. Categories averaging below 3 are 'areas to focus on'; 3-4 are 'solid ground'; above 4 are 'a real strength'."
+  }
+}

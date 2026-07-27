@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap');
+@import "tailwindcss";
+
+:root {
+  --color-paper: #ede6d6;
+  --color-card: #f9f3e6;
+  --color-walnut: #3d3527;
+  --color-walnut-soft: #756b58;
+  --color-forest: #2f4b3c;
+  --color-forest-dark: #22362c;
+  --color-forest-soft: #dde5de;
+  --color-sienna: #b5652e;
+  --color-sienna-soft: #f0dccb;
+  --color-gold: #c9a063;
+  --color-gold-soft: #f1e6d3;
+  --color-tape: rgba(201, 160, 99, 0.55);
+  --color-border: #ddd2ba;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-card: var(--color-card);
+  --color-walnut: var(--color-walnut);
+  --color-walnut-soft: var(--color-walnut-soft);
+  --color-forest: var(--color-forest);
+  --color-forest-dark: var(--color-forest-dark);
+  --color-forest-soft: var(--color-forest-soft);
+  --color-sienna: var(--color-sienna);
+  --color-sienna-soft: var(--color-sienna-soft);
+  --color-gold: var(--color-gold);
+  --color-gold-soft: var(--color-gold-soft);
+  --color-border: var(--color-border);
+  --font-sans: var(--font-body);
+  --font-script: "Beau Rivage", cursive;
+  --font-times: "Times New Roman", Times, serif;
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+}
+
+/* Beau Rivage is reserved for the brand wordmark only. Buttons and small
+   decorative tags use `font-times` (Times New Roman). Real headings (h1-h4)
+   stay in the sans body font for scannability. */

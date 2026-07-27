@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #fbf1ec;
+  --color-card: #fffbf9;
+  --color-ink: #3d2b2a;
+  --color-ink-soft: #8a7267;
+  --color-terracotta: #c66a5c;
+  --color-terracotta-dark: #a8503f;
+  --color-terracotta-soft: #f5ddd4;
+  --color-sage: #6e8f68;
+  --color-sage-soft: #e6efe1;
+  --color-gold: #d19a4d;
+  --color-border: #f0ddd2;
+  --color-banner: #8a4f45;
+  --color-blob: #eab19d;
+}
+
+/* Dark mode intentionally disabled for now — app is pinned to light mode
+   while the poster-inspired look (banner/watercolor/photo cutouts) is tuned. */
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-card: var(--color-card);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-terracotta: var(--color-terracotta);
+  --color-terracotta-dark: var(--color-terracotta-dark);
+  --color-terracotta-soft: var(--color-terracotta-soft);
+  --color-sage: var(--color-sage);
+  --color-sage-soft: var(--color-sage-soft);
+  --color-gold: var(--color-gold);
+  --color-border: var(--color-border);
+  --color-banner: var(--color-banner);
+  --color-blob: var(--color-blob);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+  --font-display: var(--font-display);
+  --font-script: var(--font-script);
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), sans-serif;
+}

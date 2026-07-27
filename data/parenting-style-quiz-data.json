@@ -1,0 +1,114 @@
+{
+  "quizId": "parenting-style",
+  "title": "Parenting Style Quiz",
+  "description": "Discover your natural parenting style — based on the classic, well-established four-style model from developmental psychology (authoritative, authoritarian, permissive, uninvolved).",
+  "flow": "rating-scale-then-result",
+  "category": "Parenting",
+  "answerOptions": [
+    { "label": "Always", "points": 3 },
+    { "label": "Often", "points": 2 },
+    { "label": "Sometimes", "points": 1 },
+    { "label": "Never", "points": 0 }
+  ],
+  "questions": [
+    { "id": "q1", "text": "Explains the reason behind rules", "style": "authoritative" },
+    { "id": "q2", "text": "Expects obedience without discussion", "style": "authoritarian" },
+    { "id": "q3", "text": "Lets my child set their own bedtime", "style": "permissive" },
+    { "id": "q4", "text": "Rarely knows my child's daily schedule", "style": "uninvolved" },
+    { "id": "q5", "text": "Sets clear limits but stays warm about it", "style": "authoritative" },
+    { "id": "q6", "text": "Uses \"because I said so\" often", "style": "authoritarian" },
+    { "id": "q7", "text": "Avoids saying no to keep the peace", "style": "permissive" },
+    { "id": "q8", "text": "Leaves discipline mostly to chance", "style": "uninvolved" },
+    { "id": "q9", "text": "Listens to my child's side before deciding", "style": "authoritative" },
+    { "id": "q10", "text": "Punishes first, explains later if at all", "style": "authoritarian" },
+    { "id": "q11", "text": "Gives in after enough pushback", "style": "permissive" },
+    { "id": "q12", "text": "Doesn't ask about my child's day", "style": "uninvolved" },
+    { "id": "q13", "text": "Adjusts rules as my child gets older", "style": "authoritative" },
+    { "id": "q14", "text": "Values obedience over discussion", "style": "authoritarian" },
+    { "id": "q15", "text": "Acts more like a friend than an authority", "style": "permissive" },
+    { "id": "q16", "text": "Feels distant from my child's daily life", "style": "uninvolved" },
+    { "id": "q17", "text": "Praises effort, not just results", "style": "authoritative" },
+    { "id": "q18", "text": "Uses strict punishment for small mistakes", "style": "authoritarian" },
+    { "id": "q19", "text": "Struggles to enforce consequences", "style": "permissive" },
+    { "id": "q20", "text": "Misses school events or milestones", "style": "uninvolved" },
+    { "id": "q21", "text": "Follows through on consequences calmly", "style": "authoritative" },
+    { "id": "q22", "text": "Expects perfection with little room for error", "style": "authoritarian" },
+    { "id": "q23", "text": "Buys peace with treats or screen time", "style": "permissive" },
+    { "id": "q24", "text": "Rarely sets any household rules", "style": "uninvolved" },
+    { "id": "q25", "text": "Encourages my child to problem-solve", "style": "authoritative" },
+    { "id": "q26", "text": "Raises my voice as a first response", "style": "authoritarian" },
+    { "id": "q27", "text": "Feels more like a roommate than a parent", "style": "permissive" },
+    { "id": "q28", "text": "Doesn't notice when my child is struggling", "style": "uninvolved" },
+    { "id": "q29", "text": "Balances warmth with firm expectations", "style": "authoritative" },
+    { "id": "q30", "text": "Rarely says \"I'm proud of you\"", "style": "authoritarian" },
+    { "id": "q31", "text": "Lets my child skip chores without follow-up", "style": "permissive" },
+    { "id": "q32", "text": "Prioritizes my own time over parenting tasks", "style": "uninvolved" },
+    { "id": "q33", "text": "Talks through mistakes instead of just punishing", "style": "authoritative" },
+    { "id": "q34", "text": "Controls most decisions, big or small", "style": "authoritarian" },
+    { "id": "q35", "text": "Avoids conflict even when it's needed", "style": "permissive" },
+    { "id": "q36", "text": "Doesn't attend parent-teacher conferences", "style": "uninvolved" },
+    { "id": "q37", "text": "Gives choices within clear limits", "style": "authoritative" },
+    { "id": "q38", "text": "Uses fear to get quick compliance", "style": "authoritarian" },
+    { "id": "q39", "text": "Struggles to say no to requests", "style": "permissive" },
+    { "id": "q40", "text": "Leaves my child to figure things out alone, even when young", "style": "uninvolved" },
+    { "id": "q41", "text": "Adjusts expectations to my child's age and ability", "style": "authoritative" },
+    { "id": "q42", "text": "Dismisses my child's feelings during conflict", "style": "authoritarian" },
+    { "id": "q43", "text": "Lets my child choose meals, screen time, and rules freely", "style": "permissive" },
+    { "id": "q44", "text": "Forgets deadlines for school forms or activities", "style": "uninvolved" },
+    { "id": "q45", "text": "Follows up consistently on agreed consequences", "style": "authoritative" },
+    { "id": "q46", "text": "Compares my child unfavorably to others", "style": "authoritarian" },
+    { "id": "q47", "text": "Rarely enforces a bedtime or routine", "style": "permissive" },
+    { "id": "q48", "text": "Spends little one-on-one time with my child", "style": "uninvolved" },
+    { "id": "q49", "text": "Explains consequences before they happen, not just after", "style": "authoritative" },
+    { "id": "q50", "text": "Expects immediate obedience without questions", "style": "authoritarian" }
+  ],
+  "scoring": {
+    "method": "sum points per style tag, highest total = dominant parenting style, second-highest = secondary tendency"
+  },
+  "results": {
+    "authoritative": {
+      "title": "Authoritative",
+      "description": "High warmth, high structure. You set clear expectations and follow through, while staying responsive to your child's feelings and perspective. Widely regarded by researchers as the style most associated with confident, resilient kids.",
+      "strengths": ["clear communicator", "consistent", "balances empathy and structure", "raises kids who understand the \"why\" behind rules"],
+      "growthEdges": ["can be exhausting to maintain consistently", "watch for over-explaining when a simple limit would do"],
+      "tips": [
+        "Keep pairing limits with a brief reason — it's working, keep doing it",
+        "On hard days, a short firm boundary is still fine; you don't have to fully explain every single time",
+        "Model how you want conflict handled — your calm follow-through is the biggest teacher here"
+      ]
+    },
+    "authoritarian": {
+      "title": "Authoritarian",
+      "description": "High structure, lower warmth in the moment. You value obedience, consistency, and clear rules — strong on structure, but the connection side may need more room.",
+      "strengths": ["consistent", "clear rules", "kids know exactly what's expected"],
+      "growthEdges": ["making space for your child's perspective before deciding", "softening tone during correction", "praising effort, not just compliance"],
+      "tips": [
+        "Try asking \"what happened?\" before jumping to the consequence — it often changes nothing about the outcome, but changes everything about how it lands",
+        "Add one specific praise for effort or character each day, not just correction",
+        "Explain the reason behind a rule once in a while — even a one-sentence \"because...\" builds trust without losing authority"
+      ]
+    },
+    "permissive": {
+      "title": "Permissive",
+      "description": "High warmth, lower structure. You're warm, responsive, and avoid unnecessary conflict — the connection is strong, but limits may not stick.",
+      "strengths": ["warm", "emotionally attuned", "low-conflict home"],
+      "growthEdges": ["following through on stated consequences", "tolerating short-term pushback for long-term structure", "saying no without guilt"],
+      "tips": [
+        "Pick one or two rules to enforce consistently this month rather than trying to fix everything at once",
+        "A boundary held calmly, even through a tantrum, teaches more than a warning that doesn't stick",
+        "Remember: saying no to a request isn't withholding love — kids feel safer with real limits, even when they protest them"
+      ]
+    },
+    "uninvolved": {
+      "title": "Uninvolved",
+      "description": "Lower warmth, lower structure — often not by choice, but a sign of a season where bandwidth is stretched thin (work stress, personal struggles, too many demands at once).",
+      "strengths": [],
+      "growthEdges": ["carving out small, regular one-on-one time", "re-engaging with school and daily routines", "noticing what's making consistent presence hard right now"],
+      "tips": [
+        "Start small — even 10 minutes of undistracted time daily rebuilds connection faster than one big gesture",
+        "If this result surprises or concerns you, it's worth being honest with yourself about what's making presence hard right now — work, stress, or something else — and whether outside support would help",
+        "One consistent routine (like a nightly check-in) can rebuild structure without needing to overhaul everything at once"
+      ]
+    }
+  }
+}

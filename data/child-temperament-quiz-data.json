@@ -1,0 +1,119 @@
+{
+  "quizId": "child-temperament",
+  "title": "My Kid's Temperament",
+  "description": "For a parent to answer about their child (works for toddlers through teens) — discover your child's natural personality style and how to parent it well.",
+  "flow": "rating-scale-then-result",
+  "category": "Parenting",
+  "multiSubject": { "subjectLabel": "child", "subjectLabelPlural": "children" },
+  "answerOptions": [
+    { "label": "Always", "points": 3 },
+    { "label": "Often", "points": 2 },
+    { "label": "Sometimes", "points": 1 },
+    { "label": "Never", "points": 0 }
+  ],
+  "questions": [
+    { "id": "q1", "text": "Warms up to strangers fast", "temperament": "sanguine" },
+    { "id": "q2", "text": "Insists on doing it their way", "temperament": "choleric" },
+    { "id": "q3", "text": "Notices tiny changes in a room", "temperament": "melancholic" },
+    { "id": "q4", "text": "Goes along with whatever's planned", "temperament": "phlegmatic" },
+    { "id": "q5", "text": "Talks to everyone at the playground", "temperament": "sanguine" },
+    { "id": "q6", "text": "Takes charge of group games", "temperament": "choleric" },
+    { "id": "q7", "text": "Gets upset by small mistakes", "temperament": "melancholic" },
+    { "id": "q8", "text": "Rarely throws tantrums", "temperament": "phlegmatic" },
+    { "id": "q9", "text": "Moves on fast after being upset", "temperament": "sanguine" },
+    { "id": "q10", "text": "Argues to get their way", "temperament": "choleric" },
+    { "id": "q11", "text": "Needs quiet time after a busy day", "temperament": "melancholic" },
+    { "id": "q12", "text": "Happy playing alone for long stretches", "temperament": "phlegmatic" },
+    { "id": "q13", "text": "Loves being the center of attention", "temperament": "sanguine" },
+    { "id": "q14", "text": "Gets frustrated when things don't go as planned", "temperament": "choleric" },
+    { "id": "q15", "text": "Cries easily at sad stories or movies", "temperament": "melancholic" },
+    { "id": "q16", "text": "Stays calm when other kids are upset", "temperament": "phlegmatic" },
+    { "id": "q17", "text": "Jumps at new activities without hesitation", "temperament": "sanguine" },
+    { "id": "q18", "text": "Wants to be first in line", "temperament": "choleric" },
+    { "id": "q19", "text": "Takes a while to warm up to new places", "temperament": "melancholic" },
+    { "id": "q20", "text": "Slow to get moving in the morning", "temperament": "phlegmatic" },
+    { "id": "q21", "text": "Forgets chores mid-task if distracted", "temperament": "sanguine" },
+    { "id": "q22", "text": "Gets impatient waiting their turn", "temperament": "choleric" },
+    { "id": "q23", "text": "Asks a lot of \"why\" questions", "temperament": "melancholic" },
+    { "id": "q24", "text": "Avoids conflict with siblings", "temperament": "phlegmatic" },
+    { "id": "q25", "text": "Makes up games and stories easily", "temperament": "sanguine" },
+    { "id": "q26", "text": "Refuses help even when struggling", "temperament": "choleric" },
+    { "id": "q27", "text": "Remembers being teased long after it happened", "temperament": "melancholic" },
+    { "id": "q28", "text": "Easygoing about what's for dinner", "temperament": "phlegmatic" },
+    { "id": "q29", "text": "Interrupts conversations excitedly", "temperament": "sanguine" },
+    { "id": "q30", "text": "Bosses siblings or friends around", "temperament": "choleric" },
+    { "id": "q31", "text": "Prefers one close friend over a big group", "temperament": "melancholic" },
+    { "id": "q32", "text": "Content with the same toy for a long time", "temperament": "phlegmatic" },
+    { "id": "q33", "text": "Forgives siblings quickly after a fight", "temperament": "sanguine" },
+    { "id": "q34", "text": "Takes charge in a group project", "temperament": "choleric" },
+    { "id": "q35", "text": "Reacts strongly to unfairness", "temperament": "melancholic" },
+    { "id": "q36", "text": "Needs a nudge to try something new", "temperament": "phlegmatic" },
+    { "id": "q37", "text": "Loves showing off a new skill", "temperament": "sanguine" },
+    { "id": "q38", "text": "Doesn't back down once decided", "temperament": "choleric" },
+    { "id": "q39", "text": "Notices when a parent seems upset", "temperament": "melancholic" },
+    { "id": "q40", "text": "Rarely complains about routine or chores", "temperament": "phlegmatic" },
+    { "id": "q41", "text": "Wants a big reaction from adults", "temperament": "sanguine" },
+    { "id": "q42", "text": "Pushes limits with adults", "temperament": "choleric" },
+    { "id": "q43", "text": "Sets a high bar for own drawings/schoolwork", "temperament": "melancholic" },
+    { "id": "q44", "text": "Rarely gets rattled by loud environments", "temperament": "phlegmatic" },
+    { "id": "q45", "text": "Loud laugh, easy to spot in a crowd", "temperament": "sanguine" },
+    { "id": "q46", "text": "Competitive about games, even small ones", "temperament": "choleric" },
+    { "id": "q47", "text": "Retreats to their room when overwhelmed", "temperament": "melancholic" },
+    { "id": "q48", "text": "Follows the lead of louder siblings/friends", "temperament": "phlegmatic" },
+    { "id": "q49", "text": "Makes friends the fastest in a new class", "temperament": "sanguine" },
+    { "id": "q50", "text": "Prefers to plan rather than wing it", "temperament": "melancholic" }
+  ],
+  "scoring": {
+    "method": "sum points per temperament tag, highest total = child's dominant temperament, second-highest = secondary blend"
+  },
+  "results": {
+    "sanguine": {
+      "title": "Sanguine — \"The Spark\"",
+      "inFamily": "The loudest laugh in the house, first to make friends at a new school, always narrating their own adventures. Struggles with follow-through, forgets instructions mid-task, and needs a lot of positive attention.",
+      "strengths": ["warm", "enthusiastic", "resilient after setbacks", "naturally social"],
+      "growthEdges": ["finishing tasks", "sitting still for quiet activities", "handling correction without taking it personally"],
+      "parentingTips": [
+        "Give tasks in small, engaging chunks — long boring stretches lose them fast",
+        "Praise generously and specifically; they thrive on positive attention",
+        "Redirect rather than lecture — a long talking-to loses them after the first sentence",
+        "Channel their energy into performance, sports, or group activities where their spark is an asset"
+      ]
+    },
+    "choleric": {
+      "title": "Choleric — \"The Little Leader\"",
+      "inFamily": "Organizes the other kids' games, negotiates bedtime like a lawyer, hates losing at anything. Can be bossy with siblings and push back hard against rules.",
+      "strengths": ["confident", "determined", "natural leader among peers", "recovers fast from failure"],
+      "growthEdges": ["accepting \"no\" without a fight", "sharing control", "softening how they speak to others"],
+      "parentingTips": [
+        "Give them real choices where possible — a sense of control reduces power struggles",
+        "Explain the \"why\" behind rules; they respond better to logic than to \"because I said so\"",
+        "Let natural consequences teach where safe to do so, rather than only imposed punishment",
+        "Praise their leadership when it's kind, so they learn strength and kindness aren't opposites"
+      ]
+    },
+    "melancholic": {
+      "title": "Melancholic — \"The Deep Feeler\"",
+      "inFamily": "Notices everything, asks big questions, needs real prep time before new situations. Can be a perfectionist about schoolwork or drawings and take teasing hard.",
+      "strengths": ["thoughtful", "empathetic", "detail-oriented", "forms deep, loyal friendships"],
+      "growthEdges": ["handling mistakes without spiraling", "adjusting to sudden changes", "opening up when upset instead of withdrawing"],
+      "parentingTips": [
+        "Give advance warning before transitions or new situations — surprises are harder for them",
+        "Validate big feelings before problem-solving; they need to feel heard first",
+        "Avoid harsh criticism of their work — they're already their own toughest critic",
+        "Respect their need for quiet recovery time after a busy or social day"
+      ]
+    },
+    "phlegmatic": {
+      "title": "Phlegmatic — \"The Steady One\"",
+      "inFamily": "Easygoing, rarely the source of conflict, content playing quietly for long stretches. Can be slow to try new things and may not speak up about what they actually want.",
+      "strengths": ["calm", "adaptable", "low-drama", "kind and patient with others"],
+      "growthEdges": ["speaking up for their own preferences", "trying new things without a push", "not just going along to avoid conflict"],
+      "parentingTips": [
+        "Ask directly what they want — they often won't volunteer a preference",
+        "Give extra time and gentle encouragement before new activities, rather than rushing them",
+        "Don't mistake their quiet for having no opinion; check in one-on-one",
+        "Celebrate their steadiness — it's easy to overlook a child who never causes a scene"
+      ]
+    }
+  }
+}

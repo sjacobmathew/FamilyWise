@@ -1,0 +1,95 @@
+{
+  "quizId": "love-languages",
+  "title": "Love Languages Quiz (Spouse/Partner)",
+  "description": "A forced-choice quiz where you pick which of two statements is more meaningful to you in your relationship, to discover your primary and secondary love language.",
+  "flow": "forced-choice-then-result",
+  "category": "Relationships",
+  "instructions": "For each pair, pick the statement that's more meaningful to you in your relationship, even if both sound true. Answer for the majority of the time, not just today.",
+  "questions": [
+    { "id": "q1", "optionA": { "text": "I love hearing my partner say they're proud of me.", "language": "words" }, "optionB": { "text": "I feel closest to my partner during uninterrupted time together.", "language": "time" } },
+    { "id": "q2", "optionA": { "text": "I feel loved when my partner takes something off my plate without being asked.", "language": "service" }, "optionB": { "text": "A small, thoughtful gift can brighten my whole day.", "language": "gifts" } },
+    { "id": "q3", "optionA": { "text": "I'd rather have a quiet evening together than almost any gift.", "language": "time" }, "optionB": { "text": "A hug from my partner instantly makes me feel better.", "language": "touch" } },
+    { "id": "q4", "optionA": { "text": "I feel appreciated when my partner compliments me specifically.", "language": "words" }, "optionB": { "text": "I feel loved when my partner remembers something I mentioned wanting.", "language": "gifts" } },
+    { "id": "q5", "optionA": { "text": "It means a lot when my partner helps with a task I've been dreading.", "language": "service" }, "optionB": { "text": "I feel connected when my partner and I hold hands.", "language": "touch" } },
+    { "id": "q6", "optionA": { "text": "I feel loved when my partner puts their phone away to be with me.", "language": "time" }, "optionB": { "text": "I like getting a gift that shows my partner was really thinking of me.", "language": "gifts" } },
+    { "id": "q7", "optionA": { "text": "A heartfelt text out of nowhere means a lot to me.", "language": "words" }, "optionB": { "text": "I feel cared for when my partner handles something so I don't have to.", "language": "service" } },
+    { "id": "q8", "optionA": { "text": "I feel appreciated when my partner brings me something back from a trip.", "language": "gifts" }, "optionB": { "text": "I feel loved through physical closeness more than words.", "language": "touch" } },
+    { "id": "q9", "optionA": { "text": "Just hanging out together, even doing nothing, means a lot to me.", "language": "time" }, "optionB": { "text": "I notice immediately when my partner does something practical for me.", "language": "service" } },
+    { "id": "q10", "optionA": { "text": "I feel closer to my partner after they say something encouraging.", "language": "words" }, "optionB": { "text": "I like sitting close to my partner, even when we're not talking.", "language": "touch" } },
+    { "id": "q11", "optionA": { "text": "I feel special when my partner clears their schedule just for me.", "language": "time" }, "optionB": { "text": "I feel appreciated when my partner takes on extra responsibility around the house.", "language": "service" } },
+    { "id": "q12", "optionA": { "text": "Hearing \"I love you\" said out loud matters more to me than people might expect.", "language": "words" }, "optionB": { "text": "A back rub or massage from my partner means a lot to me.", "language": "touch" } },
+    { "id": "q13", "optionA": { "text": "I feel relieved when my partner steps in when I'm overwhelmed.", "language": "service" }, "optionB": { "text": "I look forward to a holiday mostly because of a gift I'm expecting.", "language": "gifts" } },
+    { "id": "q14", "optionA": { "text": "I remember specific compliments my partner has given me for years.", "language": "words" }, "optionB": { "text": "I love long conversations with my partner, no distractions.", "language": "time" } },
+    { "id": "q15", "optionA": { "text": "I feel loved when my partner surprises me with something small, unprompted.", "language": "gifts" }, "optionB": { "text": "I feel loved when my partner and I touch during the normal day, not just big moments.", "language": "touch" } },
+    { "id": "q16", "optionA": { "text": "I feel connected when my partner and I do an activity together.", "language": "time" }, "optionB": { "text": "I feel close to my partner when we share affection in public.", "language": "touch" } },
+    { "id": "q17", "optionA": { "text": "I feel loved when my partner tells others good things about me.", "language": "words" }, "optionB": { "text": "A gift that took real thought means more to me than an expensive one.", "language": "gifts" } },
+    { "id": "q18", "optionA": { "text": "I feel loved when my partner runs an errand for me without asking.", "language": "service" }, "optionB": { "text": "I feel connected when my partner and I embrace after time apart.", "language": "touch" } },
+    { "id": "q19", "optionA": { "text": "I feel valued when my partner picks spending time with me over other things.", "language": "time" }, "optionB": { "text": "I feel special when my partner picks up something small during their normal day, just for me.", "language": "gifts" } },
+    { "id": "q20", "optionA": { "text": "A handwritten note from my partner would mean more than I'd admit.", "language": "words" }, "optionB": { "text": "It means a lot when my partner fixes something I've been putting off.", "language": "service" } },
+    { "id": "q21", "optionA": { "text": "I like it when my partner gives me a gift as a token of our relationship.", "language": "gifts" }, "optionB": { "text": "I feel loved when my partner puts an arm around me.", "language": "touch" } },
+    { "id": "q22", "optionA": { "text": "I feel valued when my partner thanks me specifically for something.", "language": "words" }, "optionB": { "text": "I feel cared for when my partner helps me get somewhere I need to be.", "language": "service" } },
+    { "id": "q23", "optionA": { "text": "A long drive together is one of my favorite ways to connect.", "language": "time" }, "optionB": { "text": "I feel valued when gift-giving is something my partner and I both put effort into.", "language": "gifts" } },
+    { "id": "q24", "optionA": { "text": "I feel appreciated when my partner takes care of something stressful for me.", "language": "service" }, "optionB": { "text": "I feel close to my partner through physical affection, not just romance.", "language": "touch" } },
+    { "id": "q25", "optionA": { "text": "Praise from my partner can turn my whole day around.", "language": "words" }, "optionB": { "text": "I feel loved when my partner asks about my day and really listens.", "language": "time" } },
+    { "id": "q26", "optionA": { "text": "I feel loved when my partner works alongside me on a task I need done.", "language": "service" }, "optionB": { "text": "I feel loved when my partner gives me something after being away.", "language": "gifts" } },
+    { "id": "q27", "optionA": { "text": "I like it when my partner tells me exactly what they appreciate about me.", "language": "words" }, "optionB": { "text": "I like when my partner and I kiss often, not just for big moments.", "language": "touch" } },
+    { "id": "q28", "optionA": { "text": "I like planning something just the two of us can do together.", "language": "time" }, "optionB": { "text": "I feel valued when my partner does more than their normal share sometimes.", "language": "service" } },
+    { "id": "q29", "optionA": { "text": "Sitting close together in silence still feels intimate to me.", "language": "time" }, "optionB": { "text": "I feel secure when my partner is physically affectionate throughout the day.", "language": "touch" } },
+    { "id": "q30", "optionA": { "text": "I feel secure when my partner says clearly what they love about me.", "language": "words" }, "optionB": { "text": "I feel appreciated when my partner puts thought into what they get me.", "language": "gifts" } }
+  ],
+  "scoring": {
+    "method": "count how many times each language was picked across all 30 questions; highest count = primary love language, second-highest = secondary (a tie means \"bilingual\" in that pair)"
+  },
+  "results": {
+    "words": {
+      "title": "Words of Affirmation",
+      "description": "You feel most loved through spoken and written encouragement — hearing appreciation, praise, and affection said out loud or in writing.",
+      "tips": [
+        "Say the specific thing you appreciate, not just \"good job\" — specificity lands harder",
+        "A short note left somewhere they'll find it can mean as much as saying it in person",
+        "Avoid sarcasm or teasing about sensitive topics — words cut both ways for this language",
+        "Verbal affirmation in front of others (family, friends) especially reinforces the feeling"
+      ]
+    },
+    "time": {
+      "title": "Quality Time",
+      "description": "You feel most loved through focused, undistracted time together — presence matters more to you than words or gifts.",
+      "tips": [
+        "Put phones away during shared time — partial attention doesn't register as quality time",
+        "Regular, smaller check-ins matter more than one big event a year",
+        "Ask about their day and actually follow up on details later — it shows you were present",
+        "Protect recurring time together, even 15-20 minutes daily, over occasional long stretches"
+      ]
+    },
+    "service": {
+      "title": "Acts of Service",
+      "description": "You feel most loved when someone does something helpful for you, especially without being asked — actions carry more weight than words.",
+      "tips": [
+        "Notice what's overwhelming them and just take it off their plate",
+        "Follow through fully on promised help — a half-done task can feel worse than none",
+        "Ask what would actually help rather than guessing, since effort matters more than the specific task",
+        "Complaining while helping cancels out the gesture for this language — the spirit matters"
+      ]
+    },
+    "gifts": {
+      "title": "Receiving Gifts",
+      "description": "You feel most loved through thoughtful tangible tokens — not about cost, but about being remembered and thought of.",
+      "tips": [
+        "Small, frequent, thoughtful gifts land better than one expensive annual gift",
+        "Remembering an offhand comment (\"I love ___\") and acting on it later is high-impact",
+        "Never regift or grab something last-minute — the thoughtfulness is the actual gift",
+        "Handmade or personal gifts often mean more than store-bought for this language"
+      ]
+    },
+    "touch": {
+      "title": "Physical Touch",
+      "description": "You feel most loved through physical closeness and affection — touch communicates security and love more directly than words for you.",
+      "tips": [
+        "Small consistent touches (hand on the back, a hug hello) matter as much as big romantic gestures",
+        "Physical distance during conflict can feel especially painful — try to stay physically connected even when upset",
+        "Non-sexual affection (sitting close, resting a head on a shoulder) is just as important as romantic touch",
+        "Ask before assuming what kind of touch is welcome, especially around others"
+      ]
+    }
+  }
+}
