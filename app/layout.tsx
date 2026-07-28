@@ -8,10 +8,25 @@ const bodyFont = Nunito({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const DESCRIPTION =
+  "A family-friendly hub of quizzes for couples, parents, and kids — love languages, temperament, parenting style, and more.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://family-wise.vercel.app"),
   title: "FamilyWise — Relationship & Personality Quizzes",
-  description:
-    "A family-friendly hub of quizzes for couples, parents, and kids — love languages, temperament, parenting style, and more.",
+  description: DESCRIPTION,
+  openGraph: {
+    title: "FamilyWise",
+    description: DESCRIPTION,
+    url: "https://family-wise.vercel.app",
+    siteName: "FamilyWise",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FamilyWise",
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
