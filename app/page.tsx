@@ -29,6 +29,13 @@ export default function Home() {
   return (
     <div className="flex-1 overflow-x-hidden bg-paper">
       <header className="relative overflow-hidden border-b border-border bg-forest">
+        {/* Smaller corner-only set for phones — the shapes above are all
+            sm:/lg:/xl:-gated and don't show below 640px otherwise. */}
+        <ModernAccent variant="ring" color={SIENNA} width="46px" opacity={0.6} className="absolute block sm:hidden" style={{ position: "absolute", top: "6%", left: "5%" }} />
+        <ModernAccent variant="blob" color={GOLD} width="54px" rotate={8} opacity={0.6} className="absolute block sm:hidden" style={{ position: "absolute", top: "6%", right: "5%" }} />
+        <ModernAccent variant="dots" dotSet="a" color={FOREST_LIGHT} width="38px" opacity={0.8} className="absolute block sm:hidden" style={{ position: "absolute", bottom: "8%", left: "6%" }} />
+        <ModernAccent variant="arc" color={SIENNA} width="46px" rotate={-10} opacity={0.6} className="absolute block sm:hidden" style={{ position: "absolute", bottom: "6%", right: "6%" }} />
+
         <ModernAccent variant="ring" color={SIENNA} width="92px" opacity={0.6} className="absolute hidden sm:block" style={{ position: "absolute", top: "8%", left: "4%" }} />
         <ModernAccent variant="dots" dotSet="a" color={FOREST_LIGHT} width="76px" opacity={0.8} className="absolute hidden sm:block" style={{ position: "absolute", top: "13%", left: "21%" }} />
         <ModernAccent variant="blob" color={GOLD} width="112px" rotate={8} opacity={0.65} className="absolute hidden sm:block" style={{ position: "absolute", top: "5%", right: "5%" }} />
