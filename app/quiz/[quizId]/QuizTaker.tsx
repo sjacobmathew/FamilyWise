@@ -73,16 +73,18 @@ function QuestionsFlow({
   );
   const [attemptedSubmit, setAttemptedSubmit] = useState(false);
 
-  const total = quiz.questions.length;
-  const answered = countAnswered(quiz, answers);
   const isPerChild = Boolean(subjectName);
 
   // When the quiz defines named categories, tag each question with the
   // category label that should appear above it — only on the first
   // question of each run, so the label reads as a section heading rather
-  // than repeating on every question.
+  // than repeating on every question. Categories marked `optional` aren't
+  // required to submit and don't count toward progress.
   const categoryNames = new Map(
     (quiz.categories ?? []).map((c) => [c.id, c.name])
+  );
+  const optionalCategoryIds = new Set(
+    (quiz.categories ?? []).filter((c) => c.optional).map((c) => c.id)
   );
   const tagKey =
     quiz.categories && quiz.questions.length > 0 && !isForcedChoice(quiz.questions[0])
@@ -91,22 +93,30 @@ function QuestionsFlow({
   let lastCategoryId: string | undefined;
   const questionItems = quiz.questions.map((question, i) => {
     let categoryLabel: string | null = null;
+    let optional = false;
     if (tagKey && !isForcedChoice(question)) {
       const catId = (question as RatingQuestion)[tagKey];
+      optional = optionalCategoryIds.has(catId);
       if (catId !== lastCategoryId) {
         categoryLabel = categoryNames.get(catId) ?? catId;
         lastCategoryId = catId;
       }
     }
-    return { question, index: i, categoryLabel };
+    return { question, index: i, categoryLabel, optional };
   });
+  const requiredQuestions = questionItems
+    .filter((item) => !item.optional)
+    .map((item) => item.question);
+
+  const total = requiredQuestions.length;
+  const answered = countAnswered({ ...quiz, questions: requiredQuestions }, answers);
 
   function setAnswer(questionId: string, value: number | "A" | "B") {
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
   }
 
   function handleSubmit() {
-    const firstUnanswered = quiz.questions.find(
+    const firstUnanswered = requiredQuestions.find(
       (q) => answers[q.id] === undefined
     );
 
@@ -161,11 +171,16 @@ function QuestionsFlow({
         </PrivacyNote>
 
         <div className="flex flex-col gap-4">
-          {questionItems.map(({ question, index, categoryLabel }) => (
+          {questionItems.map(({ question, index, categoryLabel, optional }) => (
             <div key={question.id}>
               {categoryLabel && (
-                <h2 className="font-times mb-1 mt-6 text-2xl text-sienna first:mt-0">
+                <h2 className="font-times mb-1 mt-6 flex items-baseline gap-2 text-2xl text-sienna first:mt-0">
                   {categoryLabel}
+                  {optional && (
+                    <span className="text-sm font-medium text-walnut-soft">
+                      optional — skip if it doesn&apos;t apply to you
+                    </span>
+                  )}
                 </h2>
               )}
               <div data-question-id={question.id}>
@@ -176,7 +191,9 @@ function QuestionsFlow({
                     optionBText={question.optionB.text}
                     selected={answers[question.id] as "A" | "B" | undefined}
                     unanswered={
-                      attemptedSubmit && answers[question.id] === undefined
+                      !optional &&
+                      attemptedSubmit &&
+                      answers[question.id] === undefined
                     }
                     onSelect={(choice) => setAnswer(question.id, choice)}
                   />
@@ -187,7 +204,9 @@ function QuestionsFlow({
                     answerOptions={quiz.answerOptions ?? []}
                     selected={answers[question.id] as number | undefined}
                     unanswered={
-                      attemptedSubmit && answers[question.id] === undefined
+                      !optional &&
+                      attemptedSubmit &&
+                      answers[question.id] === undefined
                     }
                     onSelect={(points) => setAnswer(question.id, points)}
                   />

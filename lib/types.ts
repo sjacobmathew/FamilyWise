@@ -37,6 +37,9 @@ export type ResultContent = {
 export type QuizCategory = {
   id: string;
   name: string;
+  // When true, questions in this category aren't required to submit the
+  // quiz, and are left out of scoring/results entirely if left blank.
+  optional?: boolean;
 };
 
 export type QuizFlow =

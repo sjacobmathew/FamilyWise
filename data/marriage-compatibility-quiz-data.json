@@ -82,7 +82,8 @@
     },
     {
       "id": "jesusyouth",
-      "name": "Jesus Youth Involvement"
+      "name": "Jesus Youth Involvement",
+      "optional": true
     }
   ],
   "questions": [

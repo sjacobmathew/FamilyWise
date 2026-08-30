@@ -89,8 +89,13 @@ export function scoreByCategory(
   const sums = new Map<string, { total: number; count: number }>();
   for (const q of questions) {
     const cat = q[tagKey];
+    const points = answers[q.id];
+    // Skip questions left blank (e.g. an unanswered optional-category
+    // question) rather than scoring them as 0 — an optional section
+    // someone opted out of shouldn't drag its average down.
+    if (points === undefined) continue;
     const entry = sums.get(cat) ?? { total: 0, count: 0 };
-    entry.total += answers[q.id] ?? 0;
+    entry.total += points;
     entry.count += 1;
     sums.set(cat, entry);
   }
@@ -99,19 +104,23 @@ export function scoreByCategory(
     quiz.categories ??
     Array.from(sums.keys()).map((id) => ({ id, name: id }));
 
-  return categories.map((c) => {
-    const entry = sums.get(c.id) ?? { total: 0, count: 0 };
-    const average = entry.count ? entry.total / entry.count : 0;
-    const percent = maxPoints ? (average / maxPoints) * 100 : 0;
-    return {
-      id: c.id,
-      name: c.name,
-      average,
-      maxPoints,
-      percent,
-      band: bandFor(percent),
-    };
-  });
+  // A category nobody answered anything in (an optional section that was
+  // skipped entirely) is left out of results rather than shown as a 0.
+  return categories
+    .filter((c) => (sums.get(c.id)?.count ?? 0) > 0)
+    .map((c) => {
+      const entry = sums.get(c.id)!;
+      const average = entry.total / entry.count;
+      const percent = maxPoints ? (average / maxPoints) * 100 : 0;
+      return {
+        id: c.id,
+        name: c.name,
+        average,
+        maxPoints,
+        percent,
+        band: bandFor(percent),
+      };
+    });
 }
 
 export type NormalizedResult = {
