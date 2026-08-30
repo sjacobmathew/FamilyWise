@@ -8,7 +8,7 @@ import type {
   Quiz,
   RatingQuestion,
 } from "@/lib/types";
-import { countAnswered } from "@/lib/scoring";
+import { countAnswered, getTagKey } from "@/lib/scoring";
 import ProgressBar from "@/components/ProgressBar";
 import RatingQuestionCard from "@/components/RatingQuestionCard";
 import ForcedChoiceQuestionCard from "@/components/ForcedChoiceQuestionCard";
@@ -77,6 +77,30 @@ function QuestionsFlow({
   const answered = countAnswered(quiz, answers);
   const isPerChild = Boolean(subjectName);
 
+  // When the quiz defines named categories, tag each question with the
+  // category label that should appear above it — only on the first
+  // question of each run, so the label reads as a section heading rather
+  // than repeating on every question.
+  const categoryNames = new Map(
+    (quiz.categories ?? []).map((c) => [c.id, c.name])
+  );
+  const tagKey =
+    quiz.categories && quiz.questions.length > 0 && !isForcedChoice(quiz.questions[0])
+      ? getTagKey(quiz.questions[0] as Record<string, unknown>, ["id", "text"])
+      : null;
+  let lastCategoryId: string | undefined;
+  const questionItems = quiz.questions.map((question, i) => {
+    let categoryLabel: string | null = null;
+    if (tagKey && !isForcedChoice(question)) {
+      const catId = (question as RatingQuestion)[tagKey];
+      if (catId !== lastCategoryId) {
+        categoryLabel = categoryNames.get(catId) ?? catId;
+        lastCategoryId = catId;
+      }
+    }
+    return { question, index: i, categoryLabel };
+  });
+
   function setAnswer(questionId: string, value: number | "A" | "B") {
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
   }
@@ -137,31 +161,38 @@ function QuestionsFlow({
         </PrivacyNote>
 
         <div className="flex flex-col gap-4">
-          {quiz.questions.map((question, i) => (
-            <div key={question.id} data-question-id={question.id}>
-              {isForcedChoice(question) ? (
-                <ForcedChoiceQuestionCard
-                  index={i + 1}
-                  optionAText={question.optionA.text}
-                  optionBText={question.optionB.text}
-                  selected={answers[question.id] as "A" | "B" | undefined}
-                  unanswered={
-                    attemptedSubmit && answers[question.id] === undefined
-                  }
-                  onSelect={(choice) => setAnswer(question.id, choice)}
-                />
-              ) : (
-                <RatingQuestionCard
-                  index={i + 1}
-                  text={question.text}
-                  answerOptions={quiz.answerOptions ?? []}
-                  selected={answers[question.id] as number | undefined}
-                  unanswered={
-                    attemptedSubmit && answers[question.id] === undefined
-                  }
-                  onSelect={(points) => setAnswer(question.id, points)}
-                />
+          {questionItems.map(({ question, index, categoryLabel }) => (
+            <div key={question.id}>
+              {categoryLabel && (
+                <h2 className="font-times mb-1 mt-6 text-2xl text-sienna first:mt-0">
+                  {categoryLabel}
+                </h2>
               )}
+              <div data-question-id={question.id}>
+                {isForcedChoice(question) ? (
+                  <ForcedChoiceQuestionCard
+                    index={index + 1}
+                    optionAText={question.optionA.text}
+                    optionBText={question.optionB.text}
+                    selected={answers[question.id] as "A" | "B" | undefined}
+                    unanswered={
+                      attemptedSubmit && answers[question.id] === undefined
+                    }
+                    onSelect={(choice) => setAnswer(question.id, choice)}
+                  />
+                ) : (
+                  <RatingQuestionCard
+                    index={index + 1}
+                    text={question.text}
+                    answerOptions={quiz.answerOptions ?? []}
+                    selected={answers[question.id] as number | undefined}
+                    unanswered={
+                      attemptedSubmit && answers[question.id] === undefined
+                    }
+                    onSelect={(points) => setAnswer(question.id, points)}
+                  />
+                )}
+              </div>
             </div>
           ))}
         </div>

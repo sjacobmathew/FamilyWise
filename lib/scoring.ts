@@ -8,7 +8,7 @@ import type {
 /** Finds the one field on an object that isn't in `excludeKeys` — this is
  * how quiz questions tag themselves with a category, since the tag's field
  * name varies per quiz ("temperament", "style", "language", "category"...). */
-function getTagKey(obj: Record<string, unknown>, excludeKeys: string[]): string {
+export function getTagKey(obj: Record<string, unknown>, excludeKeys: string[]): string {
   const key = Object.keys(obj).find((k) => !excludeKeys.includes(k));
   if (!key) {
     throw new Error(`Expected a tag field beyond ${excludeKeys.join(", ")}`);
