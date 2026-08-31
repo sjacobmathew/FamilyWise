@@ -257,17 +257,25 @@ const HEADER_ILLUSTRATION: Record<string, string> = {
   "love-languages": "/marriage-couple.png",
   "child-temperament": "/kid-thinking.png",
   "love-languages-child": "/kid-thinking.png",
+  "parenting-style": "/parenting-family.png",
+};
+
+const ILLUSTRATION_SIZE: Record<string, [number, number]> = {
+  "/marriage-couple.png": [520, 347],
+  "/kid-thinking.png": [520, 347],
+  "/parenting-family.png": [475, 340],
 };
 
 function ResultsHeaderIcon({ quizId }: { quizId: string }) {
   const src = HEADER_ILLUSTRATION[quizId];
   if (!src) return null;
+  const [width, height] = ILLUSTRATION_SIZE[src] ?? [520, 347];
   return (
     <Image
       src={src}
       alt=""
-      width={520}
-      height={347}
+      width={width}
+      height={height}
       className="hidden w-64 shrink-0 sm:block"
     />
   );

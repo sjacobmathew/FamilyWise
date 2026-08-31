@@ -38,6 +38,16 @@ const SIDEBAR_ILLUSTRATION: Record<string, string> = {
   "love-languages": "/marriage-couple.png",
   "child-temperament": "/kid-thinking.png",
   "love-languages-child": "/kid-thinking.png",
+  "parenting-style": "/parenting-family.png",
+};
+
+// Real pixel dimensions per quiz's illustration, so it doesn't get
+// stretched/squished to a mismatched aspect ratio.
+const ILLUSTRATION_SIZE: Record<string, [number, number]> = {
+  "love-languages": [520, 347],
+  "child-temperament": [520, 347],
+  "love-languages-child": [520, 347],
+  "parenting-style": [475, 340],
 };
 
 export default function SteppedQuestionsFlow({
@@ -109,8 +119,8 @@ export default function SteppedQuestionsFlow({
             <Image
               src={SIDEBAR_ILLUSTRATION[quiz.quizId]}
               alt=""
-              width={520}
-              height={347}
+              width={ILLUSTRATION_SIZE[quiz.quizId]?.[0] ?? 520}
+              height={ILLUSTRATION_SIZE[quiz.quizId]?.[1] ?? 347}
               className="w-full"
             />
           )}
