@@ -32,6 +32,14 @@ const SENTIMENT = [
   { bg: "#FBE9E6", color: "#D9776E", Icon: SadFaceIcon },
 ];
 
+// Per-quiz sidebar illustration — only quizzes with a matching image get
+// one; everything else falls back to the plain text intro.
+const SIDEBAR_ILLUSTRATION: Record<string, string> = {
+  "love-languages": "/marriage-couple.png",
+  "child-temperament": "/kid-thinking.png",
+  "love-languages-child": "/kid-thinking.png",
+};
+
 export default function SteppedQuestionsFlow({
   quiz,
   storageKey,
@@ -97,9 +105,9 @@ export default function SteppedQuestionsFlow({
       <div className="mx-auto grid max-w-5xl gap-8 px-6 py-10 lg:grid-cols-[220px_1fr_220px]">
         {/* left sidebar — quiz intro */}
         <div className="hidden lg:block">
-          {quiz.quizId === "love-languages" && (
+          {SIDEBAR_ILLUSTRATION[quiz.quizId] && (
             <Image
-              src="/marriage-couple.png"
+              src={SIDEBAR_ILLUSTRATION[quiz.quizId]}
               alt=""
               width={520}
               height={347}
@@ -109,7 +117,7 @@ export default function SteppedQuestionsFlow({
           {quiz.category && (
             <span
               className={`block text-xs font-bold uppercase tracking-wide text-sienna ${
-                quiz.quizId === "love-languages" ? "mt-4" : ""
+                SIDEBAR_ILLUSTRATION[quiz.quizId] ? "mt-4" : ""
               }`}
             >
               {quiz.category}

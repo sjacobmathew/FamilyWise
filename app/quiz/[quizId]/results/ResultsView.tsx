@@ -59,7 +59,6 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
   }
 
   const isCategoryQuiz = quiz.flow === "rating-scale-by-category";
-  const isLoveLanguagesSpouse = quiz.quizId === "love-languages";
 
   return (
     <ResultsShell
@@ -70,9 +69,7 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
           ? "Here's a personalized look at your relationship and how you can grow together."
           : undefined
       }
-      headerIcon={
-        isCategoryQuiz || isLoveLanguagesSpouse ? <RelationshipHeaderIcon /> : undefined
-      }
+      headerIcon={<ResultsHeaderIcon quizId={quiz.quizId} />}
       maxWidthClass={isCategoryQuiz ? "max-w-5xl" : "max-w-3xl"}
     >
       {isCategoryQuiz ? (
@@ -246,10 +243,20 @@ function CategoryResults({
   return <MarriageResultCard categories={categories} />;
 }
 
-function RelationshipHeaderIcon() {
+// Per-quiz results-header illustration.
+const HEADER_ILLUSTRATION: Record<string, string> = {
+  "marriage-compatibility": "/marriage-couple.png",
+  "love-languages": "/marriage-couple.png",
+  "child-temperament": "/kid-thinking.png",
+  "love-languages-child": "/kid-thinking.png",
+};
+
+function ResultsHeaderIcon({ quizId }: { quizId: string }) {
+  const src = HEADER_ILLUSTRATION[quizId];
+  if (!src) return null;
   return (
     <Image
-      src="/marriage-couple.png"
+      src={src}
       alt=""
       width={520}
       height={347}
@@ -345,6 +352,7 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
       quiz={quiz}
       retakeHref={`/quiz/${quiz.quizId}`}
       retakeLabel={`Manage ${subjectLabelPlural} & retake`}
+      headerIcon={<ResultsHeaderIcon quizId={quiz.quizId} />}
       maxWidthClass={isChildTemperament ? "max-w-5xl" : "max-w-3xl"}
     >
       <div className="flex flex-col gap-10">
@@ -425,7 +433,7 @@ function MultiSubjectCategoryResultsView({
           ? "See your relationship strengths, celebrate what's working, and discover where you can grow together."
           : "Here's a personalized look at your relationship and how you can grow together."
       }
-      headerIcon={<RelationshipHeaderIcon />}
+      headerIcon={<ResultsHeaderIcon quizId={quiz.quizId} />}
       hideFooter
     >
       {isCompare ? (
