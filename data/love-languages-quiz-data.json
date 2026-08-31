@@ -4,6 +4,7 @@
   "description": "A forced-choice quiz where you pick which of two statements is more meaningful to you in your relationship, to discover your primary and secondary love language.",
   "flow": "forced-choice-then-result",
   "category": "Relationships",
+  "multiSubject": { "subjectLabel": "spouse", "subjectLabelPlural": "spouses" },
   "instructions": "For each pair, pick the statement that's more meaningful to you in your relationship, even if both sound true. Answer for the majority of the time, not just today.",
   "questions": [
     { "id": "q1", "optionA": { "text": "I love hearing my partner say they're proud of me.", "language": "words" }, "optionB": { "text": "I feel closest to my partner during uninterrupted time together.", "language": "time" } },

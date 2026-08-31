@@ -372,6 +372,29 @@ export function PottedPlantIcon({ className = "h-6 w-6" }: IconProps) {
   );
 }
 
+export function GiftIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <rect x="4" y="9.5" width="16" height="4" rx="1" />
+      <path d="M5.5 13.5v7a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-7" />
+      <path d="M12 9.5v12" />
+      <path d="M12 9.5c-1-3-3-4.5-4.5-4.5A2 2 0 0 0 5.5 7c0 1.5 1.5 2.5 6.5 2.5Z" />
+      <path d="M12 9.5c1-3 3-4.5 4.5-4.5A2 2 0 0 1 18.5 7c0 1.5-1.5 2.5-6.5 2.5Z" />
+    </svg>
+  );
+}
+
+export function HandIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M8 12.5V6a1.5 1.5 0 0 1 3 0v5" />
+      <path d="M11 11V4.5a1.5 1.5 0 0 1 3 0V11" />
+      <path d="M14 11V5.5a1.5 1.5 0 0 1 3 0V13" />
+      <path d="M17 9.5a1.5 1.5 0 0 1 3 0V15c0 4-2.5 7-6.5 7-3 0-4.5-1-6-3l-3-4.3c-.6-.9-.3-2 .6-2.5.8-.4 1.7-.2 2.3.5L9 12" />
+    </svg>
+  );
+}
+
 export function ChevronRightIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg {...base} strokeWidth={2} className={className} aria-hidden="true">

@@ -1,4 +1,4 @@
-import type { Quiz, RatingQuestion } from "@/lib/types";
+import type { ForcedChoiceQuestion, Quiz, RatingQuestion } from "@/lib/types";
 import { getTagKey } from "@/lib/scoring";
 
 /** Reads all the text out of a PDF file, client-side, using pdf.js. */
@@ -100,17 +100,23 @@ export function synthesizeCategoryAnswers(
   return answers;
 }
 
-/** Temperament-style (rating-scale-then-result, tag-based) quizzes: finds
- * which single result title is printed in the PDF. Titles are matched by
- * their two halves (before/after the em dash) rather than requiring an
- * exact dash-character match, since PDF text extraction of special
- * characters can be inconsistent. */
+/** Temperament-style (rating-scale-then-result, tag-based) and forced-choice
+ * (Love Languages-style) quizzes: finds which result title is printed in the
+ * PDF. Titles are matched by their two halves (before/after the em dash)
+ * rather than requiring an exact dash-character match, since PDF text
+ * extraction of special characters can be inconsistent.
+ *
+ * A results page (and its printed PDF) can legitimately contain more than
+ * one result title — the primary result plus a "secondary tendency" box
+ * below it. When more than one title matches, the primary is always the
+ * one that appears first in reading order, so we take the earliest match
+ * rather than rejecting the PDF outright. */
 export function parseDominantTagFromPdfText(
   quiz: Quiz,
   text: string
 ): string | null {
   const results = quiz.results ?? {};
-  const matches: string[] = [];
+  const matches: { tag: string; index: number }[] = [];
 
   for (const [tag, content] of Object.entries(results)) {
     const parts = content.title.split(/\s+[—–-]\s+/);
@@ -118,12 +124,15 @@ export function parseDominantTagFromPdfText(
       parts.length === 2
         ? `${escapeRegExp(parts[0])}[\\s\\S]{0,8}${escapeRegExp(parts[1])}`
         : escapeRegExp(content.title);
-    if (new RegExp(pattern, "i").test(text)) {
-      matches.push(tag);
+    const m = new RegExp(pattern, "i").exec(text);
+    if (m) {
+      matches.push({ tag, index: m.index });
     }
   }
 
-  return matches.length === 1 ? matches[0] : null;
+  if (matches.length === 0) return null;
+  matches.sort((a, b) => a.index - b.index);
+  return matches[0].tag;
 }
 
 /** All questions tagged for the matched dominant get max points, everything
@@ -145,6 +154,38 @@ export function synthesizeTagAnswers(
   return answers;
 }
 
+/** Forced-choice (e.g. Love Languages): picks the matched-dominant option
+ * on every question where it's offered — guaranteeing it "wins" every one
+ * of its appearances. For questions where it isn't offered at all, picks
+ * whichever of the two remaining languages currently has fewer picks, so
+ * no other language can accidentally rack up enough picks to rival the
+ * real dominant one. */
+export function synthesizeForcedChoiceAnswers(
+  quiz: Quiz,
+  dominantTag: string
+): Record<string, "A" | "B"> {
+  const questions = quiz.questions as ForcedChoiceQuestion[];
+  const counts: Record<string, number> = {};
+  const answers: Record<string, "A" | "B"> = {};
+
+  for (const q of questions) {
+    const tagA = getTagKey(q.optionA as unknown as Record<string, unknown>, ["text"]);
+    const tagB = getTagKey(q.optionB as unknown as Record<string, unknown>, ["text"]);
+    const langA = q.optionA[tagA];
+    const langB = q.optionB[tagB];
+
+    let choice: "A" | "B";
+    if (langA === dominantTag) choice = "A";
+    else if (langB === dominantTag) choice = "B";
+    else choice = (counts[langA] ?? 0) <= (counts[langB] ?? 0) ? "A" : "B";
+
+    const chosenLang = choice === "A" ? langA : langB;
+    counts[chosenLang] = (counts[chosenLang] ?? 0) + 1;
+    answers[q.id] = choice;
+  }
+  return answers;
+}
+
 /** Top-level entry point: given an uploaded PDF file and the quiz it
  * should belong to, returns a synthesized answers object ready to store
  * exactly like a normal quiz-taking session would, or null if the PDF
@@ -152,7 +193,7 @@ export function synthesizeTagAnswers(
 export async function parseResultsPdf(
   quiz: Quiz,
   file: File
-): Promise<Record<string, number> | null> {
+): Promise<Record<string, number | "A" | "B"> | null> {
   const text = await extractPdfText(file);
 
   if (quiz.flow === "rating-scale-by-category") {
@@ -163,6 +204,11 @@ export async function parseResultsPdf(
   if (quiz.flow === "rating-scale-then-result") {
     const tag = parseDominantTagFromPdfText(quiz, text);
     return tag ? synthesizeTagAnswers(quiz, tag) : null;
+  }
+
+  if (quiz.flow === "forced-choice-then-result") {
+    const tag = parseDominantTagFromPdfText(quiz, text);
+    return tag ? synthesizeForcedChoiceAnswers(quiz, tag) : null;
   }
 
   return null;

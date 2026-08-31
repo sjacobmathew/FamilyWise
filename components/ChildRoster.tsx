@@ -13,7 +13,11 @@ function noopSubscribe() {
 
 // Quizzes with a compare view, where merging in someone else's
 // already-downloaded PDF (instead of them retaking it live) is useful.
-const PDF_UPLOAD_QUIZZES = new Set(["marriage-compatibility", "temperament"]);
+const PDF_UPLOAD_QUIZZES = new Set([
+  "marriage-compatibility",
+  "temperament",
+  "love-languages",
+]);
 
 export default function ChildRoster({ quiz }: { quiz: Quiz }) {
   const subjectLabel = quiz.multiSubject?.subjectLabel ?? "person";

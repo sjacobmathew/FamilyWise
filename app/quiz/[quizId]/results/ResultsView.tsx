@@ -18,6 +18,7 @@ import MarriageResultCard from "@/components/MarriageResultCard";
 import MarriageCompareCard from "@/components/MarriageCompareCard";
 import ParentingStyleResult from "@/components/ParentingStyleResult";
 import TemperamentCompareCard from "@/components/TemperamentCompareCard";
+import LoveLanguageCompareCard from "@/components/LoveLanguageCompareCard";
 import PrivacyNote from "@/components/PrivacyNote";
 import { RefreshIcon, TwoPersonIcon } from "@/components/HomeIcons";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
@@ -331,8 +332,11 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
     .map((name): ChildResult | null => {
       const raw = sessionStorage.getItem(childAnswersKey(quiz.quizId, name));
       if (!raw) return null;
-      const answers = JSON.parse(raw) as Record<string, number>;
-      const scores = scoreRatingByTag(quiz, answers);
+      const answers = JSON.parse(raw) as StoredAnswers;
+      const scores =
+        quiz.flow === "forced-choice-then-result"
+          ? scoreForcedChoice(quiz, answers as Record<string, "A" | "B">)
+          : scoreRatingByTag(quiz, answers as Record<string, number>);
       const [primary, secondary] = scores;
       if (!primary || !results[primary.tag]) return null;
 
@@ -406,6 +410,12 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
       {quiz.quizId === "temperament" && children.length === 2 && (
         <div className="mt-14">
           <TemperamentCompareCard people={children} />
+        </div>
+      )}
+
+      {quiz.quizId === "love-languages" && children.length === 2 && (
+        <div className="mt-14">
+          <LoveLanguageCompareCard people={children} />
         </div>
       )}
     </ResultsShell>
