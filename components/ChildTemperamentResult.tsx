@@ -24,7 +24,7 @@ import {
   WaveIcon,
 } from "@/components/HomeIcons";
 
-const THEME_ICON: Record<string, (props: { className?: string }) => React.ReactNode> = {
+export const THEME_ICON: Record<string, (props: { className?: string }) => React.ReactNode> = {
   sanguine: SunIcon,
   choleric: LightningIcon,
   melancholic: CloudRainIcon,

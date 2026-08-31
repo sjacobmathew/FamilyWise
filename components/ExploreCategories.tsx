@@ -54,6 +54,7 @@ function iconForQuiz(quiz: Quiz) {
     case "marriage-compatibility":
       return HeartIcon;
     case "parenting-style":
+    case "temperament":
       return TwoPersonIcon;
     default:
       return PersonIcon;

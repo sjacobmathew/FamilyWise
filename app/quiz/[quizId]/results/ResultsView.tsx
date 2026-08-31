@@ -17,6 +17,7 @@ import ChildTemperamentResult from "@/components/ChildTemperamentResult";
 import MarriageResultCard from "@/components/MarriageResultCard";
 import MarriageCompareCard from "@/components/MarriageCompareCard";
 import ParentingStyleResult from "@/components/ParentingStyleResult";
+import TemperamentCompareCard from "@/components/TemperamentCompareCard";
 import PrivacyNote from "@/components/PrivacyNote";
 import { RefreshIcon, TwoPersonIcon } from "@/components/HomeIcons";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
@@ -361,7 +362,8 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
     );
   }
 
-  const isChildTemperament = quiz.quizId === "child-temperament";
+  const useRichCard =
+    quiz.quizId === "child-temperament" || quiz.quizId === "temperament";
 
   return (
     <ResultsShell
@@ -369,11 +371,11 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
       retakeHref={`/quiz/${quiz.quizId}`}
       retakeLabel={`Manage ${subjectLabelPlural} & retake`}
       headerIcon={<ResultsHeaderIcon quizId={quiz.quizId} />}
-      maxWidthClass={isChildTemperament ? "max-w-5xl" : "max-w-3xl"}
+      maxWidthClass={useRichCard ? "max-w-5xl" : "max-w-3xl"}
     >
       <div className="flex flex-col gap-10">
         {children.map((c) =>
-          isChildTemperament ? (
+          useRichCard ? (
             <ChildTemperamentResult
               key={c.name}
               name={c.name}
@@ -398,6 +400,12 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
           )
         )}
       </div>
+
+      {quiz.quizId === "temperament" && children.length === 2 && (
+        <div className="mt-14">
+          <TemperamentCompareCard people={children} />
+        </div>
+      )}
     </ResultsShell>
   );
 }

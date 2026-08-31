@@ -4,6 +4,7 @@
   "description": "Discover your natural personality style and what it means for how you relate to your family.",
   "flow": "rating-scale-then-result",
   "category": "Personality",
+  "multiSubject": { "subjectLabel": "spouse", "subjectLabelPlural": "spouses" },
   "answerOptions": [
     {
       "label": "Always",
