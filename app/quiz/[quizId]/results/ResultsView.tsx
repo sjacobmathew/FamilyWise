@@ -16,6 +16,7 @@ import ResultCard from "@/components/ResultCard";
 import ChildTemperamentResult from "@/components/ChildTemperamentResult";
 import MarriageResultCard from "@/components/MarriageResultCard";
 import MarriageCompareCard from "@/components/MarriageCompareCard";
+import ParentingStyleResult from "@/components/ParentingStyleResult";
 import PrivacyNote from "@/components/PrivacyNote";
 import { RefreshIcon, TwoPersonIcon } from "@/components/HomeIcons";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
@@ -59,6 +60,7 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
   }
 
   const isCategoryQuiz = quiz.flow === "rating-scale-by-category";
+  const isParentingStyle = quiz.quizId === "parenting-style";
 
   return (
     <ResultsShell
@@ -67,10 +69,12 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
       subtitle={
         isCategoryQuiz
           ? "Here's a personalized look at your relationship and how you can grow together."
-          : undefined
+          : isParentingStyle
+            ? "Here's your unique parenting style, along with your strengths, growth edges and personalized tips."
+            : undefined
       }
       headerIcon={<ResultsHeaderIcon quizId={quiz.quizId} />}
-      maxWidthClass={isCategoryQuiz ? "max-w-5xl" : "max-w-3xl"}
+      maxWidthClass={isCategoryQuiz || isParentingStyle ? "max-w-5xl" : "max-w-3xl"}
     >
       {isCategoryQuiz ? (
         <CategoryResults
@@ -214,7 +218,11 @@ function SingleResult({
 
   return (
     <div className="flex flex-col gap-6">
-      <ResultCard result={primaryResult} eyebrow="Your result" />
+      {quiz.quizId === "parenting-style" ? (
+        <ParentingStyleResult quiz={quiz} primary={primary} result={primaryResult} />
+      ) : (
+        <ResultCard result={primaryResult} eyebrow="Your result" />
+      )}
       {secondaryResult && (
         <div className="rounded-2xl border border-border bg-card p-5">
           <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">

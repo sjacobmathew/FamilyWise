@@ -341,6 +341,37 @@ export function HomeIcon({ className = "h-6 w-6" }: IconProps) {
   );
 }
 
+export function BadgeIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <circle cx="12" cy="9" r="6" />
+      <path d="m9 14-1.5 6.5L12 18l4.5 2.5L15 14" />
+      <path d="m10 9 1.3 1.3L14.5 7" />
+    </svg>
+  );
+}
+
+export function MountainIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M3 19 9.5 8l3 5" />
+      <path d="m10.5 19 6-10.5L21 19" />
+      <path d="M17.5 12.5 16 14l1.8.8" />
+    </svg>
+  );
+}
+
+export function PottedPlantIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M12 21v-9" />
+      <path d="M12 15c0-5-4-7-8-7 0 5 4 7 8 7Z" />
+      <path d="M12 12c0-4.5 3.5-6.5 7-6.5 0 4.5-3.5 6.5-7 6.5Z" />
+      <path d="M8 21h8l-1.2-6H9.2Z" />
+    </svg>
+  );
+}
+
 export function ChevronRightIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg {...base} strokeWidth={2} className={className} aria-hidden="true">
