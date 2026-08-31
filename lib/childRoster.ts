@@ -10,15 +10,6 @@ export function childAnswersKey(quizId: string, childName: string): string {
   return `${ANSWERS_PREFIX}${quizId}:${childName}`;
 }
 
-export function siblingTipKey(
-  quizId: string,
-  nameA: string,
-  nameB: string
-): string {
-  const [a, b] = [nameA, nameB].sort();
-  return `${TIP_PREFIX}${quizId}:${a}::${b}`;
-}
-
 export function householdTipKey(
   quizId: string,
   parent: { dominant: string; secondary?: string },

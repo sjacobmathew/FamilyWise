@@ -14,7 +14,6 @@ import {
 import ResultCard from "@/components/ResultCard";
 import ChildTemperamentResult from "@/components/ChildTemperamentResult";
 import CategoryBreakdown from "@/components/CategoryBreakdown";
-import SiblingTipCard from "@/components/SiblingTipCard";
 import HouseholdChildrenForm from "@/components/HouseholdChildrenForm";
 import PrivacyNote from "@/components/PrivacyNote";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
@@ -252,16 +251,6 @@ function capitalize(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-function pairs<T>(arr: T[]): [T, T][] {
-  const result: [T, T][] = [];
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      result.push([arr[i], arr[j]]);
-    }
-  }
-  return result;
-}
-
 function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
   const rosterRaw = useSyncExternalStore(
     noopSubscribe,
@@ -352,7 +341,6 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
               dominantTag={c.dominantTag}
               dominant={c.dominant}
               quizId={quiz.quizId}
-              hasSiblings={children.length > 1}
             />
           ) : (
             <div key={c.name} className="flex flex-col gap-6">
@@ -371,30 +359,6 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
           )
         )}
       </div>
-
-      {children.length > 1 && (
-        <>
-          <div id="sibling-tips" className="mt-10 flex flex-col gap-4">
-            <h2 className="font-display text-2xl font-semibold text-walnut">Sibling tips</h2>
-            {pairs(children).map(([a, b]) => (
-              <SiblingTipCard
-                key={`${a.name}::${b.name}`}
-                quizId={quiz.quizId}
-                childA={{
-                  name: a.name,
-                  dominant: capitalize(a.dominantTag),
-                  secondary: a.secondaryTag ? capitalize(a.secondaryTag) : undefined,
-                }}
-                childB={{
-                  name: b.name,
-                  dominant: capitalize(b.dominantTag),
-                  secondary: b.secondaryTag ? capitalize(b.secondaryTag) : undefined,
-                }}
-              />
-            ))}
-          </div>
-        </>
-      )}
     </ResultsShell>
   );
 }
