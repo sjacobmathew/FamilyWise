@@ -1,6 +1,6 @@
 {
   "quizId": "love-languages",
-  "title": "Love Languages Quiz (Spouse/Partner)",
+  "title": "Love Languages Quiz (Spouse)",
   "description": "A forced-choice quiz where you pick which of two statements is more meaningful to you in your relationship, to discover your primary and secondary love language.",
   "flow": "forced-choice-then-result",
   "category": "Relationships",

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { ForcedChoiceQuestion, Quiz, RatingQuestion } from "@/lib/types";
 import { QUIZ_TIPS, DEFAULT_TIP } from "@/lib/quizExtras";
@@ -96,8 +97,21 @@ export default function SteppedQuestionsFlow({
       <div className="mx-auto grid max-w-5xl gap-8 px-6 py-10 lg:grid-cols-[220px_1fr_220px]">
         {/* left sidebar — quiz intro */}
         <div className="hidden lg:block">
+          {quiz.quizId === "love-languages" && (
+            <Image
+              src="/marriage-couple.png"
+              alt=""
+              width={520}
+              height={347}
+              className="w-full"
+            />
+          )}
           {quiz.category && (
-            <span className="text-xs font-bold uppercase tracking-wide text-sienna">
+            <span
+              className={`block text-xs font-bold uppercase tracking-wide text-sienna ${
+                quiz.quizId === "love-languages" ? "mt-4" : ""
+              }`}
+            >
               {quiz.category}
             </span>
           )}

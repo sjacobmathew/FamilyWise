@@ -15,6 +15,7 @@ import {
 import ResultCard from "@/components/ResultCard";
 import ChildTemperamentResult from "@/components/ChildTemperamentResult";
 import MarriageResultCard from "@/components/MarriageResultCard";
+import MarriageCompareCard from "@/components/MarriageCompareCard";
 import PrivacyNote from "@/components/PrivacyNote";
 import { RefreshIcon, TwoPersonIcon } from "@/components/HomeIcons";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
@@ -58,6 +59,7 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
   }
 
   const isCategoryQuiz = quiz.flow === "rating-scale-by-category";
+  const isLoveLanguagesSpouse = quiz.quizId === "love-languages";
 
   return (
     <ResultsShell
@@ -68,7 +70,9 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
           ? "Here's a personalized look at your relationship and how you can grow together."
           : undefined
       }
-      headerIcon={isCategoryQuiz ? <RelationshipHeaderIcon /> : undefined}
+      headerIcon={
+        isCategoryQuiz || isLoveLanguagesSpouse ? <RelationshipHeaderIcon /> : undefined
+      }
       maxWidthClass={isCategoryQuiz ? "max-w-5xl" : "max-w-3xl"}
     >
       {isCategoryQuiz ? (
@@ -88,6 +92,7 @@ function ResultsShell({
   retakeHref,
   retakeLabel = "Retake this quiz",
   maxWidthClass = "max-w-3xl",
+  titleOverride,
   subtitle,
   headerIcon,
   hideFooter = false,
@@ -97,6 +102,7 @@ function ResultsShell({
   retakeHref: string;
   retakeLabel?: string;
   maxWidthClass?: string;
+  titleOverride?: string;
   subtitle?: string;
   headerIcon?: React.ReactNode;
   hideFooter?: boolean;
@@ -115,7 +121,7 @@ function ResultsShell({
           <div className="mt-2 flex flex-wrap items-start justify-between gap-6">
             <div className="min-w-[240px] flex-1">
               <h1 className="font-display text-4xl font-semibold text-walnut sm:text-5xl">
-                {quiz.title} — Your Results
+                {titleOverride ?? `${quiz.title} — Your Results`}
               </h1>
               {subtitle && (
                 <p className="mt-2 max-w-lg text-lg text-walnut-soft">{subtitle}</p>
@@ -405,31 +411,42 @@ function MultiSubjectCategoryResultsView({
     );
   }
 
+  const isCompare = people.length === 2;
+
   return (
     <ResultsShell
       quiz={quiz}
       retakeHref={`/quiz/${quiz.quizId}`}
       retakeLabel={`Manage ${subjectLabelPlural} & retake`}
       maxWidthClass="max-w-5xl"
-      subtitle="Here's a personalized look at your relationship and how you can grow together."
+      titleOverride={isCompare ? `${quiz.title.split("—")[0].trim()} — How We Compare` : undefined}
+      subtitle={
+        isCompare
+          ? "See your relationship strengths, celebrate what's working, and discover where you can grow together."
+          : "Here's a personalized look at your relationship and how you can grow together."
+      }
       headerIcon={<RelationshipHeaderIcon />}
       hideFooter
     >
-      <div className="flex flex-col gap-14">
-        {people.map((p) => (
-          <div key={p.name}>
-            {people.length > 1 && (
-              <h3 className="mb-4 font-display text-2xl font-semibold text-walnut">
-                {p.name}&apos;s results
-              </h3>
-            )}
-            <MarriageResultCard
-              name={people.length > 1 ? p.name : undefined}
-              categories={p.categories}
-            />
-          </div>
-        ))}
-      </div>
+      {isCompare ? (
+        <MarriageCompareCard people={people} />
+      ) : (
+        <div className="flex flex-col gap-14">
+          {people.map((p) => (
+            <div key={p.name}>
+              {people.length > 1 && (
+                <h3 className="mb-4 font-display text-2xl font-semibold text-walnut">
+                  {p.name}&apos;s results
+                </h3>
+              )}
+              <MarriageResultCard
+                name={people.length > 1 ? p.name : undefined}
+                categories={p.categories}
+              />
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="mt-10 flex flex-col items-center gap-5 print:hidden">
         <span className="text-xs font-bold uppercase tracking-wide text-walnut-soft">

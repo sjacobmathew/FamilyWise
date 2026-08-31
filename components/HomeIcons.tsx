@@ -301,6 +301,46 @@ export function CheckCircleIcon({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
+export function DollarIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M12 3v18" />
+      <path d="M16.5 7.5c0-1.9-2-3-4.5-3s-4.5 1.2-4.5 3c0 4 9 2.5 9 6.5 0 1.9-2 3-4.5 3s-4.5-1.1-4.5-3" />
+    </svg>
+  );
+}
+
+export function ScaleIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M12 3v18M7 21h10" />
+      <path d="M12 6 5 8.5M12 6l7 2.5" />
+      <path d="M5 8.5 2.5 14a3 3 0 0 0 5 0Z" />
+      <path d="M19 8.5 16.5 14a3 3 0 0 0 5 0Z" />
+    </svg>
+  );
+}
+
+export function TrophyIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M7 4h10v5a5 5 0 0 1-10 0Z" />
+      <path d="M7 5H4v1.5A3.5 3.5 0 0 0 7 10M17 5h3v1.5A3.5 3.5 0 0 1 17 10" />
+      <path d="M12 14v3M9 20.5h6M10 20.5v-3.2c0-.3.3-.6.6-.6h2.8c.3 0 .6.3.6.6v3.2" />
+    </svg>
+  );
+}
+
+export function HomeIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M4 11 12 4l8 7" />
+      <path d="M6 9.5V20h12V9.5" />
+      <path d="M10 20v-6h4v6" />
+    </svg>
+  );
+}
+
 export function ChevronRightIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg {...base} strokeWidth={2} className={className} aria-hidden="true">
