@@ -13,8 +13,9 @@ import {
 } from "@/lib/scoring";
 import ResultCard from "@/components/ResultCard";
 import ChildTemperamentResult from "@/components/ChildTemperamentResult";
-import CategoryBreakdown from "@/components/CategoryBreakdown";
+import MarriageResultCard from "@/components/MarriageResultCard";
 import PrivacyNote from "@/components/PrivacyNote";
+import { HeartIcon, LeafSprig, RefreshIcon, TwoPersonIcon } from "@/components/HomeIcons";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
 
 const ANSWERS_STORAGE_PREFIX = "familywise:answers:";
@@ -55,9 +56,21 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
     );
   }
 
+  const isCategoryQuiz = quiz.flow === "rating-scale-by-category";
+
   return (
-    <ResultsShell quiz={quiz} retakeHref={`/quiz/${quiz.quizId}`}>
-      {quiz.flow === "rating-scale-by-category" ? (
+    <ResultsShell
+      quiz={quiz}
+      retakeHref={`/quiz/${quiz.quizId}`}
+      subtitle={
+        isCategoryQuiz
+          ? "Here's a personalized look at your relationship and how you can grow together."
+          : undefined
+      }
+      headerIcon={isCategoryQuiz ? <RelationshipHeaderIcon /> : undefined}
+      maxWidthClass={isCategoryQuiz ? "max-w-5xl" : "max-w-3xl"}
+    >
+      {isCategoryQuiz ? (
         <CategoryResults
           quiz={quiz}
           answers={answers as Record<string, number>}
@@ -74,12 +87,18 @@ function ResultsShell({
   retakeHref,
   retakeLabel = "Retake this quiz",
   maxWidthClass = "max-w-3xl",
+  subtitle,
+  headerIcon,
+  hideFooter = false,
   children,
 }: {
   quiz: Quiz;
   retakeHref: string;
   retakeLabel?: string;
   maxWidthClass?: string;
+  subtitle?: string;
+  headerIcon?: React.ReactNode;
+  hideFooter?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -92,17 +111,23 @@ function ResultsShell({
           >
             ← All quizzes
           </Link>
-          <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
-            <h1 className="font-display text-4xl font-semibold text-walnut sm:text-5xl">
-              {quiz.title} — Your Results
-            </h1>
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="shrink-0 rounded-full border border-forest px-5 py-2.5 text-base font-semibold text-forest transition hover:bg-forest-soft print:hidden"
-            >
-              Download as PDF
-            </button>
+          <div className="mt-2 flex flex-wrap items-start justify-between gap-6">
+            <div className="min-w-[240px] flex-1">
+              <h1 className="font-display text-4xl font-semibold text-walnut sm:text-5xl">
+                {quiz.title} — Your Results
+              </h1>
+              {subtitle && (
+                <p className="mt-2 max-w-lg text-lg text-walnut-soft">{subtitle}</p>
+              )}
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="mt-4 shrink-0 rounded-full border border-forest px-5 py-2.5 text-base font-semibold text-forest transition hover:bg-forest-soft print:hidden"
+              >
+                Download as PDF
+              </button>
+            </div>
+            {headerIcon}
           </div>
         </div>
       </div>
@@ -110,18 +135,20 @@ function ResultsShell({
       <div className={`relative mx-auto ${maxWidthClass} px-6 py-8`}>
         {children}
 
-        <div className="mt-10 flex flex-col items-center gap-4 print:hidden">
-          <Link
-            href={retakeHref}
-            className="text-lg font-semibold text-sienna hover:text-forest"
-          >
-            {retakeLabel}
-          </Link>
-          <PrivacyNote>
-            This result wasn&apos;t saved anywhere — closing or refreshing
-            this page clears it for good.
-          </PrivacyNote>
-        </div>
+        {!hideFooter && (
+          <div className="mt-10 flex flex-col items-center gap-4 print:hidden">
+            <Link
+              href={retakeHref}
+              className="text-lg font-semibold text-sienna hover:text-forest"
+            >
+              {retakeLabel}
+            </Link>
+            <PrivacyNote>
+              This result wasn&apos;t saved anywhere — closing or refreshing
+              this page clears it for good.
+            </PrivacyNote>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -209,7 +236,17 @@ function CategoryResults({
   answers: Record<string, number>;
 }) {
   const categories = scoreByCategory(quiz, answers);
-  return <CategoryBreakdown categories={categories} />;
+  return <MarriageResultCard categories={categories} />;
+}
+
+function RelationshipHeaderIcon() {
+  return (
+    <span className="relative hidden h-32 w-32 shrink-0 items-center justify-center rounded-full bg-[#F6EDE3] sm:flex">
+      <HeartIcon className="h-14 w-14 text-sienna" />
+      <LeafSprig className="absolute -bottom-1 -left-2 h-6 w-6 -rotate-45 text-forest" />
+      <LeafSprig className="absolute -bottom-1 -right-2 h-6 w-6 rotate-45 text-forest" />
+    </span>
+  );
 }
 
 type ChildResult = {
@@ -370,17 +407,51 @@ function MultiSubjectCategoryResultsView({
       quiz={quiz}
       retakeHref={`/quiz/${quiz.quizId}`}
       retakeLabel={`Manage ${subjectLabelPlural} & retake`}
-      maxWidthClass={people.length > 1 ? "max-w-4xl" : "max-w-3xl"}
+      maxWidthClass="max-w-5xl"
+      subtitle="Here's a personalized look at your relationship and how you can grow together."
+      headerIcon={<RelationshipHeaderIcon />}
+      hideFooter
     >
-      <div className={people.length > 1 ? "grid gap-8 sm:grid-cols-2" : ""}>
+      <div className="flex flex-col gap-14">
         {people.map((p) => (
           <div key={p.name}>
-            <h3 className="mb-3 font-display text-2xl font-semibold text-walnut">
-              {p.name}&apos;s results
-            </h3>
-            <CategoryBreakdown categories={p.categories} />
+            {people.length > 1 && (
+              <h3 className="mb-4 font-display text-2xl font-semibold text-walnut">
+                {p.name}&apos;s results
+              </h3>
+            )}
+            <MarriageResultCard
+              name={people.length > 1 ? p.name : undefined}
+              categories={p.categories}
+            />
           </div>
         ))}
+      </div>
+
+      <div className="mt-10 flex flex-col items-center gap-5 print:hidden">
+        <span className="text-xs font-bold uppercase tracking-wide text-walnut-soft">
+          Manage your relationship
+        </span>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href={`/quiz/${quiz.quizId}`}
+            className="flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-base font-semibold text-walnut transition hover:border-forest"
+          >
+            <TwoPersonIcon className="h-4 w-4" />
+            {`Manage ${subjectLabelPlural}`}
+          </Link>
+          <Link
+            href={`/quiz/${quiz.quizId}`}
+            className="flex items-center gap-2 rounded-full bg-sienna px-5 py-2.5 text-base font-semibold text-paper transition hover:opacity-90"
+          >
+            <RefreshIcon className="h-4 w-4" />
+            Retake quiz
+          </Link>
+        </div>
+        <PrivacyNote>
+          This result wasn&apos;t saved anywhere — closing or refreshing this
+          page clears it for good.
+        </PrivacyNote>
       </div>
     </ResultsShell>
   );
