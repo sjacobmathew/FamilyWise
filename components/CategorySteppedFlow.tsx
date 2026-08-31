@@ -14,7 +14,6 @@ import {
 import {
   ArrowIcon,
   BackArrowIcon,
-  CheckCircleIcon,
   ClockIcon,
   ConcernedFaceIcon,
   ContentFaceIcon,
@@ -388,39 +387,6 @@ export default function CategorySteppedFlow({
               />
             </div>
 
-            <h4 className="mt-4 text-sm font-bold text-walnut-soft">Section questions</h4>
-            <div className="mt-2 flex flex-col gap-2">
-              {categoryQuestions.map((q, i) => {
-                const isAnswered = answers[q.id] !== undefined;
-                const isCurrent = i === qIndex;
-                return (
-                  <button
-                    key={q.id}
-                    type="button"
-                    onClick={() => {
-                      setQIndex(i);
-                      setWhyOpen(false);
-                    }}
-                    className="flex items-start gap-2 text-left"
-                  >
-                    {isAnswered ? (
-                      <CheckCircleIcon className="mt-0.5 h-4 w-4 shrink-0 text-forest" />
-                    ) : (
-                      <span className="mt-1 h-3.5 w-3.5 shrink-0 rounded-full border-2 border-border" />
-                    )}
-                    <span
-                      className={`text-sm leading-snug ${
-                        isCurrent
-                          ? "font-semibold text-walnut"
-                          : "text-walnut-soft"
-                      }`}
-                    >
-                      {q.text}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
           </div>
 
           <div className="mt-6 rounded-2xl p-5" style={{ backgroundColor: "#EFEBF9" }}>
