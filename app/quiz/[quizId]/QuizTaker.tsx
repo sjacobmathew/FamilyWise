@@ -14,6 +14,7 @@ import RatingQuestionCard from "@/components/RatingQuestionCard";
 import ForcedChoiceQuestionCard from "@/components/ForcedChoiceQuestionCard";
 import PrivacyNote from "@/components/PrivacyNote";
 import ChildRoster from "@/components/ChildRoster";
+import SteppedQuestionsFlow from "@/components/SteppedQuestionsFlow";
 import { childAnswersKey } from "@/lib/childRoster";
 
 const ANSWERS_STORAGE_PREFIX = "familywise:answers:";
@@ -24,13 +25,24 @@ function isForcedChoice(
   return "optionA" in question;
 }
 
+// Multi-category quizzes (currently only Marriage Compatibility, at 100
+// questions) stay on the scrollable all-questions-at-once flow — one
+// question per screen would mean 100 individual clicks. Everything else
+// gets the newer stepped, one-question-at-a-time flow.
+function Flow(props: React.ComponentProps<typeof QuestionsFlow>) {
+  if (props.quiz.flow === "rating-scale-by-category") {
+    return <QuestionsFlow {...props} />;
+  }
+  return <SteppedQuestionsFlow {...props} />;
+}
+
 export default function QuizTaker({ quiz }: { quiz: Quiz }) {
   if (quiz.multiSubject) {
     return <MultiSubjectQuizTaker quiz={quiz} />;
   }
 
   return (
-    <QuestionsFlow
+    <Flow
       quiz={quiz}
       storageKey={`${ANSWERS_STORAGE_PREFIX}${quiz.quizId}`}
       onSubmitted={(router) => router.push(`/quiz/${quiz.quizId}/results`)}
@@ -47,7 +59,7 @@ function MultiSubjectQuizTaker({ quiz }: { quiz: Quiz }) {
   }
 
   return (
-    <QuestionsFlow
+    <Flow
       quiz={quiz}
       storageKey={childAnswersKey(quiz.quizId, child)}
       subjectName={child}
@@ -90,20 +102,33 @@ function QuestionsFlow({
     quiz.categories && quiz.questions.length > 0 && !isForcedChoice(quiz.questions[0])
       ? getTagKey(quiz.questions[0] as Record<string, unknown>, ["id", "text"])
       : null;
-  let lastCategoryId: string | undefined;
-  const questionItems = quiz.questions.map((question, i) => {
-    let categoryLabel: string | null = null;
-    let optional = false;
-    if (tagKey && !isForcedChoice(question)) {
-      const catId = (question as RatingQuestion)[tagKey];
-      optional = optionalCategoryIds.has(catId);
-      if (catId !== lastCategoryId) {
-        categoryLabel = categoryNames.get(catId) ?? catId;
-        lastCategoryId = catId;
+  type QuestionItem = {
+    question: RatingQuestion | ForcedChoiceQuestion;
+    index: number;
+    categoryLabel: string | null;
+    optional: boolean;
+    catId: string | undefined;
+  };
+  const questionItems = quiz.questions.reduce<QuestionItem[]>(
+    (acc, question, i) => {
+      const prevCatId = acc[acc.length - 1]?.catId;
+      let categoryLabel: string | null = null;
+      let optional = false;
+      let catId: string | undefined;
+
+      if (tagKey && !isForcedChoice(question)) {
+        catId = (question as RatingQuestion)[tagKey];
+        optional = optionalCategoryIds.has(catId);
+        if (catId !== prevCatId) {
+          categoryLabel = categoryNames.get(catId) ?? catId;
+        }
       }
-    }
-    return { question, index: i, categoryLabel, optional };
-  });
+
+      acc.push({ question, index: i, categoryLabel, optional, catId });
+      return acc;
+    },
+    []
+  );
   const requiredQuestions = questionItems
     .filter((item) => !item.optional)
     .map((item) => item.question);
@@ -145,7 +170,7 @@ function QuestionsFlow({
               ? `← Back to ${quiz.multiSubject?.subjectLabelPlural ?? "list"}`
               : "← All quizzes"}
           </Link>
-          <h1 className="mt-1 text-3xl font-bold text-walnut sm:text-4xl">
+          <h1 className="font-display mt-1 text-3xl font-semibold text-walnut sm:text-4xl">
             {quiz.title}
             {isPerChild && <span className="text-sienna"> — for {subjectName}</span>}
           </h1>
@@ -160,7 +185,7 @@ function QuestionsFlow({
           <p className="mb-4 text-xl text-walnut-soft">{quiz.description}</p>
         )}
         {quiz.instructions && (
-          <p className="mb-6 rounded-lg bg-sienna-soft px-4 py-3 text-lg text-sienna">
+          <p className="mb-6 rounded-2xl bg-sienna-soft px-4 py-3 text-lg text-sienna">
             {quiz.instructions}
           </p>
         )}
@@ -174,7 +199,7 @@ function QuestionsFlow({
           {questionItems.map(({ question, index, categoryLabel, optional }) => (
             <div key={question.id}>
               {categoryLabel && (
-                <h2 className="font-times mb-1 mt-6 flex items-baseline gap-2 text-2xl text-sienna first:mt-0">
+                <h2 className="font-display mb-1 mt-6 flex items-baseline gap-2 text-2xl font-semibold text-sienna first:mt-0">
                   {categoryLabel}
                   {optional && (
                     <span className="text-sm font-medium text-walnut-soft">
@@ -231,7 +256,7 @@ function QuestionsFlow({
           <button
             type="button"
             onClick={handleSubmit}
-            className="font-times rounded bg-forest px-7 py-3 text-2xl text-paper shadow-sm transition hover:bg-forest-dark"
+            className="rounded-full bg-forest px-7 py-3 text-lg font-semibold text-paper shadow-sm transition hover:bg-forest-dark"
           >
             {isPerChild ? "Save & continue" : "See my results"}
           </button>

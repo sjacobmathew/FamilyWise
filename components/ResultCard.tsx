@@ -8,11 +8,11 @@ export default function ResultCard({
   eyebrow?: string;
 }) {
   return (
-    <div className="rounded-lg border border-border bg-card p-8 shadow-sm">
+    <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
       {eyebrow && (
         <span className="font-times text-xl text-sienna">{eyebrow}</span>
       )}
-      <h2 className="mt-1 text-[2.25rem] font-bold text-walnut sm:text-[2.75rem]">
+      <h2 className="mt-1 font-display text-[2.25rem] font-semibold text-walnut sm:text-[2.75rem]">
         {result.title}
       </h2>
       {result.description && (

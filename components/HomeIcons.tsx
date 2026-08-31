@@ -90,6 +90,56 @@ export function ArrowIcon({ className = "h-4 w-4" }: IconProps) {
   );
 }
 
+export function ContentFaceIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M8.5 14.5h7" />
+      <circle cx="8.7" cy="10" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="15.3" cy="10" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function ConcernedFaceIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M8.5 15c1-.8 2.2-1.2 3.5-1.2s2.5.4 3.5 1.2" />
+      <path d="M7.5 9.3 9.7 10" />
+      <path d="M16.5 9.3 14.3 10" />
+    </svg>
+  );
+}
+
+export function SadFaceIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M8.5 15.8c1-1.3 2.2-2 3.5-2s2.5.7 3.5 2" />
+      <circle cx="8.7" cy="10" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="15.3" cy="10" r="0.9" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function ClockIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.5V12l3 2" />
+    </svg>
+  );
+}
+
+export function BackArrowIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg {...base} strokeWidth={2} className={className} aria-hidden="true">
+      <path d="M19 12H5M11 6l-6 6 6 6" />
+    </svg>
+  );
+}
+
 export function LeafSprig({ className = "h-6 w-6 text-sage" }: IconProps) {
   return (
     <svg {...base} strokeWidth={1.4} className={className} aria-hidden="true">

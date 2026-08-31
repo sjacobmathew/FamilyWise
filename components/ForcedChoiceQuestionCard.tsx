@@ -16,7 +16,7 @@ export default function ForcedChoiceQuestionCard({
   return (
     <div
       data-question-card
-      className={`rounded-lg border bg-card p-5 transition ${
+      className={`rounded-2xl border bg-card p-5 transition ${
         unanswered ? "border-sienna" : "border-border"
       }`}
     >
@@ -36,7 +36,7 @@ export default function ForcedChoiceQuestionCard({
               key={choice}
               type="button"
               onClick={() => onSelect(choice)}
-              className={`rounded-lg border p-4 text-left text-xl leading-relaxed transition ${
+              className={`rounded-2xl border p-4 text-left text-xl leading-relaxed transition ${
                 isSelected
                   ? "border-forest bg-forest-soft text-walnut"
                   : "border-border bg-paper text-walnut-soft hover:border-forest hover:text-walnut"

@@ -63,7 +63,7 @@ export default function ChildRoster({ quiz }: { quiz: Quiz }) {
           >
             ← All quizzes
           </Link>
-          <h1 className="mt-2 text-3xl font-bold text-walnut sm:text-4xl">
+          <h1 className="font-display mt-2 text-3xl font-semibold text-walnut sm:text-4xl">
             {quiz.title}
           </h1>
           {quiz.description && (
@@ -93,7 +93,7 @@ export default function ChildRoster({ quiz }: { quiz: Quiz }) {
             return (
               <div
                 key={childName}
-                className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-5 py-4"
+                className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-5 py-4"
               >
                 <div>
                   <p className="text-xl font-semibold text-walnut">
@@ -108,7 +108,7 @@ export default function ChildRoster({ quiz }: { quiz: Quiz }) {
                     href={`/quiz/${quiz.quizId}?child=${encodeURIComponent(
                       childName
                     )}`}
-                    className="font-times rounded bg-forest px-4 py-2 text-lg text-paper hover:bg-forest-dark"
+                    className="rounded-full bg-forest px-4 py-2 text-lg text-paper hover:bg-forest-dark"
                   >
                     {completed ? "Retake" : "Start quiz"}
                   </Link>
@@ -140,7 +140,7 @@ export default function ChildRoster({ quiz }: { quiz: Quiz }) {
           <button
             type="button"
             onClick={addChild}
-            className="font-times rounded border border-forest px-5 py-3 text-lg text-forest hover:bg-forest-soft"
+            className="rounded-full border border-forest px-5 py-3 text-lg text-forest hover:bg-forest-soft"
           >
             Add another {subjectLabel}
           </button>
@@ -150,7 +150,7 @@ export default function ChildRoster({ quiz }: { quiz: Quiz }) {
           <div className="mt-8 flex justify-center">
             <Link
               href={`/quiz/${quiz.quizId}/results`}
-              className="font-times rounded bg-sienna px-7 py-3 text-2xl text-paper shadow-sm hover:opacity-90"
+              className="rounded-full bg-sienna px-7 py-3 text-2xl text-paper shadow-sm hover:opacity-90"
             >
               {completedCount === 1 ? "See result" : "See results"}
             </Link>

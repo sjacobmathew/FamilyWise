@@ -58,8 +58,8 @@ export default function HouseholdChildrenForm({
   }
 
   return (
-    <div className="rounded-lg border border-border bg-card p-6">
-      <h3 className="text-2xl font-bold text-walnut">
+    <div className="rounded-2xl border border-border bg-card p-6">
+      <h3 className="font-display text-2xl font-semibold text-walnut">
         Parenting Your Household
       </h3>
       <p className="mt-1 text-lg text-walnut-soft print:hidden">
@@ -72,7 +72,7 @@ export default function HouseholdChildrenForm({
           {children.map((c, i) => (
             <div
               key={`${c.name}-${i}`}
-              className="flex items-center justify-between rounded-lg border border-border bg-paper px-4 py-3"
+              className="flex items-center justify-between rounded-2xl border border-border bg-paper px-4 py-3"
             >
               <div>
                 <span className="font-times text-lg text-sienna">
@@ -144,7 +144,7 @@ export default function HouseholdChildrenForm({
         <button
           type="button"
           onClick={addChild}
-          className="font-times rounded border border-forest px-5 py-2.5 text-lg text-forest hover:bg-forest-soft"
+          className="rounded-full border border-forest px-5 py-2.5 text-lg text-forest hover:bg-forest-soft"
         >
           Add child
         </button>

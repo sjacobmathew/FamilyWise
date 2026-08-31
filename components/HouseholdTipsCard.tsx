@@ -70,10 +70,10 @@ export default function HouseholdTipsCard({
 
   if (data) {
     return (
-      <div className="rounded-lg border border-border bg-card p-6">
+      <div className="rounded-2xl border border-border bg-card p-6">
         <div className="flex flex-col gap-4">
           {data.childTips.map((ct) => (
-            <div key={ct.name} className="rounded-lg bg-forest-soft/50 p-4">
+            <div key={ct.name} className="rounded-2xl bg-forest-soft/50 p-4">
               <p className="font-times text-lg text-sienna">{ct.name}</p>
               <p className="mt-1 text-lg leading-relaxed text-walnut-soft">
                 {ct.tip}
@@ -81,7 +81,7 @@ export default function HouseholdTipsCard({
             </div>
           ))}
         </div>
-        <div className="mt-4 rounded-lg border border-dashed border-border p-4">
+        <div className="mt-4 rounded-2xl border border-dashed border-border p-4">
           <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">
             Balancing it all
           </span>
@@ -102,7 +102,7 @@ export default function HouseholdTipsCard({
   }
 
   return (
-    <div className="rounded-lg border border-dashed border-border bg-card/60 p-5 print:hidden">
+    <div className="rounded-2xl border border-dashed border-border bg-card/60 p-5 print:hidden">
       {error && (
         <p className="mb-2 text-base text-sienna">
           Couldn&apos;t generate tips right now — try again.
@@ -112,7 +112,7 @@ export default function HouseholdTipsCard({
         type="button"
         onClick={fetchTips}
         disabled={loading}
-        className="font-times rounded bg-forest px-5 py-2.5 text-lg text-paper hover:bg-forest-dark disabled:opacity-60"
+        className="rounded-full bg-forest px-5 py-2.5 text-lg text-paper hover:bg-forest-dark disabled:opacity-60"
       >
         {loading ? "Thinking…" : "Get parenting tips for your household"}
       </button>

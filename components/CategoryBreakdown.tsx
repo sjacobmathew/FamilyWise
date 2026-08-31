@@ -25,9 +25,9 @@ export default function CategoryBreakdown({
       {categories.map((c) => {
         const styles = BAND_STYLES[c.band];
         return (
-          <div key={c.id} className="rounded-lg border border-border bg-card p-5">
+          <div key={c.id} className="rounded-2xl border border-border bg-card p-5">
             <div className="flex items-center justify-between gap-3">
-              <h3 className="text-2xl font-bold text-walnut">{c.name}</h3>
+              <h3 className="font-display text-2xl font-semibold text-walnut">{c.name}</h3>
               <span
                 className={`shrink-0 rounded-full px-3 py-1 text-sm font-semibold ${styles.badge}`}
               >

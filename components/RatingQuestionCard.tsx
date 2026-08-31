@@ -18,7 +18,7 @@ export default function RatingQuestionCard({
   return (
     <div
       data-question-card
-      className={`rounded-lg border bg-card p-5 transition ${
+      className={`rounded-2xl border bg-card p-5 transition ${
         unanswered ? "border-sienna" : "border-border"
       }`}
     >

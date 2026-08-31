@@ -15,13 +15,8 @@ import ResultCard from "@/components/ResultCard";
 import CategoryBreakdown from "@/components/CategoryBreakdown";
 import SiblingTipCard from "@/components/SiblingTipCard";
 import HouseholdChildrenForm from "@/components/HouseholdChildrenForm";
-import ModernAccent from "@/components/ModernAccent";
 import PrivacyNote from "@/components/PrivacyNote";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
-
-const FOREST = "var(--color-forest)";
-const SIENNA = "var(--color-sienna)";
-const GOLD = "var(--color-gold)";
 
 const ANSWERS_STORAGE_PREFIX = "familywise:answers:";
 
@@ -117,10 +112,6 @@ function ResultsShell({
   return (
     <div className="flex-1 overflow-x-hidden bg-paper pb-16">
       <div className="relative overflow-hidden border-b border-border bg-card">
-        <ModernAccent variant="blob" color={GOLD} width="120px" rotate={-8} opacity={0.6} className="absolute hidden sm:block print:hidden" style={{ position: "absolute", top: "6%", right: "5%" }} />
-        <ModernAccent variant="ring" color={SIENNA} width="90px" opacity={0.55} className="absolute hidden md:block print:hidden" style={{ position: "absolute", bottom: "8%", left: "5%" }} />
-        <ModernAccent variant="dots" dotSet="a" color={FOREST} width="70px" opacity={0.7} className="absolute hidden xl:block print:hidden" style={{ position: "absolute", top: "55%", left: "4%" }} />
-
         <div className={`relative mx-auto ${maxWidthClass} px-6 py-8`}>
           <Link
             href="/"
@@ -129,13 +120,13 @@ function ResultsShell({
             ← All quizzes
           </Link>
           <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
-            <h1 className="text-4xl font-bold text-walnut sm:text-5xl">
+            <h1 className="font-display text-4xl font-semibold text-walnut sm:text-5xl">
               {quiz.title} — Your Results
             </h1>
             <button
               type="button"
               onClick={() => window.print()}
-              className="font-times shrink-0 rounded border border-forest px-4 py-2 text-lg text-forest hover:bg-forest-soft print:hidden"
+              className="shrink-0 rounded-full border border-forest px-5 py-2.5 text-base font-semibold text-forest transition hover:bg-forest-soft print:hidden"
             >
               Download as PDF
             </button>
@@ -144,15 +135,12 @@ function ResultsShell({
       </div>
 
       <div className={`relative mx-auto ${maxWidthClass} px-6 py-8`}>
-        <ModernAccent variant="arc" color={SIENNA} width="100px" rotate={14} opacity={0.6} className="absolute hidden xl:block print:hidden" style={{ position: "absolute", top: "8%", right: "-13%" }} />
-        <ModernAccent variant="halfDisc" color={FOREST} width="90px" rotate={100} opacity={0.5} className="absolute hidden xl:block print:hidden" style={{ position: "absolute", top: "55%", left: "-14%" }} />
-
         {children}
 
         <div className="mt-10 flex flex-col items-center gap-4 print:hidden">
           <Link
             href={retakeHref}
-            className="font-times text-2xl text-sienna hover:text-forest"
+            className="text-lg font-semibold text-sienna hover:text-forest"
           >
             {retakeLabel}
           </Link>
@@ -179,11 +167,11 @@ function NoResultsYet({
 }) {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-4 bg-paper px-6 py-24 text-center">
-      <h1 className="text-4xl font-bold text-walnut">No results yet</h1>
+      <h1 className="font-display text-4xl font-semibold text-walnut">No results yet</h1>
       <p className="max-w-sm text-xl text-walnut-soft">{message}</p>
       <Link
         href={ctaHref ?? `/quiz/${quizId}`}
-        className="font-times rounded bg-forest px-6 py-3 text-2xl text-paper"
+        className="rounded-full bg-forest px-6 py-3 text-lg font-semibold text-paper transition hover:bg-forest-dark"
       >
         {ctaLabel ?? "Take the quiz"}
       </Link>
@@ -224,11 +212,11 @@ function SingleResult({
     <div className="flex flex-col gap-6">
       <ResultCard result={primaryResult} eyebrow="Your result" />
       {secondaryResult && (
-        <div className="rounded-lg border border-border bg-card p-5">
+        <div className="rounded-2xl border border-border bg-card p-5">
           <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">
             Your secondary tendency
           </span>
-          <h3 className="mt-1 text-2xl font-bold text-walnut">
+          <h3 className="mt-1 font-display text-2xl font-semibold text-walnut">
             {secondaryResult.title}
           </h3>
           <p className="mt-1 text-lg text-walnut-soft">
@@ -357,11 +345,11 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
           <div key={c.name} className="flex flex-col gap-6">
             <ResultCard result={c.dominant} eyebrow={`${c.name}'s result`} />
             {c.secondary && (
-              <div className="rounded-lg border border-border bg-card p-5">
+              <div className="rounded-2xl border border-border bg-card p-5">
                 <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">
                   Secondary blend
                 </span>
-                <h3 className="mt-1 text-2xl font-bold text-walnut">
+                <h3 className="mt-1 font-display text-2xl font-semibold text-walnut">
                   {c.secondary.title}
                 </h3>
               </div>
@@ -373,7 +361,7 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
       {children.length > 1 && (
         <>
           <div className="mt-10 flex flex-col gap-4">
-            <h2 className="text-2xl font-bold text-walnut">Sibling tips</h2>
+            <h2 className="font-display text-2xl font-semibold text-walnut">Sibling tips</h2>
             {pairs(children).map(([a, b]) => (
               <SiblingTipCard
                 key={`${a.name}::${b.name}`}
@@ -440,7 +428,7 @@ function MultiSubjectCategoryResultsView({
       <div className={people.length > 1 ? "grid gap-8 sm:grid-cols-2" : ""}>
         {people.map((p) => (
           <div key={p.name}>
-            <h3 className="mb-3 text-2xl font-bold text-walnut">
+            <h3 className="mb-3 font-display text-2xl font-semibold text-walnut">
               {p.name}&apos;s results
             </h3>
             <CategoryBreakdown categories={p.categories} />

@@ -2,19 +2,23 @@
 @import "tailwindcss";
 
 :root {
-  --color-paper: #ede6d6;
-  --color-card: #f9f3e6;
-  --color-walnut: #3d3527;
-  --color-walnut-soft: #756b58;
-  --color-forest: #2f4b3c;
-  --color-forest-dark: #22362c;
-  --color-forest-soft: #dde5de;
-  --color-sienna: #b5652e;
-  --color-sienna-soft: #f0dccb;
-  --color-gold: #c9a063;
-  --color-gold-soft: #f1e6d3;
-  --color-tape: rgba(201, 160, 99, 0.55);
-  --color-border: #ddd2ba;
+  /* Homepage-matching palette: soft off-white surfaces, near-black ink,
+     sage as the primary accent (buttons/links), blush and lavender as
+     secondary accents. Token names are kept (paper/forest/sienna/gold)
+     so every existing component picks this up without changes. */
+  --color-paper: #fbfaf7;
+  --color-card: #ffffff;
+  --color-walnut: #1c1c1c;
+  --color-walnut-soft: #6b6b6b;
+  --color-forest: #7c9473;
+  --color-forest-dark: #66805d;
+  --color-forest-soft: #e9f0e3;
+  --color-sienna: #d98f89;
+  --color-sienna-soft: #fbe9e6;
+  --color-gold: #9b90c9;
+  --color-gold-soft: #efebf9;
+  --color-tape: rgba(124, 148, 115, 0.35);
+  --color-border: #ece7dc;
 }
 
 @theme inline {
@@ -32,14 +36,13 @@
   --color-border: var(--color-border);
   --font-sans: var(--font-body);
   --font-script: "Beau Rivage", cursive;
-  --font-times: "Times New Roman", Times, serif;
+  /* Was Times New Roman for the old scrapbook look — now just the body
+     sans, so every existing `font-times` button/tag matches the
+     homepage's clean sans-serif buttons with zero per-component edits. */
+  --font-times: var(--font-body), sans-serif;
   --font-display: var(--font-display);
 }
 
 body {
   font-family: var(--font-body), sans-serif;
 }
-
-/* Beau Rivage is reserved for the brand wordmark only. Buttons and small
-   decorative tags use `font-times` (Times New Roman). Real headings (h1-h4)
-   stay in the sans body font for scannability. */

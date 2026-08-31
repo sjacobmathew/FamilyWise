@@ -49,7 +49,7 @@ export default function SiblingTipCard({
 
   if (tip) {
     return (
-      <div className="rounded-lg border border-border bg-card p-5">
+      <div className="rounded-2xl border border-border bg-card p-5">
         <p className="font-times text-lg text-sienna">
           {childA.name} &amp; {childB.name}
         </p>
@@ -67,7 +67,7 @@ export default function SiblingTipCard({
   }
 
   return (
-    <div className="rounded-lg border border-dashed border-border bg-card/60 p-5 print:hidden">
+    <div className="rounded-2xl border border-dashed border-border bg-card/60 p-5 print:hidden">
       {error && (
         <p className="mb-2 text-base text-sienna">
           Couldn&apos;t generate a tip right now — try again.
@@ -77,7 +77,7 @@ export default function SiblingTipCard({
         type="button"
         onClick={fetchTip}
         disabled={loading}
-        className="font-times rounded bg-forest px-5 py-2.5 text-lg text-paper hover:bg-forest-dark disabled:opacity-60"
+        className="rounded-full bg-forest px-5 py-2.5 text-lg text-paper hover:bg-forest-dark disabled:opacity-60"
       >
         {loading
           ? "Thinking…"
