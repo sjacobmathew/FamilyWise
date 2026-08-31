@@ -61,8 +61,8 @@ export default function Home() {
           <Image
             src="/hero-family.jpeg"
             alt="Illustration of a family of four embracing"
-            width={1080}
-            height={960}
+            width={1076}
+            height={976}
             priority
             className="mx-auto w-full max-w-md"
           />
