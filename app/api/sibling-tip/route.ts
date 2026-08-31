@@ -47,6 +47,7 @@ export async function POST(req: NextRequest) {
       config: {
         systemInstruction: SYSTEM_PROMPT,
         maxOutputTokens: 1024,
+        httpOptions: { timeout: 20_000 },
       },
     });
 

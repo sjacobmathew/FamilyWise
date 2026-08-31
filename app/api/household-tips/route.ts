@@ -104,6 +104,7 @@ export async function POST(req: NextRequest) {
         maxOutputTokens: 2048,
         responseMimeType: "application/json",
         responseSchema: RESPONSE_SCHEMA,
+        httpOptions: { timeout: 20_000 },
       },
     });
 
