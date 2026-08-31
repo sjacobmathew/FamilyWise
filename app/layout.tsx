@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Nunito, Fraunces } from "next/font/google";
 import "./globals.css";
+import SiteNav from "@/components/SiteNav";
 
 const bodyFont = Nunito({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+});
+
+// Used only by the redesigned homepage (and, going forward, other
+// redesigned pages) for display headings — the rest of the app still uses
+// the body font for headings, so this is additive, not a global swap.
+const displayFont = Fraunces({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal"],
 });
 
 const DESCRIPTION =
@@ -35,8 +46,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodyFont.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col bg-paper text-walnut">
+        <SiteNav />
         {children}
       </body>
     </html>

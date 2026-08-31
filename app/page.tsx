@@ -1,109 +1,91 @@
+import Link from "next/link";
+import Image from "next/image";
 import { getQuizzesByCategory } from "@/lib/quizzes";
-import QuizCard from "@/components/QuizCard";
-import ModernAccent from "@/components/ModernAccent";
-import PrivacyNote from "@/components/PrivacyNote";
-
-const FOREST = "var(--color-forest)";
-const FOREST_LIGHT = "var(--color-forest-soft)";
-const SIENNA = "var(--color-sienna)";
-const GOLD = "var(--color-gold)";
-
-const MARGIN_ACCENTS = [
-  [
-    { variant: "ring" as const, color: SIENNA, rotate: 0 },
-    { variant: "dots" as const, color: FOREST, rotate: 0 },
-  ],
-  [
-    { variant: "blob" as const, color: GOLD, rotate: 10 },
-    { variant: "arc" as const, color: SIENNA, rotate: -20 },
-  ],
-  [
-    { variant: "halfDisc" as const, color: FOREST, rotate: 180 },
-    { variant: "squiggle" as const, color: GOLD, rotate: 0 },
-  ],
-];
+import ExploreCategories from "@/components/ExploreCategories";
+import { HeartIcon, LockIcon, PlayIcon } from "@/components/HomeIcons";
 
 export default function Home() {
   const groups = getQuizzesByCategory();
 
   return (
-    <div className="flex-1 overflow-x-hidden bg-paper">
-      <header className="relative overflow-hidden border-b border-border bg-forest">
-        {/* Smaller corner-only set for phones — the shapes above are all
-            sm:/lg:/xl:-gated and don't show below 640px otherwise. */}
-        <ModernAccent variant="ring" color={SIENNA} width="46px" opacity={0.6} className="absolute block sm:hidden" style={{ position: "absolute", top: "6%", left: "5%" }} />
-        <ModernAccent variant="blob" color={GOLD} width="54px" rotate={8} opacity={0.6} className="absolute block sm:hidden" style={{ position: "absolute", top: "6%", right: "5%" }} />
-        <ModernAccent variant="dots" dotSet="a" color={FOREST_LIGHT} width="38px" opacity={0.8} className="absolute block sm:hidden" style={{ position: "absolute", bottom: "8%", left: "6%" }} />
-        <ModernAccent variant="arc" color={SIENNA} width="46px" rotate={-10} opacity={0.6} className="absolute block sm:hidden" style={{ position: "absolute", bottom: "6%", right: "6%" }} />
+    <div className="flex-1 bg-white text-[#1C1C1C]">
+      {/* ---------- Hero ---------- */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 sm:py-24 lg:grid-cols-2">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#F6EDE3] px-4 py-1.5 text-sm font-medium text-[#5A4C3C]">
+              <HeartIcon className="h-4 w-4" />
+              Understand. Connect. Grow together.
+            </span>
 
-        <ModernAccent variant="ring" color={SIENNA} width="92px" opacity={0.6} className="absolute hidden sm:block" style={{ position: "absolute", top: "8%", left: "4%" }} />
-        <ModernAccent variant="dots" dotSet="a" color={FOREST_LIGHT} width="76px" opacity={0.8} className="absolute hidden sm:block" style={{ position: "absolute", top: "13%", left: "21%" }} />
-        <ModernAccent variant="blob" color={GOLD} width="112px" rotate={8} opacity={0.65} className="absolute hidden sm:block" style={{ position: "absolute", top: "5%", right: "5%" }} />
-        <ModernAccent variant="halfDisc" color={FOREST_LIGHT} width="82px" rotate={-20} opacity={0.5} className="absolute hidden sm:block" style={{ position: "absolute", top: "16%", right: "23%" }} />
-        <ModernAccent variant="plus" color={SIENNA} width="42px" rotate={15} opacity={0.75} className="absolute hidden lg:block" style={{ position: "absolute", bottom: "14%", left: "10%" }} />
-        <ModernAccent variant="arc" color={GOLD} width="90px" rotate={-10} opacity={0.6} className="absolute hidden lg:block" style={{ position: "absolute", bottom: "1%", left: "17%" }} />
-        <ModernAccent variant="disc" color={FOREST_LIGHT} width="52px" opacity={0.45} className="absolute hidden lg:block" style={{ position: "absolute", bottom: "16%", right: "8%" }} />
-        <ModernAccent variant="squiggle" color={SIENNA} width="94px" opacity={0.6} className="absolute hidden lg:block" style={{ position: "absolute", bottom: "6%", right: "25%" }} />
-        <ModernAccent variant="dots" dotSet="b" color={GOLD} width="64px" opacity={0.55} className="absolute hidden xl:block" style={{ position: "absolute", top: "42%", left: "1%" }} />
-        <ModernAccent variant="ring" color={FOREST_LIGHT} width="60px" opacity={0.5} className="absolute hidden xl:block" style={{ position: "absolute", top: "38%", right: "1%" }} />
+            <h1 className="font-display mt-6 text-[clamp(2.5rem,6vw,3.75rem)] font-semibold leading-[1.08]">
+              Understand
+              <br />
+              your family.
+              <br />
+              <span className="text-[#7C9473]">Build stronger</span>
+              <br />
+              <span className="text-[#7C9473]">relationships.</span>
+            </h1>
 
-        <div className="relative mx-auto max-w-5xl px-6 py-20 text-center sm:py-28">
-          <h1 className="font-script whitespace-nowrap text-[clamp(3.5rem,11vw,6.5rem)] font-normal text-paper">
-            Family<span className="text-sienna">Wise</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-2xl text-forest-soft">
-            Helping families understand, connect, and thrive.
-          </p>
-          <PrivacyNote className="mt-6 justify-center !text-forest-soft [&>svg]:!text-gold">
-            Nothing you answer is saved or sent anywhere — results live only
-            in this browser tab, and disappear when you close it.
-          </PrivacyNote>
-        </div>
-      </header>
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-[#5B5B5B]">
+              FamilyWise provides thoughtful assessments to help you
+              understand yourself, your children and your relationships
+              better.
+            </p>
 
-      <main className="relative mx-auto max-w-5xl px-6 py-14">
-        {groups.map(({ category, quizzes }, i) => {
-          const [left, right] = MARGIN_ACCENTS[i % MARGIN_ACCENTS.length];
-          return (
-            <section key={category} className="relative mb-16 last:mb-0">
-              <ModernAccent
-                variant={left.variant}
-                color={left.color}
-                rotate={left.rotate}
-                width="88px"
-                opacity={0.55}
-                className="absolute hidden xl:block"
-                style={{ position: "absolute", top: "8%", left: "-14%" }}
-              />
-              <ModernAccent
-                variant={right.variant}
-                color={right.color}
-                rotate={right.rotate}
-                width="80px"
-                opacity={0.55}
-                className="absolute hidden xl:block"
-                style={{ position: "absolute", top: "40%", right: "-14%" }}
-              />
-              <h2 className="mb-6 text-3xl font-bold text-walnut">
-                {category}
-              </h2>
-              <div
-                className={
-                  quizzes.length === 1
-                    ? "max-w-sm"
-                    : quizzes.length === 2
-                      ? "grid gap-5 sm:grid-cols-2"
-                      : "grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-                }
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link
+                href="#assessments"
+                className="rounded-full bg-[#1C1C1C] px-6 py-3.5 text-base font-semibold text-white transition hover:bg-[#333]"
               >
-                {quizzes.map((quiz) => (
-                  <QuizCard key={quiz.quizId} quiz={quiz} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
-      </main>
+                Explore assessments →
+              </Link>
+              <Link
+                href="#assessments"
+                className="flex items-center gap-2 rounded-full border border-[#D8D3C8] bg-white px-5 py-3.5 text-base font-semibold text-[#1C1C1C] transition hover:border-[#1C1C1C]"
+              >
+                <span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#1C1C1C]">
+                  <PlayIcon className="h-3 w-3 translate-x-[1px]" />
+                </span>
+                See how it works
+              </Link>
+            </div>
+
+            <p className="mt-6 flex items-center gap-2 text-sm text-[#8A8A8A]">
+              <LockIcon className="h-4 w-4" />
+              Private by design. Your answers stay on your device.
+            </p>
+          </div>
+
+          <Image
+            src="/hero-family.jpeg"
+            alt="Illustration of a family of four embracing"
+            width={1080}
+            height={960}
+            priority
+            className="mx-auto w-full max-w-md"
+          />
+        </div>
+      </section>
+
+      {/* ---------- What would you like to explore ---------- */}
+      <section id="assessments" className="border-t border-[#ECE7DC] bg-[#FBFAF7]">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-semibold sm:text-4xl">
+              What would you like to explore?
+            </h2>
+            <p className="mt-3 text-lg text-[#6B6B6B]">
+              Choose a category to see its assessments.
+            </p>
+          </div>
+
+          <div className="mt-10">
+            <ExploreCategories groups={groups} />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
