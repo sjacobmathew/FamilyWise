@@ -14,7 +14,6 @@ import {
 import ResultCard from "@/components/ResultCard";
 import ChildTemperamentResult from "@/components/ChildTemperamentResult";
 import CategoryBreakdown from "@/components/CategoryBreakdown";
-import HouseholdChildrenForm from "@/components/HouseholdChildrenForm";
 import PrivacyNote from "@/components/PrivacyNote";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
 
@@ -56,17 +55,6 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
     );
   }
 
-  const isParentingStyle = quiz.quizId === "parenting-style";
-  const parentScores =
-    quiz.flow === "forced-choice-then-result"
-      ? scoreForcedChoice(quiz, answers as Record<string, "A" | "B">)
-      : scoreRatingByTag(quiz, answers as Record<string, number>);
-  const [parentPrimary, parentSecondary] = parentScores;
-  const showHousehold =
-    isParentingStyle &&
-    Boolean(parentPrimary) &&
-    Boolean(quiz.results?.[parentPrimary?.tag ?? ""]);
-
   return (
     <ResultsShell quiz={quiz} retakeHref={`/quiz/${quiz.quizId}`}>
       {quiz.flow === "rating-scale-by-category" ? (
@@ -76,21 +64,6 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
         />
       ) : (
         <SingleResult quiz={quiz} answers={answers} />
-      )}
-
-      {showHousehold && (
-        <div className="mt-10">
-          <HouseholdChildrenForm
-            quizId={quiz.quizId}
-            parent={{
-              dominant: capitalize(parentPrimary!.tag),
-              secondary:
-                parentSecondary && parentSecondary.value > 0
-                  ? capitalize(parentSecondary.tag)
-                  : undefined,
-            }}
-          />
-        </div>
       )}
     </ResultsShell>
   );
@@ -246,10 +219,6 @@ type ChildResult = {
   secondaryTag: string | null;
   secondary: NormalizedResult | null;
 };
-
-function capitalize(s: string): string {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
 
 function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
   const rosterRaw = useSyncExternalStore(

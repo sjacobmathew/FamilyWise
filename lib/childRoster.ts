@@ -1,6 +1,5 @@
 const ROSTER_PREFIX = "familywise:roster:";
 const ANSWERS_PREFIX = "familywise:answers:";
-const TIP_PREFIX = "familywise:tip:";
 
 export function rosterKey(quizId: string): string {
   return `${ROSTER_PREFIX}${quizId}`;
@@ -8,19 +7,6 @@ export function rosterKey(quizId: string): string {
 
 export function childAnswersKey(quizId: string, childName: string): string {
   return `${ANSWERS_PREFIX}${quizId}:${childName}`;
-}
-
-export function householdTipKey(
-  quizId: string,
-  parent: { dominant: string; secondary?: string },
-  children: { name: string; age?: number; dominant: string; secondary?: string }[]
-): string {
-  const parentPart = `${parent.dominant}|${parent.secondary ?? ""}`;
-  const childrenPart = children
-    .map((c) => `${c.name}|${c.age ?? ""}|${c.dominant}|${c.secondary ?? ""}`)
-    .sort()
-    .join("::");
-  return `${TIP_PREFIX}household:${quizId}:${parentPart}:${childrenPart}`;
 }
 
 export function readRoster(quizId: string): string[] {
