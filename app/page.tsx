@@ -64,6 +64,12 @@ export default function Home() {
             width={1076}
             height={976}
             priority
+            style={{
+              maskImage:
+                "radial-gradient(ellipse 68% 68% at center, black 45%, transparent 85%)",
+              WebkitMaskImage:
+                "radial-gradient(ellipse 68% 68% at center, black 45%, transparent 85%)",
+            }}
             className="mx-auto w-full max-w-md"
           />
         </div>
