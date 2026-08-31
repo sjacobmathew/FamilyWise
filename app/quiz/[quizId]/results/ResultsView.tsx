@@ -259,12 +259,14 @@ const HEADER_ILLUSTRATION: Record<string, string> = {
   "child-temperament": "/kid-thinking.png",
   "love-languages-child": "/kid-thinking.png",
   "parenting-style": "/parenting-family.png",
+  temperament: "/temperament-couple.png",
 };
 
 const ILLUSTRATION_SIZE: Record<string, [number, number]> = {
   "/marriage-couple.png": [520, 347],
   "/kid-thinking.png": [520, 347],
   "/parenting-family.png": [475, 340],
+  "/temperament-couple.png": [1536, 1024],
 };
 
 function ResultsHeaderIcon({ quizId }: { quizId: string }) {

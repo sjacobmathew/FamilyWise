@@ -39,6 +39,7 @@ const SIDEBAR_ILLUSTRATION: Record<string, string> = {
   "child-temperament": "/kid-thinking.png",
   "love-languages-child": "/kid-thinking.png",
   "parenting-style": "/parenting-family.png",
+  temperament: "/temperament-couple.png",
 };
 
 // Real pixel dimensions per quiz's illustration, so it doesn't get
@@ -48,6 +49,7 @@ const ILLUSTRATION_SIZE: Record<string, [number, number]> = {
   "child-temperament": [520, 347],
   "love-languages-child": [520, 347],
   "parenting-style": [475, 340],
+  temperament: [1536, 1024],
 };
 
 export default function SteppedQuestionsFlow({
