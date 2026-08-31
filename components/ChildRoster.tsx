@@ -1,14 +1,19 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Quiz } from "@/lib/types";
 import PrivacyNote from "@/components/PrivacyNote";
 import { childAnswersKey, readRoster, writeRoster } from "@/lib/childRoster";
+import { parseResultsPdf } from "@/lib/pdfResults";
 
 function noopSubscribe() {
   return () => {};
 }
+
+// Quizzes with a compare view, where merging in someone else's
+// already-downloaded PDF (instead of them retaking it live) is useful.
+const PDF_UPLOAD_QUIZZES = new Set(["marriage-compatibility", "temperament"]);
 
 export default function ChildRoster({ quiz }: { quiz: Quiz }) {
   const subjectLabel = quiz.multiSubject?.subjectLabel ?? "person";
@@ -27,6 +32,11 @@ export default function ChildRoster({ quiz }: { quiz: Quiz }) {
   const [, setTick] = useState(0);
   const rerender = () => setTick((n) => n + 1);
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const allowPdfUpload = PDF_UPLOAD_QUIZZES.has(quiz.quizId);
+
   function addChild() {
     const trimmed = name.trim();
     if (!trimmed || children.includes(trimmed)) {
@@ -36,6 +46,50 @@ export default function ChildRoster({ quiz }: { quiz: Quiz }) {
     writeRoster(quiz.quizId, [...children, trimmed]);
     setName("");
     rerender();
+  }
+
+  function openPdfPicker() {
+    const trimmed = name.trim();
+    setUploadError(null);
+    if (!trimmed) {
+      setUploadError(`Enter ${subjectLabel}'s name first, then upload their PDF.`);
+      return;
+    }
+    if (children.includes(trimmed)) {
+      setUploadError(`${trimmed} is already on the list.`);
+      return;
+    }
+    fileInputRef.current?.click();
+  }
+
+  async function handlePdfSelected(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+
+    const trimmed = name.trim();
+    setUploading(true);
+    setUploadError(null);
+    try {
+      const answers = await parseResultsPdf(quiz, file);
+      if (!answers) {
+        setUploadError(
+          `Couldn't read that PDF — make sure it's a ${quiz.title} results PDF downloaded from FamilyWise.`
+        );
+        return;
+      }
+      sessionStorage.setItem(
+        childAnswersKey(quiz.quizId, trimmed),
+        JSON.stringify(answers)
+      );
+      writeRoster(quiz.quizId, [...children, trimmed]);
+      setName("");
+      rerender();
+    } catch {
+      setUploadError("Something went wrong reading that PDF — please try again.");
+    } finally {
+      setUploading(false);
+    }
   }
 
   function removeChild(childName: string) {
@@ -145,6 +199,31 @@ export default function ChildRoster({ quiz }: { quiz: Quiz }) {
             Add another {subjectLabel}
           </button>
         </div>
+
+        {allowPdfUpload && (
+          <div className="mt-3">
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="application/pdf"
+              onChange={handlePdfSelected}
+              className="hidden"
+            />
+            <button
+              type="button"
+              onClick={openPdfPicker}
+              disabled={uploading}
+              className="text-base font-medium text-walnut-soft underline decoration-dotted hover:text-sienna disabled:opacity-50"
+            >
+              {uploading
+                ? "Reading PDF…"
+                : `Already have their results? Upload ${subjectLabel}'s PDF instead`}
+            </button>
+            {uploadError && (
+              <p className="mt-1 text-sm text-sienna">{uploadError}</p>
+            )}
+          </div>
+        )}
 
         {completedCount >= 1 && (
           <div className="mt-8 flex justify-center">
