@@ -12,6 +12,7 @@ import {
   type CategoryScore,
 } from "@/lib/scoring";
 import ResultCard from "@/components/ResultCard";
+import ChildTemperamentResult from "@/components/ChildTemperamentResult";
 import CategoryBreakdown from "@/components/CategoryBreakdown";
 import SiblingTipCard from "@/components/SiblingTipCard";
 import HouseholdChildrenForm from "@/components/HouseholdChildrenForm";
@@ -333,34 +334,47 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
     );
   }
 
+  const isChildTemperament = quiz.quizId === "child-temperament";
+
   return (
     <ResultsShell
       quiz={quiz}
       retakeHref={`/quiz/${quiz.quizId}`}
       retakeLabel={`Manage ${subjectLabelPlural} & retake`}
-      maxWidthClass="max-w-3xl"
+      maxWidthClass={isChildTemperament ? "max-w-5xl" : "max-w-3xl"}
     >
       <div className="flex flex-col gap-10">
-        {children.map((c) => (
-          <div key={c.name} className="flex flex-col gap-6">
-            <ResultCard result={c.dominant} eyebrow={`${c.name}'s result`} />
-            {c.secondary && (
-              <div className="rounded-2xl border border-border bg-card p-5">
-                <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">
-                  Secondary blend
-                </span>
-                <h3 className="mt-1 font-display text-2xl font-semibold text-walnut">
-                  {c.secondary.title}
-                </h3>
-              </div>
-            )}
-          </div>
-        ))}
+        {children.map((c) =>
+          isChildTemperament ? (
+            <ChildTemperamentResult
+              key={c.name}
+              name={c.name}
+              dominantTag={c.dominantTag}
+              dominant={c.dominant}
+              quizId={quiz.quizId}
+              hasSiblings={children.length > 1}
+            />
+          ) : (
+            <div key={c.name} className="flex flex-col gap-6">
+              <ResultCard result={c.dominant} eyebrow={`${c.name}'s result`} />
+              {c.secondary && (
+                <div className="rounded-2xl border border-border bg-card p-5">
+                  <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">
+                    Secondary blend
+                  </span>
+                  <h3 className="mt-1 font-display text-2xl font-semibold text-walnut">
+                    {c.secondary.title}
+                  </h3>
+                </div>
+              )}
+            </div>
+          )
+        )}
       </div>
 
       {children.length > 1 && (
         <>
-          <div className="mt-10 flex flex-col gap-4">
+          <div id="sibling-tips" className="mt-10 flex flex-col gap-4">
             <h2 className="font-display text-2xl font-semibold text-walnut">Sibling tips</h2>
             {pairs(children).map(([a, b]) => (
               <SiblingTipCard

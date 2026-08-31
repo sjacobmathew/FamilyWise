@@ -150,3 +150,126 @@ export function LeafSprig({ className = "h-6 w-6 text-sage" }: IconProps) {
     </svg>
   );
 }
+
+// Temperament theme icons — one visual metaphor per dominant temperament.
+export function SunIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="4.5" />
+      <path d="M12 3v2.2M12 18.8V21M21 12h-2.2M5.2 12H3M18.4 5.6l-1.5 1.5M7.1 16.9l-1.5 1.5M18.4 18.4l-1.5-1.5M7.1 7.1 5.6 5.6" />
+    </svg>
+  );
+}
+
+export function LightningIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M13 3 6 13h5l-1 8 7-11h-5l1-7Z" />
+    </svg>
+  );
+}
+
+export function CloudRainIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M7.5 15a4.2 4.2 0 0 1 .3-8.4 5 5 0 0 1 9.6 1.3A3.7 3.7 0 0 1 17 15H7.5Z" />
+      <path d="M9 18.5 8 20.5M12.5 18.5l-1 2M16 18.5l-1 2" />
+    </svg>
+  );
+}
+
+export function WaveIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M3 10c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0" />
+      <path d="M3 15c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0" />
+    </svg>
+  );
+}
+
+export function BrainIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M9 4.5a2.5 2.5 0 0 0-2.5 2.5c0 .3 0 .6.1.9A2.7 2.7 0 0 0 5 10.4c0 .9.4 1.6 1 2.1a2.6 2.6 0 0 0 1.6 3.9 2.5 2.5 0 0 0 2.9 1.6" />
+      <path d="M9 4.5c1 0 2 .5 2.5 1.4M11.5 5.9V18M15 4.5a2.5 2.5 0 0 1 2.5 2.5c0 .3 0 .6-.1.9A2.7 2.7 0 0 1 19 10.4c0 .9-.4 1.6-1 2.1a2.6 2.6 0 0 1-1.6 3.9 2.5 2.5 0 0 1-2.9 1.6" />
+    </svg>
+  );
+}
+
+export function BellIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M6 9a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 13 6 9Z" />
+      <path d="M10 18a2 2 0 0 0 4 0" />
+    </svg>
+  );
+}
+
+export function ChatBubbleIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M4 11.5a7 7 0 1 1 3.2 5.9L4 18l1.1-3.2a6.9 6.9 0 0 1-1.1-3.3Z" />
+    </svg>
+  );
+}
+
+export function PencilIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="m14.5 5.5 4 4-9.5 9.5H5v-4Z" />
+      <path d="m13 7 4 4" />
+    </svg>
+  );
+}
+
+export function MoonIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" />
+    </svg>
+  );
+}
+
+export function StarIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="m12 3.5 2.4 5.1 5.6.7-4.1 3.9 1 5.6L12 15.9l-5 2.9 1-5.6-4.1-3.9 5.6-.7Z" />
+    </svg>
+  );
+}
+
+export function SproutIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M12 21v-9" />
+      <path d="M12 12c0-3.5-2.7-5-6-5 0 3.5 2.7 5 6 5Z" />
+      <path d="M12 12c0-3.5 2.7-5 6-5 0 3.5-2.7 5-6 5Z" />
+    </svg>
+  );
+}
+
+export function RefreshIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3" />
+      <path d="M17.5 4.5v3.2h-3.2M6.5 19.5v-3.2h3.2" />
+    </svg>
+  );
+}
+
+export function DownloadIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M12 4v11M8 11.5 12 15l4-3.5" />
+      <path d="M5 17.5v1.7a1.8 1.8 0 0 0 1.8 1.8h10.4a1.8 1.8 0 0 0 1.8-1.8v-1.7" />
+    </svg>
+  );
+}
+
+export function ChevronRightIcon({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg {...base} strokeWidth={2} className={className} aria-hidden="true">
+      <path d="M9 6l6 6-6 6" />
+    </svg>
+  );
+}
