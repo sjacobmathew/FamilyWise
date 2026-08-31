@@ -3,9 +3,7 @@ import { LogoMark, PersonIcon } from "@/components/HomeIcons";
 
 const LINKS = [
   { label: "Home", href: "/" },
-  { label: "Explore", href: "/#assessments" },
-  { label: "About", href: "/#about" },
-  { label: "How it works", href: "/#how-it-works" },
+  { label: "How it works", href: "/#assessments" },
 ];
 
 export default function SiteNav() {
