@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { Quiz, RatingQuestion } from "@/lib/types";
 import { getTagKey } from "@/lib/scoring";
@@ -157,9 +158,13 @@ export default function CategorySteppedFlow({
       <div className="mx-auto grid max-w-6xl gap-6 px-6 py-8 lg:grid-cols-[240px_1fr_240px]">
         {/* left sidebar */}
         <div className="hidden lg:block">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-sienna-soft text-sienna">
-            <HeartIcon className="h-8 w-8" />
-          </span>
+          <Image
+            src="/marriage-couple.png"
+            alt=""
+            width={520}
+            height={347}
+            className="w-full"
+          />
           <span className="mt-4 block text-xs font-bold uppercase tracking-wide text-sienna">
             {quiz.category ?? "Relationships"}
           </span>

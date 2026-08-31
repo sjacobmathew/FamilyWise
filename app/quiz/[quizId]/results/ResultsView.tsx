@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import type { Quiz } from "@/lib/types";
 import {
   scoreRatingByTag,
@@ -15,7 +16,7 @@ import ResultCard from "@/components/ResultCard";
 import ChildTemperamentResult from "@/components/ChildTemperamentResult";
 import MarriageResultCard from "@/components/MarriageResultCard";
 import PrivacyNote from "@/components/PrivacyNote";
-import { HeartIcon, LeafSprig, RefreshIcon, TwoPersonIcon } from "@/components/HomeIcons";
+import { RefreshIcon, TwoPersonIcon } from "@/components/HomeIcons";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
 
 const ANSWERS_STORAGE_PREFIX = "familywise:answers:";
@@ -241,11 +242,13 @@ function CategoryResults({
 
 function RelationshipHeaderIcon() {
   return (
-    <span className="relative hidden h-32 w-32 shrink-0 items-center justify-center rounded-full bg-[#F6EDE3] sm:flex">
-      <HeartIcon className="h-14 w-14 text-sienna" />
-      <LeafSprig className="absolute -bottom-1 -left-2 h-6 w-6 -rotate-45 text-forest" />
-      <LeafSprig className="absolute -bottom-1 -right-2 h-6 w-6 rotate-45 text-forest" />
-    </span>
+    <Image
+      src="/marriage-couple.png"
+      alt=""
+      width={520}
+      height={347}
+      className="hidden w-64 shrink-0 sm:block"
+    />
   );
 }
 
