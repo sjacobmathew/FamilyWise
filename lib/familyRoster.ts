@@ -6,11 +6,8 @@
 const MEMBERS_KEY = "familywise:family:members";
 const ANSWERS_PREFIX = "familywise:family:answers:";
 
-export type FamilyRelation = "Parent" | "Child";
-
 export type FamilyMember = {
   name: string;
-  relation: FamilyRelation;
 };
 
 export function familyAnswersKey(name: string, quizId: string): string {
@@ -33,28 +30,16 @@ export function writeFamilyMembers(members: FamilyMember[]): void {
   sessionStorage.setItem(MEMBERS_KEY, JSON.stringify(members));
 }
 
-/** Adds a new member, or merges `patch` into an existing one matched by a
+/** Adds a member if one doesn't already exist, matched by a
  * case-insensitive, trimmed name comparison — so a second PDF naming
  * "jimmy " lands on the same card as an earlier "Jimmy". */
-export function upsertFamilyMember(
-  name: string,
-  patch: Partial<Omit<FamilyMember, "name">> = {}
-): FamilyMember[] {
+export function ensureFamilyMember(name: string): FamilyMember[] {
   const trimmed = name.trim();
   const members = readFamilyMembers();
-  const existing = members.find(
-    (m) => m.name.toLowerCase() === trimmed.toLowerCase()
-  );
+  const exists = members.some((m) => m.name.toLowerCase() === trimmed.toLowerCase());
+  if (exists) return members;
 
-  let next: FamilyMember[];
-  if (existing) {
-    next = members.map((m) =>
-      m === existing ? { ...m, ...patch } : m
-    );
-  } else {
-    next = [...members, { name: trimmed, relation: "Parent", ...patch }];
-  }
-
+  const next = [...members, { name: trimmed }];
   writeFamilyMembers(next);
   return next;
 }

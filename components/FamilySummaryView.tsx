@@ -7,12 +7,11 @@ import { scoreRatingByTag, scoreForcedChoice, normalizeResultContent } from "@/l
 import { extractPdfText, parseFamilyPdfSections } from "@/lib/pdfResults";
 import {
   readFamilyMembers,
-  upsertFamilyMember,
+  ensureFamilyMember,
   removeFamilyMember,
   readFamilyAnswers,
   writeFamilyAnswers,
   type FamilyMember,
-  type FamilyRelation,
 } from "@/lib/familyRoster";
 import {
   TEMPERAMENT_QUADRANT,
@@ -26,7 +25,6 @@ import PrivacyNote from "@/components/PrivacyNote";
 import { THEME_ICON } from "@/components/ChildTemperamentResult";
 import {
   PersonIcon,
-  SmileyIcon,
   HeartIcon,
   ChatBubbleIcon,
   ClockIcon,
@@ -127,7 +125,6 @@ function scoreQuizForMember(quiz: Quiz, name: string): ScoredQuiz | null {
 function buildProfile(member: FamilyMember, quizzes: Quiz[]): FamilyMemberProfile {
   const profile: FamilyMemberProfile = {
     name: member.name,
-    relation: member.relation,
   };
   for (const quiz of quizzes) {
     const slot = QUIZ_SLOT[quiz.quizId];
@@ -250,17 +247,6 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
   const [log, setLog] = useState<LogEntry[]>([]);
   const [pending, setPending] = useState<PendingPrompt[]>([]);
 
-  function ensureMember(name: string, quiz: Quiz) {
-    const trimmed = name.trim();
-    if (!trimmed) return;
-    const exists = readFamilyMembers().some(
-      (m) => m.name.toLowerCase() === trimmed.toLowerCase()
-    );
-    if (exists) return;
-    const isChildQuiz = quiz.quizId === "child-temperament" || quiz.quizId === "love-languages-child";
-    upsertFamilyMember(trimmed, { relation: isChildQuiz ? "Child" : "Parent" });
-  }
-
   async function handleFilesSelected(e: React.ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files ?? []);
     e.target.value = "";
@@ -277,7 +263,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
         }
         for (const match of matches) {
           if (match.name) {
-            ensureMember(match.name, match.quiz);
+            ensureFamilyMember(match.name);
             writeFamilyAnswers(match.name, match.quiz.quizId, match.answers);
             setLog((l) => [
               ...l,
@@ -309,15 +295,10 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
     if (!item) return;
     const trimmed = item.draftName.trim();
     if (!trimmed) return;
-    ensureMember(trimmed, item.quiz);
+    ensureFamilyMember(trimmed);
     writeFamilyAnswers(trimmed, item.quiz.quizId, item.answers);
     setLog((l) => [...l, { fileName: item.fileName, status: "detected", name: trimmed, quizTitle: item.quiz.title }]);
     setPending((p) => p.filter((x) => x.id !== id));
-    rerender();
-  }
-
-  function updateRelation(name: string, relation: FamilyRelation) {
-    upsertFamilyMember(name, { relation });
     rerender();
   }
 
@@ -326,15 +307,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
     rerender();
   }
 
-  // Parents first, then children — stable within each group so a
-  // person's position (and its palette color) doesn't jump around as
-  // more results come in.
-  const sortedMembers = [...members].sort((a, b) => {
-    if (a.relation === b.relation) return 0;
-    return a.relation === "Parent" ? -1 : 1;
-  });
-
-  const profiles = sortedMembers.map((m) => buildProfile(m, quizzes));
+  const profiles = members.map((m) => buildProfile(m, quizzes));
   const hasAnyResults = profiles.some(
     (p) => p.temperamentTag || p.loveLanguageTag || p.parentingStyleTag
   );
@@ -460,43 +433,26 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
         )}
 
         {/* Family member cards */}
-        {sortedMembers.length > 0 && (
+        {members.length > 0 && (
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {sortedMembers.map((member, i) => {
+            {members.map((member, i) => {
               const profile = profiles[i];
               const palette = AVATAR_PALETTE[i % AVATAR_PALETTE.length];
-              const isChild = member.relation === "Child";
-              const AvatarIcon = isChild ? SmileyIcon : PersonIcon;
               const pill = tagPill(profile);
               return (
-                <div key={member.name} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+                <div
+                  key={member.name}
+                  className="flex flex-col rounded-2xl border border-border bg-card p-5 shadow-sm"
+                >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-3">
                       <span
                         className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
                         style={{ backgroundColor: palette.bg, color: palette.color }}
                       >
-                        <AvatarIcon className="h-6 w-6" />
+                        <PersonIcon className="h-6 w-6" />
                       </span>
-                      <div>
-                        <p className="font-display text-lg font-semibold text-walnut">{member.name}</p>
-                        <div className="mt-0.5 inline-flex overflow-hidden rounded-full border border-border text-xs">
-                          {(["Parent", "Child"] as const).map((r) => (
-                            <button
-                              key={r}
-                              type="button"
-                              onClick={() => updateRelation(member.name, r)}
-                              className={`px-2 py-0.5 font-medium transition ${
-                                member.relation === r
-                                  ? "bg-walnut text-paper"
-                                  : "text-walnut-soft hover:text-walnut"
-                              }`}
-                            >
-                              {r}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
+                      <p className="font-display text-lg font-semibold text-walnut">{member.name}</p>
                     </div>
                     <button
                       type="button"
@@ -531,14 +487,20 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     )}
                   </div>
 
-                  {pill && (
-                    <div
-                      className="mt-3 rounded-full px-3 py-1 text-center text-xs font-medium"
-                      style={{ backgroundColor: palette.bg, color: palette.color }}
-                    >
-                      {pill}
-                    </div>
-                  )}
+                  {/* mt-auto anchors the pill to the same bottom edge on
+                      every tile in the row, regardless of how many fields
+                      (e.g. Parenting Style) a given person has above it —
+                      grid rows stretch tiles to equal height by default. */}
+                  <div className="mt-auto pt-3">
+                    {pill && (
+                      <div
+                        className="rounded-full px-3 py-1 text-center text-xs font-medium"
+                        style={{ backgroundColor: palette.bg, color: palette.color }}
+                      >
+                        {pill}
+                      </div>
+                    )}
+                  </div>
                 </div>
               );
             })}
