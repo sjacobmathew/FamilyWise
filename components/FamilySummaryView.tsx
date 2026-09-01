@@ -519,24 +519,31 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                   <div className="mt-4 flex flex-col gap-2 text-sm">
                     <div>
                       <span className="text-walnut-soft">Temperament</span>
-                      <p className="font-semibold text-forest">
-                        {temperamentNickname(profile.temperamentTitle) ?? profile.temperamentTitle ?? "—"}
+                      <p className="font-semibold" style={{ color: palette.color }}>
+                        {profile.temperamentTag ? capitalize(profile.temperamentTag) : "—"}
                       </p>
                     </div>
                     <div>
                       <span className="text-walnut-soft">Love Language</span>
-                      <p className="font-semibold text-sienna">{profile.loveLanguageTitle ?? "—"}</p>
+                      <p className="font-semibold" style={{ color: palette.color }}>
+                        {profile.loveLanguageTitle ?? "—"}
+                      </p>
                     </div>
                     {profile.parentingStyleTitle && (
                       <div>
                         <span className="text-walnut-soft">Parenting Style</span>
-                        <p className="font-semibold text-gold">{profile.parentingStyleTitle}</p>
+                        <p className="font-semibold" style={{ color: palette.color }}>
+                          {profile.parentingStyleTitle}
+                        </p>
                       </div>
                     )}
                   </div>
 
                   {pill && (
-                    <div className="mt-3 rounded-full bg-forest-soft px-3 py-1 text-center text-xs font-medium text-forest">
+                    <div
+                      className="mt-3 rounded-full px-3 py-1 text-center text-xs font-medium"
+                      style={{ backgroundColor: palette.bg, color: palette.color }}
+                    >
                       {pill}
                     </div>
                   )}
