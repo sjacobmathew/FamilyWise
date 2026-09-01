@@ -213,3 +213,88 @@ export async function parseResultsPdf(
 
   return null;
 }
+
+export type NamedPdfSection = { name: string | null; text: string };
+
+/** Splits PDF text into per-person sections using the "{Name}'s result(s)"
+ * marker every multiSubject results page prints as an eyebrow above that
+ * person's result (see ResultCard/ChildTemperamentResult usage in
+ * ResultsView.tsx). A single-person PDF yields one section. A two-person
+ * "How We Compare" PDF (Temperament, Love Languages) yields two, one per
+ * name, each scoped to that person's own text. A PDF with no such marker
+ * at all — a single-subject quiz like Parenting Style or Love Languages
+ * (Child), which never prints a name — yields one section with
+ * `name: null`, signaling the caller needs to ask who it belongs to. */
+export function splitPdfTextByNamedSections(text: string): NamedPdfSection[] {
+  // Single capitalized word only — PDF text extraction flattens line
+  // breaks into plain spaces, so a two-word allowance here would risk
+  // greedily grabbing the last word of whatever sentence precedes the
+  // marker (e.g. "...The Connector Lukas's result" misreading as name
+  // "Connector Lukas", which also truncates the *previous* person's
+  // section text and can silently drop their result).
+  const re = /([A-Z][A-Za-z'-]*)'s results?\b/g;
+  const matches: { name: string; index: number }[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    matches.push({ name: m[1], index: m.index });
+  }
+
+  if (matches.length === 0) {
+    return [{ name: null, text }];
+  }
+
+  return matches.map((match, i) => {
+    const end = i + 1 < matches.length ? matches[i + 1].index : text.length;
+    return { name: match.name, text: text.slice(match.index, end) };
+  });
+}
+
+export type FamilyPdfMatch = {
+  name: string | null;
+  quiz: Quiz;
+  answers: Record<string, number | "A" | "B">;
+};
+
+/** Tries every eligible quiz's tag parser against each named section of a
+ * PDF's text, returning one match per (name, quiz) pair successfully
+ * detected — used by the Family Summary page, which doesn't know ahead of
+ * time which assessment(s) an uploaded PDF contains, or how many people
+ * are in it. Only tag-based quizzes are considered (rating-scale-by-
+ * category quizzes like Marriage Compatibility are out of scope here and
+ * simply won't match).
+ *
+ * Love Languages (Spouse) and Love Languages (Child) share identical
+ * result titles ("Words of Affirmation" etc.), so tag-title matching
+ * alone can't tell them apart. The one reliable signal is that a results
+ * page always headers itself with its own exact quiz title (see
+ * ResultsShell in ResultsView.tsx: "{quiz.title} — Your Results") — so
+ * that's checked first, once, against the whole PDF, and preferred over
+ * plain tag-title matching whenever it's present. */
+export function parseFamilyPdfSections(
+  quizzes: Quiz[],
+  text: string
+): FamilyPdfMatch[] {
+  const eligible = quizzes.filter((q) => q.flow !== "rating-scale-by-category");
+  const titleMatchedQuiz = eligible.find((q) => text.includes(q.title));
+  const ordered = titleMatchedQuiz
+    ? [titleMatchedQuiz, ...eligible.filter((q) => q !== titleMatchedQuiz)]
+    : eligible;
+
+  const sections = splitPdfTextByNamedSections(text);
+  const matches: FamilyPdfMatch[] = [];
+
+  for (const section of sections) {
+    for (const quiz of ordered) {
+      const tag = parseDominantTagFromPdfText(quiz, section.text);
+      if (!tag) continue;
+      const answers =
+        quiz.flow === "forced-choice-then-result"
+          ? synthesizeForcedChoiceAnswers(quiz, tag)
+          : synthesizeTagAnswers(quiz, tag);
+      matches.push({ name: section.name, quiz, answers });
+      break;
+    }
+  }
+
+  return matches;
+}
