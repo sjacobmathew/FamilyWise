@@ -521,7 +521,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
               <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">
                 Our Family at a Glance
               </h3>
-              <div className="mt-6 grid gap-8 sm:grid-cols-2">
+              <div className="mt-6 grid gap-8 sm:grid-cols-3">
                 <div className="flex flex-col items-center gap-4 text-center">
                   <p className="text-sm font-bold text-walnut">Temperaments</p>
                   <Ring
@@ -583,33 +583,6 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     </div>
                   )}
                 </div>
-
-                <div className="flex flex-col gap-3">
-                  <p className="text-center text-sm font-bold text-walnut sm:text-left">Temperament Overview</p>
-                  {temperamentCounts.size === 0 ? (
-                    <p className="text-sm text-walnut-soft">Add a Temperament PDF to see this</p>
-                  ) : (
-                    Array.from(temperamentCounts.entries()).map(([tag, count]) => (
-                      <div key={tag} className="flex items-start gap-2.5">
-                        <span
-                          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-                          style={{ backgroundColor: `${TEMPERAMENT_COLOR[tag]}22`, color: TEMPERAMENT_COLOR[tag] }}
-                        >
-                          {(() => {
-                            const Icon = THEME_ICON[tag] ?? HeartIcon;
-                            return <Icon className="h-4 w-4" />;
-                          })()}
-                        </span>
-                        <div>
-                          <p className="text-sm font-bold text-walnut">
-                            {capitalize(tag)} <span className="font-normal text-walnut-soft">({count})</span>
-                          </p>
-                          <p className="text-sm text-walnut-soft">{TEMPERAMENT_SHORT_BLURB[tag]}</p>
-                        </div>
-                      </div>
-                    ))
-                  )}
-                </div>
               </div>
             </div>
 
@@ -624,6 +597,33 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
               />
             </div>
             </div>
+
+            {temperamentCounts.size > 0 && (
+              <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+                <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">Temperament Overview</h3>
+                <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                  {Array.from(temperamentCounts.entries()).map(([tag, count]) => (
+                    <div key={tag} className="flex items-start gap-3 rounded-2xl border border-border p-4">
+                      <span
+                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
+                        style={{ backgroundColor: `${TEMPERAMENT_COLOR[tag]}22`, color: TEMPERAMENT_COLOR[tag] }}
+                      >
+                        {(() => {
+                          const Icon = THEME_ICON[tag] ?? HeartIcon;
+                          return <Icon className="h-4 w-4" />;
+                        })()}
+                      </span>
+                      <div>
+                        <p className="font-bold text-walnut">
+                          {capitalize(tag)} <span className="font-normal text-walnut-soft">({count})</span>
+                        </p>
+                        <p className="text-sm text-walnut-soft">{TEMPERAMENT_SHORT_BLURB[tag]}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="grid gap-6 lg:grid-cols-2">
               <div className="flex flex-col gap-6">
