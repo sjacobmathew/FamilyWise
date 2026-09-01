@@ -202,11 +202,17 @@ function QuadrantChart({ people }: { people: { name: string; tag: string }[] }) 
         const x = center + (base.x + j.dx) * scale;
         const y = center - (base.y + j.dy) * scale;
         const color = TEMPERAMENT_COLOR[p.tag] ?? "#6B6B6B";
+        const iconSize = 22;
         return (
           <g key={p.name}>
-            <circle cx={x} cy={y} r={15} fill={color} fillOpacity={0.18} />
-            <circle cx={x} cy={y} r={7} fill={color} />
-            <text x={x} y={y - 15} textAnchor="middle" fontSize="11" fontWeight="700" fill="#1C1C1C" fontFamily="var(--font-body)">
+            <circle cx={x} cy={y} r={17} fill={color} fillOpacity={0.18} />
+            <circle cx={x} cy={y} r={iconSize / 2} fill={color} />
+            <foreignObject x={x - iconSize / 2} y={y - iconSize / 2} width={iconSize} height={iconSize}>
+              <div className="flex h-full w-full items-center justify-center text-white">
+                <PersonIcon className="h-3.5 w-3.5" />
+              </div>
+            </foreignObject>
+            <text x={x} y={y - 22} textAnchor="middle" fontSize="11" fontWeight="700" fill="#1C1C1C" fontFamily="var(--font-body)">
               {p.name}
             </text>
           </g>
