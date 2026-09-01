@@ -329,7 +329,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
     <div className="flex-1 bg-paper pb-24">
       <div className="border-b border-border bg-card">
         <div className="mx-auto max-w-5xl px-6 py-10">
-          <h1 className="font-display text-4xl font-semibold text-walnut sm:text-5xl">
+          <h1 className="font-display text-4xl font-bold text-walnut sm:text-5xl">
             Our Family Summary <LeafSprig className="inline h-8 w-8 text-forest" />
           </h1>
           <p className="mt-2 max-w-xl text-lg text-walnut-soft">
@@ -452,7 +452,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                       >
                         <PersonIcon className="h-6 w-6" />
                       </span>
-                      <p className="font-display text-lg font-semibold text-walnut">{member.name}</p>
+                      <p className="font-display text-lg font-bold text-walnut">{member.name}</p>
                     </div>
                     <button
                       type="button"
@@ -467,20 +467,20 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                   <div className="mt-4 flex flex-col gap-2 text-sm">
                     <div>
                       <span className="text-walnut-soft">Temperament</span>
-                      <p className="font-semibold" style={{ color: palette.color }}>
+                      <p className="font-bold" style={{ color: palette.color }}>
                         {profile.temperamentTag ? capitalize(profile.temperamentTag) : "—"}
                       </p>
                     </div>
                     <div>
                       <span className="text-walnut-soft">Love Language</span>
-                      <p className="font-semibold" style={{ color: palette.color }}>
+                      <p className="font-bold" style={{ color: palette.color }}>
                         {profile.loveLanguageTitle ?? "—"}
                       </p>
                     </div>
                     {profile.parentingStyleTitle && (
                       <div>
                         <span className="text-walnut-soft">Parenting Style</span>
-                        <p className="font-semibold" style={{ color: palette.color }}>
+                        <p className="font-bold" style={{ color: palette.color }}>
                           {profile.parentingStyleTitle}
                         </p>
                       </div>
@@ -522,7 +522,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
               </h3>
               <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 <div className="flex flex-col items-center gap-4 text-center">
-                  <p className="text-sm font-semibold text-walnut">Temperaments</p>
+                  <p className="text-sm font-bold text-walnut">Temperaments</p>
                   <Ring
                     segments={Array.from(temperamentCounts.entries()).map(([tag, count]) => ({
                       count,
@@ -540,7 +540,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                 </div>
 
                 <div className="flex flex-col items-center gap-4 text-center">
-                  <p className="text-sm font-semibold text-walnut">Love Languages</p>
+                  <p className="text-sm font-bold text-walnut">Love Languages</p>
                   <Ring
                     segments={Array.from(loveLanguageCounts.entries()).map(([tag, count]) => ({
                       count,
@@ -558,7 +558,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                 </div>
 
                 <div className="flex flex-col items-center gap-3 text-center">
-                  <p className="text-sm font-semibold text-walnut">Parenting Style</p>
+                  <p className="text-sm font-bold text-walnut">Parenting Style</p>
                   <span className="flex h-16 w-16 items-center justify-center rounded-full bg-forest-soft text-forest">
                     <HeartIcon className="h-7 w-7" />
                   </span>
@@ -566,7 +566,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     <p className="text-sm text-walnut-soft">Add a Parenting Style PDF to see this</p>
                   ) : parentingStyleProfiles.length === 1 ? (
                     <>
-                      <p className="font-display text-lg font-semibold text-walnut">
+                      <p className="font-display text-lg font-bold text-walnut">
                         {parentingStyleProfiles[0].parentingStyleTitle}
                       </p>
                       <p className="text-sm text-walnut-soft">{parentingStyleProfiles[0].parentingStyleDescription}</p>
@@ -584,7 +584,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <p className="text-center text-sm font-semibold text-walnut sm:text-left">Temperament Overview</p>
+                  <p className="text-center text-sm font-bold text-walnut sm:text-left">Temperament Overview</p>
                   {temperamentCounts.size === 0 ? (
                     <p className="text-sm text-walnut-soft">Add a Temperament PDF to see this</p>
                   ) : (
@@ -600,7 +600,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                           })()}
                         </span>
                         <div>
-                          <p className="text-sm font-semibold text-walnut">
+                          <p className="text-sm font-bold text-walnut">
                             {capitalize(tag)} <span className="font-normal text-walnut-soft">({count})</span>
                           </p>
                           <p className="text-sm text-walnut-soft">{TEMPERAMENT_SHORT_BLURB[tag]}</p>
@@ -675,7 +675,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                             <CheckCircleIcon className="h-4 w-4" />
                           </span>
                           <div>
-                            <p className="font-semibold text-walnut">{g.title}</p>
+                            <p className="font-bold text-walnut">{g.title}</p>
                             <p className="text-sm text-walnut-soft">{g.description}</p>
                           </div>
                         </div>
@@ -697,7 +697,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                           <SproutIcon className="h-4 w-4" />
                         </span>
                         <div>
-                          <p className="font-semibold text-walnut">{s.title}</p>
+                          <p className="font-bold text-walnut">{s.title}</p>
                           <p className="text-sm text-walnut-soft">{s.description}</p>
                         </div>
                       </div>
@@ -712,7 +712,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                 <HeartIcon className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-display text-lg font-semibold text-walnut">You are doing beautifully</p>
+                <p className="font-display text-lg font-bold text-walnut">You are doing beautifully</p>
                 <p className="mt-1 text-sm text-walnut-soft">
                   Every family is a work in progress. Keep loving, keep learning, and keep showing up for each other.
                 </p>
