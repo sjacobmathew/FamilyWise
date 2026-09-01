@@ -521,8 +521,8 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
               <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">
                 Our Family at a Glance
               </h3>
-              <div className="mt-6 grid gap-8 sm:grid-cols-3">
-                <div className="flex flex-col items-center gap-4 text-center">
+              <div className="mt-6 grid gap-8 sm:grid-cols-3 sm:gap-0">
+                <div className="flex flex-col items-center gap-4 text-center sm:pr-6">
                   <p className="text-sm font-bold text-walnut">Temperaments</p>
                   <Ring
                     segments={Array.from(temperamentCounts.entries()).map(([tag, count]) => ({
@@ -540,7 +540,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                   </div>
                 </div>
 
-                <div className="flex flex-col items-center gap-4 text-center">
+                <div className="flex flex-col items-center gap-4 text-center sm:border-l sm:border-border sm:px-6">
                   <p className="text-sm font-bold text-walnut">Love Languages</p>
                   <Ring
                     segments={Array.from(loveLanguageCounts.entries()).map(([tag, count]) => ({
@@ -558,7 +558,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                   </div>
                 </div>
 
-                <div className="flex flex-col items-center gap-3 text-center">
+                <div className="flex flex-col items-center gap-3 text-center sm:border-l sm:border-border sm:pl-6">
                   <p className="text-sm font-bold text-walnut">Parenting Style</p>
                   <span className="flex h-16 w-16 items-center justify-center rounded-full bg-forest-soft text-forest">
                     <HeartIcon className="h-7 w-7" />
