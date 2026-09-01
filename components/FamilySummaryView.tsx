@@ -23,6 +23,7 @@ import {
   type FamilyMemberProfile,
 } from "@/lib/familyDynamicsContent";
 import PrivacyNote from "@/components/PrivacyNote";
+import { THEME_ICON } from "@/components/ChildTemperamentResult";
 import {
   PersonIcon,
   SmileyIcon,
@@ -70,6 +71,14 @@ const LOVE_LANGUAGE_ICON: Record<string, (p: { className?: string }) => React.Re
   service: CheckCircleIcon,
   gifts: GiftIcon,
   touch: HandIcon,
+};
+
+const LOVE_LANGUAGE_LABEL: Record<string, string> = {
+  words: "Words of Affirmation",
+  time: "Quality Time",
+  service: "Acts of Service",
+  gifts: "Receiving Gifts",
+  touch: "Physical Touch",
 };
 
 const AVATAR_PALETTE = [
@@ -461,14 +470,14 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
               const AvatarIcon = isChildish ? SmileyIcon : PersonIcon;
               const pill = tagPill(profile);
               return (
-                <div key={member.name} className="rounded-2xl border border-border bg-card p-5">
+                <div key={member.name} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-3">
                       <span
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
                         style={{ backgroundColor: palette.bg, color: palette.color }}
                       >
-                        <AvatarIcon className="h-5 w-5" />
+                        <AvatarIcon className="h-6 w-6" />
                       </span>
                       <div>
                         <p className="font-display text-lg font-semibold text-walnut">{member.name}</p>
@@ -484,7 +493,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     </button>
                   </div>
 
-                  <div className="mt-3 flex items-center gap-2">
+                  <div className="mt-4 flex items-center gap-2">
                     <select
                       value={member.relation}
                       onChange={(e) => updateRelation(member.name, e.target.value as FamilyRelation)}
@@ -545,154 +554,176 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
 
         {/* Dashboard */}
         {hasAnyResults && (
-          <div className="mt-12 flex flex-col gap-8">
-            <div className="grid gap-6 lg:grid-cols-2">
-              <div className="rounded-3xl border border-border bg-card p-6">
-                <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">
-                  Our Family at a Glance
-                </h3>
-                <div className="mt-5 grid grid-cols-3 gap-4">
-                  <div className="flex flex-col items-center gap-3">
-                    <p className="text-sm font-semibold text-walnut">Temperaments</p>
-                    <Ring
-                      segments={Array.from(temperamentCounts.entries()).map(([tag, count]) => ({
-                        count,
-                        color: TEMPERAMENT_COLOR[tag] ?? "#6B6B6B",
-                      }))}
-                    />
-                    <div className="flex flex-col items-start gap-1 text-xs text-walnut-soft">
-                      {Array.from(temperamentCounts.entries()).map(([tag, count]) => (
-                        <span key={tag} className="flex items-center gap-1.5">
-                          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: TEMPERAMENT_COLOR[tag] }} />
-                          {count} {capitalize(tag)}
-                        </span>
-                      ))}
-                    </div>
+          <div className="mt-12 flex flex-col gap-6">
+            <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+              <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">
+                Our Family at a Glance
+              </h3>
+              <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="flex flex-col items-center gap-4 text-center">
+                  <p className="text-sm font-semibold text-walnut">Temperaments</p>
+                  <Ring
+                    segments={Array.from(temperamentCounts.entries()).map(([tag, count]) => ({
+                      count,
+                      color: TEMPERAMENT_COLOR[tag] ?? "#6B6B6B",
+                    }))}
+                  />
+                  <div className="flex flex-col items-start gap-1.5 text-sm text-walnut-soft">
+                    {Array.from(temperamentCounts.entries()).map(([tag, count]) => (
+                      <span key={tag} className="flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: TEMPERAMENT_COLOR[tag] }} />
+                        {count} {capitalize(tag)}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
-                  <div className="flex flex-col items-center gap-3">
-                    <p className="text-sm font-semibold text-walnut">Love Languages</p>
-                    <Ring
-                      segments={Array.from(loveLanguageCounts.entries()).map(([tag, count]) => ({
-                        count,
-                        color: LOVE_LANGUAGE_COLOR[tag] ?? "#6B6B6B",
-                      }))}
-                    />
-                    <div className="flex flex-col items-start gap-1 text-xs text-walnut-soft">
-                      {Array.from(loveLanguageCounts.entries()).map(([tag, count]) => (
-                        <span key={tag} className="flex items-center gap-1.5">
-                          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: LOVE_LANGUAGE_COLOR[tag] }} />
-                          {count} result{count === 1 ? "" : "s"}
-                        </span>
-                      ))}
-                    </div>
+                <div className="flex flex-col items-center gap-4 text-center">
+                  <p className="text-sm font-semibold text-walnut">Love Languages</p>
+                  <Ring
+                    segments={Array.from(loveLanguageCounts.entries()).map(([tag, count]) => ({
+                      count,
+                      color: LOVE_LANGUAGE_COLOR[tag] ?? "#6B6B6B",
+                    }))}
+                  />
+                  <div className="flex flex-col items-start gap-1.5 text-sm text-walnut-soft">
+                    {Array.from(loveLanguageCounts.entries()).map(([tag, count]) => (
+                      <span key={tag} className="flex items-center gap-1.5">
+                        <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: LOVE_LANGUAGE_COLOR[tag] }} />
+                        {count} {LOVE_LANGUAGE_LABEL[tag] ?? capitalize(tag)}
+                      </span>
+                    ))}
                   </div>
+                </div>
 
-                  <div className="flex flex-col items-center justify-center gap-2 text-center">
-                    <p className="text-sm font-semibold text-walnut">Parenting Style</p>
-                    <span className="flex h-14 w-14 items-center justify-center rounded-full bg-forest-soft text-forest">
-                      <HeartIcon className="h-6 w-6" />
-                    </span>
-                    {parentingStyleProfiles.length === 0 ? (
-                      <p className="text-xs text-walnut-soft">Add a Parenting Style PDF to see this</p>
-                    ) : parentingStyleProfiles.length === 1 ? (
-                      <>
-                        <p className="font-display text-base font-semibold text-walnut">
-                          {parentingStyleProfiles[0].parentingStyleTitle}
+                <div className="flex flex-col items-center gap-3 text-center">
+                  <p className="text-sm font-semibold text-walnut">Parenting Style</p>
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-forest-soft text-forest">
+                    <HeartIcon className="h-7 w-7" />
+                  </span>
+                  {parentingStyleProfiles.length === 0 ? (
+                    <p className="text-sm text-walnut-soft">Add a Parenting Style PDF to see this</p>
+                  ) : parentingStyleProfiles.length === 1 ? (
+                    <>
+                      <p className="font-display text-lg font-semibold text-walnut">
+                        {parentingStyleProfiles[0].parentingStyleTitle}
+                      </p>
+                      <p className="text-sm text-walnut-soft">{parentingStyleProfiles[0].parentingStyleDescription}</p>
+                    </>
+                  ) : (
+                    <div className="flex w-full flex-col gap-1.5 text-left">
+                      {parentingStyleProfiles.map((p) => (
+                        <p key={p.name} className="text-sm text-walnut">
+                          <span className="font-semibold">{p.name}:</span>{" "}
+                          <span className="text-forest">{p.parentingStyleTitle}</span>
                         </p>
-                        <p className="text-xs text-walnut-soft">{parentingStyleProfiles[0].parentingStyleDescription}</p>
-                      </>
-                    ) : (
-                      <div className="flex w-full flex-col gap-1.5">
-                        {parentingStyleProfiles.map((p) => (
-                          <p key={p.name} className="text-sm text-walnut">
-                            <span className="font-semibold">{p.name}:</span>{" "}
-                            <span className="text-forest">{p.parentingStyleTitle}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  <p className="text-center text-sm font-semibold text-walnut sm:text-left">Temperament Overview</p>
+                  {temperamentCounts.size === 0 ? (
+                    <p className="text-sm text-walnut-soft">Add a Temperament PDF to see this</p>
+                  ) : (
+                    Array.from(temperamentCounts.entries()).map(([tag, count]) => (
+                      <div key={tag} className="flex items-start gap-2.5">
+                        <span
+                          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+                          style={{ backgroundColor: `${TEMPERAMENT_COLOR[tag]}22`, color: TEMPERAMENT_COLOR[tag] }}
+                        >
+                          {(() => {
+                            const Icon = THEME_ICON[tag] ?? HeartIcon;
+                            return <Icon className="h-4 w-4" />;
+                          })()}
+                        </span>
+                        <div>
+                          <p className="text-sm font-semibold text-walnut">
+                            {capitalize(tag)} <span className="font-normal text-walnut-soft">({count})</span>
                           </p>
-                        ))}
+                          <p className="text-sm text-walnut-soft">{TEMPERAMENT_SHORT_BLURB[tag]}</p>
+                        </div>
                       </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+              <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">
+                How We Love &amp; Connect
+              </h3>
+              <QuadrantChart
+                people={profiles
+                  .filter((p): p is FamilyMemberProfile & { temperamentTag: string } => Boolean(p.temperamentTag))
+                  .map((p) => ({ name: p.name, tag: p.temperamentTag }))}
+              />
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="flex flex-col gap-6">
+                {loveLanguageTotal > 0 && (
+                  <div className="rounded-3xl border border-border bg-card p-6">
+                    <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">Love Language Blend</h3>
+                    <div className="mt-4 flex h-3 w-full overflow-hidden rounded-full">
+                      {Array.from(loveLanguageCounts.entries()).map(([tag, count]) => (
+                        <div
+                          key={tag}
+                          style={{
+                            width: `${(count / loveLanguageTotal) * 100}%`,
+                            backgroundColor: LOVE_LANGUAGE_COLOR[tag] ?? "#6B6B6B",
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <div className="mt-5 grid grid-cols-2 gap-4">
+                      {Array.from(loveLanguageCounts.entries()).map(([tag, count]) => {
+                        const Icon = LOVE_LANGUAGE_ICON[tag] ?? HeartIcon;
+                        return (
+                          <div key={tag} className="flex items-center gap-2">
+                            <span
+                              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
+                              style={{ backgroundColor: `${LOVE_LANGUAGE_COLOR[tag]}22`, color: LOVE_LANGUAGE_COLOR[tag] }}
+                            >
+                              <Icon className="h-4 w-4" />
+                            </span>
+                            <div>
+                              <p className="text-base font-bold text-walnut">
+                                {Math.round((count / loveLanguageTotal) * 100)}%
+                              </p>
+                              <p className="text-xs text-walnut-soft">{LOVE_LANGUAGE_LABEL[tag] ?? capitalize(tag)}</p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                <div className="rounded-3xl border border-border bg-card p-6">
+                  <h3 className="text-xs font-bold uppercase tracking-wide text-sienna">Areas to Focus Together</h3>
+                  <div className="mt-4 flex flex-col gap-4">
+                    {growthAreas.length === 0 ? (
+                      <p className="text-sm text-walnut-soft">Add a few more results to see this.</p>
+                    ) : (
+                      growthAreas.map((g) => (
+                        <div key={g.title} className="flex items-start gap-3">
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sienna-soft text-sienna">
+                            <CheckCircleIcon className="h-4 w-4" />
+                          </span>
+                          <div>
+                            <p className="font-semibold text-walnut">{g.title}</p>
+                            <p className="text-sm text-walnut-soft">{g.description}</p>
+                          </div>
+                        </div>
+                      ))
                     )}
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-border bg-card p-6">
-                <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">
-                  How We Love &amp; Connect
-                </h3>
-                <QuadrantChart
-                  people={profiles
-                    .filter((p): p is FamilyMemberProfile & { temperamentTag: string } => Boolean(p.temperamentTag))
-                    .map((p) => ({ name: p.name, tag: p.temperamentTag }))}
-                />
-              </div>
-            </div>
-
-            {loveLanguageTotal > 0 && (
-              <div className="rounded-3xl border border-border bg-card p-6">
-                <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">Love Language Blend</h3>
-                <div className="mt-4 flex h-3 w-full overflow-hidden rounded-full">
-                  {Array.from(loveLanguageCounts.entries()).map(([tag, count]) => (
-                    <div
-                      key={tag}
-                      style={{
-                        width: `${(count / loveLanguageTotal) * 100}%`,
-                        backgroundColor: LOVE_LANGUAGE_COLOR[tag] ?? "#6B6B6B",
-                      }}
-                    />
-                  ))}
-                </div>
-                <div className="mt-4 flex flex-wrap gap-6">
-                  {Array.from(loveLanguageCounts.entries()).map(([tag, count]) => {
-                    const Icon = LOVE_LANGUAGE_ICON[tag] ?? HeartIcon;
-                    return (
-                      <div key={tag} className="flex items-center gap-2">
-                        <span
-                          className="flex h-9 w-9 items-center justify-center rounded-full"
-                          style={{ backgroundColor: `${LOVE_LANGUAGE_COLOR[tag]}22`, color: LOVE_LANGUAGE_COLOR[tag] }}
-                        >
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <div>
-                          <p className="text-base font-bold text-walnut">
-                            {Math.round((count / loveLanguageTotal) * 100)}%
-                          </p>
-                          <p className="text-xs capitalize text-walnut-soft">
-                            {tag === "words" ? "Words of Affirmation" : tag === "gifts" ? "Receiving Gifts" : tag === "time" ? "Quality Time" : tag === "service" ? "Acts of Service" : "Physical Touch"}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            {temperamentCounts.size > 0 && (
-              <div className="rounded-3xl border border-border bg-card p-6">
-                <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">Temperament Overview</h3>
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  {Array.from(temperamentCounts.entries()).map(([tag, count]) => (
-                    <div key={tag} className="flex items-start gap-3 rounded-2xl border border-border p-4">
-                      <span
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
-                        style={{ backgroundColor: `${TEMPERAMENT_COLOR[tag]}22`, color: TEMPERAMENT_COLOR[tag] }}
-                      >
-                        <HeartIcon className="h-4 w-4" />
-                      </span>
-                      <div>
-                        <p className="font-semibold text-walnut">
-                          {capitalize(tag)} <span className="text-walnut-soft">({count})</span>
-                        </p>
-                        <p className="text-sm text-walnut-soft">{TEMPERAMENT_SHORT_BLURB[tag]}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div className="grid gap-6 sm:grid-cols-2">
               <div className="rounded-3xl border border-border bg-card p-6">
                 <h3 className="text-xs font-bold uppercase tracking-wide text-forest">Our Family Strengths</h3>
                 <div className="mt-4 flex flex-col gap-4">
@@ -707,27 +738,6 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                         <div>
                           <p className="font-semibold text-walnut">{s.title}</p>
                           <p className="text-sm text-walnut-soft">{s.description}</p>
-                        </div>
-                      </div>
-                    ))
-                  )}
-                </div>
-              </div>
-
-              <div className="rounded-3xl border border-border bg-card p-6">
-                <h3 className="text-xs font-bold uppercase tracking-wide text-sienna">Areas to Focus Together</h3>
-                <div className="mt-4 flex flex-col gap-4">
-                  {growthAreas.length === 0 ? (
-                    <p className="text-sm text-walnut-soft">Add a few more results to see this.</p>
-                  ) : (
-                    growthAreas.map((g) => (
-                      <div key={g.title} className="flex items-start gap-3">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sienna-soft text-sienna">
-                          <CheckCircleIcon className="h-4 w-4" />
-                        </span>
-                        <div>
-                          <p className="font-semibold text-walnut">{g.title}</p>
-                          <p className="text-sm text-walnut-soft">{g.description}</p>
                         </div>
                       </div>
                     ))
