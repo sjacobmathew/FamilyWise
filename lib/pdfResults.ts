@@ -232,7 +232,15 @@ export function splitPdfTextByNamedSections(text: string): NamedPdfSection[] {
   // marker (e.g. "...The Connector Lukas's result" misreading as name
   // "Connector Lukas", which also truncates the *previous* person's
   // section text and can silently drop their result).
-  const re = /([A-Z][A-Za-z'-]*)'s results?\b/g;
+  //
+  // The `\s*` before "'s" isn't cosmetic: ChildTemperamentResult renders
+  // this eyebrow as `{name}&apos;s result` — two adjacent JSX text nodes
+  // rather than one interpolated string — and a real browser-printed PDF
+  // extracts that as two separate text runs with a space between them
+  // ("Kiara 's result"), unlike the single-string `${name}'s result`
+  // template literal used elsewhere ("Jimmy's result", no space).
+  // Verified against real "Download as PDF" output from both patterns.
+  const re = /([A-Z][A-Za-z'-]*)\s*'s results?\b/g;
   const matches: { name: string; index: number }[] = [];
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
