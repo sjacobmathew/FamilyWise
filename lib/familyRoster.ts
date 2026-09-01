@@ -6,18 +6,11 @@
 const MEMBERS_KEY = "familywise:family:members";
 const ANSWERS_PREFIX = "familywise:family:answers:";
 
-export type FamilyRelation =
-  | "Me"
-  | "Spouse"
-  | "Daughter"
-  | "Son"
-  | "Child"
-  | "Other";
+export type FamilyRelation = "Parent" | "Child";
 
 export type FamilyMember = {
   name: string;
   relation: FamilyRelation;
-  age?: number;
 };
 
 export function familyAnswersKey(name: string, quizId: string): string {
@@ -59,7 +52,7 @@ export function upsertFamilyMember(
       m === existing ? { ...m, ...patch } : m
     );
   } else {
-    next = [...members, { name: trimmed, relation: "Other", ...patch }];
+    next = [...members, { name: trimmed, relation: "Parent", ...patch }];
   }
 
   writeFamilyMembers(next);

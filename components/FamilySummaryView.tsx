@@ -88,8 +88,6 @@ const AVATAR_PALETTE = [
   { bg: "#FBF3E1", color: "#C9A063" },
 ];
 
-const RELATIONS: FamilyRelation[] = ["Me", "Spouse", "Daughter", "Son", "Child", "Other"];
-
 function capitalize(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
@@ -130,7 +128,6 @@ function buildProfile(member: FamilyMember, quizzes: Quiz[]): FamilyMemberProfil
   const profile: FamilyMemberProfile = {
     name: member.name,
     relation: member.relation,
-    age: member.age,
   };
   for (const quiz of quizzes) {
     const slot = QUIZ_SLOT[quiz.quizId];
@@ -261,7 +258,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
     );
     if (exists) return;
     const isChildQuiz = quiz.quizId === "child-temperament" || quiz.quizId === "love-languages-child";
-    upsertFamilyMember(trimmed, { relation: isChildQuiz ? "Child" : "Other" });
+    upsertFamilyMember(trimmed, { relation: isChildQuiz ? "Child" : "Parent" });
   }
 
   async function handleFilesSelected(e: React.ChangeEvent<HTMLInputElement>) {
@@ -324,18 +321,20 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
     rerender();
   }
 
-  function updateAge(name: string, ageText: string) {
-    const age = ageText.trim() === "" ? undefined : Number(ageText);
-    upsertFamilyMember(name, { age: Number.isFinite(age) ? age : undefined });
-    rerender();
-  }
-
   function handleRemove(name: string) {
     removeFamilyMember(name);
     rerender();
   }
 
-  const profiles = members.map((m) => buildProfile(m, quizzes));
+  // Parents first, then children — stable within each group so a
+  // person's position (and its palette color) doesn't jump around as
+  // more results come in.
+  const sortedMembers = [...members].sort((a, b) => {
+    if (a.relation === b.relation) return 0;
+    return a.relation === "Parent" ? -1 : 1;
+  });
+
+  const profiles = sortedMembers.map((m) => buildProfile(m, quizzes));
   const hasAnyResults = profiles.some(
     (p) => p.temperamentTag || p.loveLanguageTag || p.parentingStyleTag
   );
@@ -461,13 +460,13 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
         )}
 
         {/* Family member cards */}
-        {members.length > 0 && (
+        {sortedMembers.length > 0 && (
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {members.map((member, i) => {
+            {sortedMembers.map((member, i) => {
               const profile = profiles[i];
               const palette = AVATAR_PALETTE[i % AVATAR_PALETTE.length];
-              const isChildish = member.relation === "Daughter" || member.relation === "Son" || member.relation === "Child";
-              const AvatarIcon = isChildish ? SmileyIcon : PersonIcon;
+              const isChild = member.relation === "Child";
+              const AvatarIcon = isChild ? SmileyIcon : PersonIcon;
               const pill = tagPill(profile);
               return (
                 <div key={member.name} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
@@ -481,6 +480,22 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                       </span>
                       <div>
                         <p className="font-display text-lg font-semibold text-walnut">{member.name}</p>
+                        <div className="mt-0.5 inline-flex overflow-hidden rounded-full border border-border text-xs">
+                          {(["Parent", "Child"] as const).map((r) => (
+                            <button
+                              key={r}
+                              type="button"
+                              onClick={() => updateRelation(member.name, r)}
+                              className={`px-2 py-0.5 font-medium transition ${
+                                member.relation === r
+                                  ? "bg-walnut text-paper"
+                                  : "text-walnut-soft hover:text-walnut"
+                              }`}
+                            >
+                              {r}
+                            </button>
+                          ))}
+                        </div>
                       </div>
                     </div>
                     <button
@@ -491,29 +506,6 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     >
                       Remove
                     </button>
-                  </div>
-
-                  <div className="mt-4 flex items-center gap-2">
-                    <select
-                      value={member.relation}
-                      onChange={(e) => updateRelation(member.name, e.target.value as FamilyRelation)}
-                      className="rounded border border-border bg-paper px-2 py-1 text-xs text-walnut-soft"
-                    >
-                      {RELATIONS.map((r) => (
-                        <option key={r} value={r}>
-                          {r}
-                        </option>
-                      ))}
-                    </select>
-                    <input
-                      type="number"
-                      min={0}
-                      max={120}
-                      value={member.age ?? ""}
-                      onChange={(e) => updateAge(member.name, e.target.value)}
-                      placeholder="Age"
-                      className="w-16 rounded border border-border bg-paper px-2 py-1 text-xs text-walnut-soft"
-                    />
                   </div>
 
                   <div className="mt-4 flex flex-col gap-2 text-sm">

@@ -7,7 +7,6 @@
 export type FamilyMemberProfile = {
   name: string;
   relation: string;
-  age?: number;
   temperamentTag?: string;
   temperamentTitle?: string;
   temperamentStrengths?: string[];
