@@ -516,11 +516,12 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
         {/* Dashboard */}
         {hasAnyResults && (
           <div className="mt-12 flex flex-col gap-6">
-            <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 lg:col-span-2">
               <h3 className="text-xs font-bold uppercase tracking-wide text-walnut-soft">
                 Our Family at a Glance
               </h3>
-              <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-6 grid gap-8 sm:grid-cols-2">
                 <div className="flex flex-col items-center gap-4 text-center">
                   <p className="text-sm font-bold text-walnut">Temperaments</p>
                   <Ring
@@ -621,6 +622,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                   .filter((p): p is FamilyMemberProfile & { temperamentTag: string } => Boolean(p.temperamentTag))
                   .map((p) => ({ name: p.name, tag: p.temperamentTag }))}
               />
+            </div>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-2">
