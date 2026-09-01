@@ -338,7 +338,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
     if (p.loveLanguageTag) loveLanguageCounts.set(p.loveLanguageTag, (loveLanguageCounts.get(p.loveLanguageTag) ?? 0) + 1);
   }
 
-  const parentingStyleProfile = profiles.find((p) => p.parentingStyleTag);
+  const parentingStyleProfiles = profiles.filter((p) => p.parentingStyleTag);
   const strengths = buildFamilyStrengths(profiles);
   const growthAreas = buildFamilyGrowthAreas(profiles);
 
@@ -593,15 +593,24 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     <span className="flex h-14 w-14 items-center justify-center rounded-full bg-forest-soft text-forest">
                       <HeartIcon className="h-6 w-6" />
                     </span>
-                    {parentingStyleProfile ? (
+                    {parentingStyleProfiles.length === 0 ? (
+                      <p className="text-xs text-walnut-soft">Add a Parenting Style PDF to see this</p>
+                    ) : parentingStyleProfiles.length === 1 ? (
                       <>
                         <p className="font-display text-base font-semibold text-walnut">
-                          {parentingStyleProfile.parentingStyleTitle}
+                          {parentingStyleProfiles[0].parentingStyleTitle}
                         </p>
-                        <p className="text-xs text-walnut-soft">{parentingStyleProfile.parentingStyleDescription}</p>
+                        <p className="text-xs text-walnut-soft">{parentingStyleProfiles[0].parentingStyleDescription}</p>
                       </>
                     ) : (
-                      <p className="text-xs text-walnut-soft">Add a Parenting Style PDF to see this</p>
+                      <div className="flex w-full flex-col gap-1.5">
+                        {parentingStyleProfiles.map((p) => (
+                          <p key={p.name} className="text-sm text-walnut">
+                            <span className="font-semibold">{p.name}:</span>{" "}
+                            <span className="text-forest">{p.parentingStyleTitle}</span>
+                          </p>
+                        ))}
+                      </div>
                     )}
                   </div>
                 </div>
