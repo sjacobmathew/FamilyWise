@@ -38,11 +38,13 @@ export default function ChildTemperamentResult({
   dominantTag,
   dominant,
   quizId,
+  hideGlance = false,
 }: {
   name: string;
   dominantTag: string;
   dominant: NormalizedResult;
   quizId: string;
+  hideGlance?: boolean;
 }) {
   const ThemeIcon = THEME_ICON[dominantTag] ?? SunIcon;
   const glance = TEMPERAMENT_GLANCE[dominantTag] ?? DEFAULT_GLANCE;
@@ -166,34 +168,36 @@ export default function ChildTemperamentResult({
 
       {/* right sidebar */}
       <div className="flex flex-col gap-6">
-        <div className="rounded-3xl border border-border bg-card p-6">
-          <h3 className="text-sm font-bold uppercase tracking-wide text-walnut-soft">
-            Temperament at a glance
-          </h3>
-          <div className="mt-4 flex flex-col gap-4">
-            {[
-              { Icon: BrainIcon, label: `How ${name} thinks & feels`, text: glance.thinksAndFeels, bg: "#EFEBF9", color: "#9B90C9" },
-              { Icon: TwoPersonIcon, label: `How ${name} relates`, text: glance.relates, bg: "#E9F0E3", color: "#7C9473" },
-              { Icon: LightningIcon, label: `How ${name} reacts`, text: glance.reacts, bg: "#FBF3E1", color: "#C9A063" },
-              { Icon: HeartIcon, label: `What ${name} needs`, text: glance.needs, bg: "#FBE9E6", color: "#D98F89" },
-            ].map((row) => (
-              <div key={row.label} className="flex items-start gap-3">
-                <span
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
-                  style={{ backgroundColor: row.bg, color: row.color }}
-                >
-                  <row.Icon className="h-4.5 w-4.5" />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-walnut">{row.label}</p>
-                  <p className="mt-0.5 text-sm leading-relaxed text-walnut-soft">
-                    {row.text}
-                  </p>
+        {!hideGlance && (
+          <div className="rounded-3xl border border-border bg-card p-6">
+            <h3 className="text-sm font-bold uppercase tracking-wide text-walnut-soft">
+              Temperament at a glance
+            </h3>
+            <div className="mt-4 flex flex-col gap-4">
+              {[
+                { Icon: BrainIcon, label: `How ${name} thinks & feels`, text: glance.thinksAndFeels, bg: "#EFEBF9", color: "#9B90C9" },
+                { Icon: TwoPersonIcon, label: `How ${name} relates`, text: glance.relates, bg: "#E9F0E3", color: "#7C9473" },
+                { Icon: LightningIcon, label: `How ${name} reacts`, text: glance.reacts, bg: "#FBF3E1", color: "#C9A063" },
+                { Icon: HeartIcon, label: `What ${name} needs`, text: glance.needs, bg: "#FBE9E6", color: "#D98F89" },
+              ].map((row) => (
+                <div key={row.label} className="flex items-start gap-3">
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
+                    style={{ backgroundColor: row.bg, color: row.color }}
+                  >
+                    <row.Icon className="h-4.5 w-4.5" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-walnut">{row.label}</p>
+                    <p className="mt-0.5 text-sm leading-relaxed text-walnut-soft">
+                      {row.text}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="rounded-3xl border border-border bg-card p-6">
           <h3 className="text-sm font-bold uppercase tracking-wide text-walnut-soft">

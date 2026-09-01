@@ -388,6 +388,7 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
               dominantTag={c.dominantTag}
               dominant={c.dominant}
               quizId={quiz.quizId}
+              hideGlance={quiz.quizId === "temperament" && children.length === 2}
             />
           ) : (
             <div key={c.name} className="flex flex-col gap-6">
