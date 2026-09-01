@@ -15,7 +15,6 @@ import {
 } from "@/lib/familyRoster";
 import {
   TEMPERAMENT_QUADRANT,
-  jitterFor,
   buildFamilyStrengths,
   buildFamilyGrowthAreas,
   TEMPERAMENT_SHORT_BLURB,
@@ -183,10 +182,44 @@ function Ring({ segments }: { segments: { count: number; color: string }[] }) {
   );
 }
 
-function QuadrantChart({ people }: { people: { name: string; tag: string }[] }) {
+function QuadrantChart({
+  people,
+}: {
+  people: { name: string; tag: string; color: string }[];
+}) {
   const size = 280;
   const center = size / 2;
-  const scale = 108;
+  const scale = 92;
+  const clusterRadius = 22; // guaranteed gap between same-temperament people
+
+  // Group by temperament so people who share one don't stack on the same
+  // point — instead they fan out evenly around it at a fixed radius large
+  // enough that their icons (22px across) never overlap.
+  const groups = new Map<string, typeof people>();
+  for (const p of people) {
+    const list = groups.get(p.tag) ?? [];
+    list.push(p);
+    groups.set(p.tag, list);
+  }
+
+  const placed: { person: (typeof people)[number]; x: number; y: number }[] = [];
+  for (const [tag, group] of groups) {
+    const base = TEMPERAMENT_QUADRANT[tag] ?? { x: 0, y: 0 };
+    const baseX = center + base.x * scale;
+    const baseY = center - base.y * scale;
+    group.forEach((person, i) => {
+      if (group.length === 1) {
+        placed.push({ person, x: baseX, y: baseY });
+        return;
+      }
+      const angle = (2 * Math.PI * i) / group.length - Math.PI / 2;
+      placed.push({
+        person,
+        x: baseX + Math.cos(angle) * clusterRadius,
+        y: baseY + Math.sin(angle) * clusterRadius,
+      });
+    });
+  }
 
   return (
     <svg viewBox={`0 0 ${size} ${size}`} className="mx-auto w-full max-w-xs">
@@ -196,24 +229,19 @@ function QuadrantChart({ people }: { people: { name: string; tag: string }[] }) 
       <text x={center} y={size - 4} textAnchor="middle" fontSize="11" fill="#6B6B6B" fontFamily="var(--font-body)">More Reserved</text>
       <text x={10} y={center} textAnchor="start" fontSize="11" fill="#6B6B6B" fontFamily="var(--font-body)" transform={`rotate(-90 10 ${center})`}>More Sensitive</text>
       <text x={size - 10} y={center} textAnchor="end" fontSize="11" fill="#6B6B6B" fontFamily="var(--font-body)" transform={`rotate(-90 ${size - 10} ${center})`}>More Active</text>
-      {people.map((p) => {
-        const base = TEMPERAMENT_QUADRANT[p.tag] ?? { x: 0, y: 0 };
-        const j = jitterFor(p.name);
-        const x = center + (base.x + j.dx) * scale;
-        const y = center - (base.y + j.dy) * scale;
-        const color = TEMPERAMENT_COLOR[p.tag] ?? "#6B6B6B";
+      {placed.map(({ person, x, y }) => {
         const iconSize = 22;
         return (
-          <g key={p.name}>
-            <circle cx={x} cy={y} r={17} fill={color} fillOpacity={0.18} />
-            <circle cx={x} cy={y} r={iconSize / 2} fill={color} />
+          <g key={person.name}>
+            <circle cx={x} cy={y} r={17} fill={person.color} fillOpacity={0.18} />
+            <circle cx={x} cy={y} r={iconSize / 2} fill={person.color} />
             <foreignObject x={x - iconSize / 2} y={y - iconSize / 2} width={iconSize} height={iconSize}>
               <div className="flex h-full w-full items-center justify-center text-white">
                 <PersonIcon className="h-3.5 w-3.5" />
               </div>
             </foreignObject>
             <text x={x} y={y - 22} textAnchor="middle" fontSize="11" fontWeight="700" fill="#1C1C1C" fontFamily="var(--font-body)">
-              {p.name}
+              {person.name}
             </text>
           </g>
         );
@@ -598,8 +626,14 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
               </h3>
               <QuadrantChart
                 people={profiles
-                  .filter((p): p is FamilyMemberProfile & { temperamentTag: string } => Boolean(p.temperamentTag))
-                  .map((p) => ({ name: p.name, tag: p.temperamentTag }))}
+                  .map((p, i) => ({
+                    name: p.name,
+                    tag: p.temperamentTag,
+                    color: AVATAR_PALETTE[i % AVATAR_PALETTE.length].color,
+                  }))
+                  .filter(
+                    (p): p is { name: string; tag: string; color: string } => Boolean(p.tag)
+                  )}
               />
             </div>
             </div>

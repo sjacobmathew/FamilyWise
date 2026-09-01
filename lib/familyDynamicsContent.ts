@@ -22,28 +22,15 @@ export type Headline = { title: string; description: string };
  * Reserved↔Expressive (y) plane, loosely following the classic DISC-style
  * "social styles" quadrant mapping (Driver/Expressive/Amiable/Analytical)
  * onto the four temperaments. This is an illustrative placement, not a
- * measured trait score — every family member of the same temperament
- * starts from the same point and is nudged apart with a small
- * deterministic jitter (see jitterFor) so dots don't stack exactly. */
+ * measured trait score. Family members sharing a temperament are fanned
+ * out evenly around this same point by the chart itself (see
+ * FamilySummaryView's QuadrantChart), so they never overlap. */
 export const TEMPERAMENT_QUADRANT: Record<string, { x: number; y: number }> = {
   sanguine: { x: 0.5, y: 0.6 }, // active + expressive
   choleric: { x: 0.6, y: -0.5 }, // active + reserved
   melancholic: { x: -0.6, y: -0.4 }, // sensitive + reserved
   phlegmatic: { x: -0.5, y: 0.3 }, // sensitive + mildly expressive
 };
-
-/** Deterministic small offset from a name, so re-rendering the same
- * family always places dots the same way (no per-render randomness), but
- * two people sharing a temperament don't render on top of each other. */
-export function jitterFor(name: string): { dx: number; dy: number } {
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) {
-    hash = (hash * 31 + name.charCodeAt(i)) | 0;
-  }
-  const a = ((hash % 1000) / 1000) * Math.PI * 2;
-  const b = (((hash >> 8) % 1000) / 1000) * 0.18 + 0.05;
-  return { dx: Math.cos(a) * b, dy: Math.sin(a) * b };
-}
 
 export const LOVE_LANGUAGE_STRENGTH_HEADLINE: Record<string, Headline> = {
   touch: {
