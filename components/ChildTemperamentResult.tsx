@@ -11,7 +11,6 @@ import {
   ChatBubbleIcon,
   ChevronRightIcon,
   CloudRainIcon,
-  DownloadIcon,
   HeartIcon,
   LightningIcon,
   MoonIcon,
@@ -218,24 +217,6 @@ export default function ChildTemperamentResult({
               </span>
               <ChevronRightIcon className="h-4 w-4 text-walnut-soft" />
             </Link>
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-left transition hover:bg-forest-soft/40"
-            >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-forest-soft text-forest">
-                <DownloadIcon className="h-4 w-4" />
-              </span>
-              <span className="flex-1">
-                <span className="block text-sm font-semibold text-walnut">
-                  Share results
-                </span>
-                <span className="block text-xs text-walnut-soft">
-                  Get family insights together
-                </span>
-              </span>
-              <ChevronRightIcon className="h-4 w-4 text-walnut-soft" />
-            </button>
           </div>
         </div>
 

@@ -20,7 +20,12 @@ import ParentingStyleResult from "@/components/ParentingStyleResult";
 import TemperamentCompareCard from "@/components/TemperamentCompareCard";
 import LoveLanguageCompareCard from "@/components/LoveLanguageCompareCard";
 import PrivacyNote from "@/components/PrivacyNote";
-import { RefreshIcon, TwoPersonIcon } from "@/components/HomeIcons";
+import {
+  ChevronRightIcon,
+  DownloadIcon,
+  RefreshIcon,
+  TwoPersonIcon,
+} from "@/components/HomeIcons";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
 
 const ANSWERS_STORAGE_PREFIX = "familywise:answers:";
@@ -132,9 +137,20 @@ function ResultsShell({
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="mt-4 shrink-0 rounded-full border border-forest px-5 py-2.5 text-base font-semibold text-forest transition hover:bg-forest-soft print:hidden"
+                className="mt-4 flex w-full max-w-xs items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-left transition hover:border-forest print:hidden"
               >
-                Download as PDF
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest-soft text-forest">
+                  <DownloadIcon className="h-4 w-4" />
+                </span>
+                <span className="flex-1">
+                  <span className="block text-sm font-semibold text-walnut">
+                    Download as PDF
+                  </span>
+                  <span className="block text-xs text-walnut-soft">
+                    Save or print your results
+                  </span>
+                </span>
+                <ChevronRightIcon className="h-4 w-4 text-walnut-soft" />
               </button>
             </div>
             {headerIcon}
