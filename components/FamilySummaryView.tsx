@@ -464,23 +464,23 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     </button>
                   </div>
 
-                  <div className="mt-4 flex flex-col gap-2 text-sm">
+                  <div className="mt-4 flex flex-col gap-2">
                     <div>
-                      <span className="text-walnut-soft">Temperament</span>
-                      <p className="font-bold" style={{ color: palette.color }}>
+                      <span className="text-xs text-walnut-soft">Temperament</span>
+                      <p className="text-base font-bold" style={{ color: palette.color }}>
                         {profile.temperamentTag ? capitalize(profile.temperamentTag) : "—"}
                       </p>
                     </div>
                     <div>
-                      <span className="text-walnut-soft">Love Language</span>
-                      <p className="font-bold" style={{ color: palette.color }}>
+                      <span className="text-xs text-walnut-soft">Love Language</span>
+                      <p className="text-base font-bold" style={{ color: palette.color }}>
                         {profile.loveLanguageTitle ?? "—"}
                       </p>
                     </div>
                     {profile.parentingStyleTitle && (
                       <div>
-                        <span className="text-walnut-soft">Parenting Style</span>
-                        <p className="font-bold" style={{ color: palette.color }}>
+                        <span className="text-xs text-walnut-soft">Parenting Style</span>
+                        <p className="text-base font-bold" style={{ color: palette.color }}>
                           {profile.parentingStyleTitle}
                         </p>
                       </div>
@@ -576,7 +576,7 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     <div className="flex w-full flex-col gap-1.5 text-left">
                       {parentingStyleProfiles.map((p) => (
                         <p key={p.name} className="text-sm text-walnut">
-                          <span className="font-semibold">{p.name}:</span>{" "}
+                          <span className="font-bold">{p.name}:</span>{" "}
                           <span className="text-forest">{p.parentingStyleTitle}</span>
                         </p>
                       ))}
