@@ -69,57 +69,61 @@ export default function ExploreCategories({
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <div>
-      <div className="grid gap-6 sm:grid-cols-3">
-        {groups.map(({ category, quizzes }) => {
-          const theme = CATEGORY_THEME[category] ?? FALLBACK_THEME;
-          const Icon = theme.icon;
-          const isOpen = open === category;
-          return (
-            <button
-              key={category}
-              type="button"
-              onClick={() => setOpen(isOpen ? null : category)}
-              aria-expanded={isOpen}
-              className="group relative flex min-h-[220px] flex-col justify-between rounded-3xl p-7 text-left transition hover:-translate-y-1"
+    // grid-flow-row-dense + explicit `order` values let the open category's
+    // dropdown slot in right after its own box (important on mobile, where
+    // the boxes stack in one column) while still backfilling the 3-across
+    // row on desktop instead of leaving a gap where that box used to be.
+    <div className="grid gap-6 sm:grid-cols-3 sm:grid-flow-row-dense">
+      {groups.map(({ category, quizzes }, i) => {
+        const theme = CATEGORY_THEME[category] ?? FALLBACK_THEME;
+        const Icon = theme.icon;
+        const isOpen = open === category;
+        return (
+          <button
+            key={category}
+            type="button"
+            onClick={() => setOpen(isOpen ? null : category)}
+            aria-expanded={isOpen}
+            className="group relative flex min-h-[220px] flex-col justify-between rounded-3xl p-7 text-left transition hover:-translate-y-1"
+            style={{
+              order: i * 2,
+              backgroundColor: theme.soft,
+              outline: isOpen ? `2px solid ${theme.accent}` : undefined,
+              outlineOffset: isOpen ? "2px" : undefined,
+            }}
+          >
+            <div>
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
+                <Icon className="h-6 w-6" />
+              </span>
+              <h3 className="font-display mt-5 text-2xl font-semibold">
+                {category}
+              </h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-[#5B5B5B]">
+                {theme.blurb || `${quizzes.length} assessments`}
+              </p>
+            </div>
+            <span
+              className="absolute bottom-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-white transition"
               style={{
-                backgroundColor: theme.soft,
-                outline: isOpen ? `2px solid ${theme.accent}` : undefined,
-                outlineOffset: isOpen ? "2px" : undefined,
+                color: theme.accent,
+                transform: isOpen ? "rotate(90deg)" : undefined,
               }}
             >
-              <div>
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
-                  <Icon className="h-6 w-6" />
-                </span>
-                <h3 className="font-display mt-5 text-2xl font-semibold">
-                  {category}
-                </h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-[#5B5B5B]">
-                  {theme.blurb || `${quizzes.length} assessments`}
-                </p>
-              </div>
-              <span
-                className="absolute bottom-6 right-6 flex h-10 w-10 items-center justify-center rounded-full bg-white transition"
-                style={{
-                  color: theme.accent,
-                  transform: isOpen ? "rotate(90deg)" : undefined,
-                }}
-              >
-                <ArrowIcon className="h-4 w-4" />
-              </span>
-            </button>
-          );
-        })}
-      </div>
+              <ArrowIcon className="h-4 w-4" />
+            </span>
+          </button>
+        );
+      })}
 
-      {groups.map(({ category, quizzes }) => {
+      {groups.map(({ category, quizzes }, i) => {
         const theme = CATEGORY_THEME[category] ?? FALLBACK_THEME;
         if (open !== category) return null;
         return (
           <div
             key={category}
-            className="mt-6 rounded-3xl border border-[#ECE7DC] bg-white p-6 sm:p-8"
+            style={{ order: i * 2 + 1, gridColumn: "1 / -1" }}
+            className="rounded-3xl border border-[#ECE7DC] bg-white p-6 sm:p-8"
           >
             <div
               className="flex items-center gap-2 text-sm font-bold uppercase tracking-wide"
