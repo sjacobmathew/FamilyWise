@@ -223,8 +223,39 @@ function QuadrantChart({
 
   return (
     <svg viewBox={`0 0 ${size} ${size}`} className="mx-auto w-full max-w-xs">
-      <line x1={center} y1={14} x2={center} y2={size - 14} stroke="#ECE7DC" strokeWidth="1.5" />
-      <line x1={14} y1={center} x2={size - 14} y2={center} stroke="#ECE7DC" strokeWidth="1.5" />
+      <defs>
+        <marker
+          id="quadrant-arrow"
+          viewBox="0 0 10 10"
+          refX="5"
+          refY="5"
+          markerWidth="6"
+          markerHeight="6"
+          orient="auto-start-reverse"
+        >
+          <path d="M0,0 L10,5 L0,10 Z" fill="#ECE7DC" />
+        </marker>
+      </defs>
+      <line
+        x1={center}
+        y1={18}
+        x2={center}
+        y2={size - 18}
+        stroke="#ECE7DC"
+        strokeWidth="1.5"
+        markerStart="url(#quadrant-arrow)"
+        markerEnd="url(#quadrant-arrow)"
+      />
+      <line
+        x1={18}
+        y1={center}
+        x2={size - 18}
+        y2={center}
+        stroke="#ECE7DC"
+        strokeWidth="1.5"
+        markerStart="url(#quadrant-arrow)"
+        markerEnd="url(#quadrant-arrow)"
+      />
       <text x={center} y={12} textAnchor="middle" fontSize="11" fill="#6B6B6B" fontFamily="var(--font-body)">More Expressive</text>
       <text x={center} y={size - 4} textAnchor="middle" fontSize="11" fill="#6B6B6B" fontFamily="var(--font-body)">More Reserved</text>
       <text x={10} y={center} textAnchor="start" fontSize="11" fill="#6B6B6B" fontFamily="var(--font-body)" transform={`rotate(-90 10 ${center})`}>More Sensitive</text>
