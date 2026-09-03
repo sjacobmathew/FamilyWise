@@ -84,7 +84,7 @@ export const TEMPERAMENT_FAMILY_STRENGTH_HEADLINE: Record<string, Headline> = {
     description: "This family brings energy, laughter and connection everywhere it goes.",
   },
   choleric: {
-    title: "Balanced Leadership",
+    title: "Natural Leadership",
     description: "Clear direction and follow-through keep this family moving forward.",
   },
   melancholic: {

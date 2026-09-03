@@ -742,8 +742,8 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                     {growthAreas.length === 0 ? (
                       <p className="text-sm text-walnut-soft">Add a few more results to see this.</p>
                     ) : (
-                      growthAreas.map((g) => (
-                        <div key={g.title} className="flex items-start gap-3">
+                      growthAreas.map((g, i) => (
+                        <div key={i} className="flex items-start gap-3">
                           <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sienna-soft text-sienna">
                             <CheckCircleIcon className="h-4 w-4" />
                           </span>
@@ -764,8 +764,8 @@ export default function FamilySummaryView({ quizzes }: { quizzes: Quiz[] }) {
                   {strengths.length === 0 ? (
                     <p className="text-sm text-walnut-soft">Add a few more results to see this.</p>
                   ) : (
-                    strengths.map((s) => (
-                      <div key={s.title} className="flex items-start gap-3">
+                    strengths.map((s, i) => (
+                      <div key={i} className="flex items-start gap-3">
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest-soft text-forest">
                           <SproutIcon className="h-4 w-4" />
                         </span>
