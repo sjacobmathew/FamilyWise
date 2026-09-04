@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoMark, PersonIcon } from "@/components/HomeIcons";
+import { LogoMark } from "@/components/HomeIcons";
 
 const LINKS = [
   { label: "Home", href: "/" },
@@ -27,14 +27,6 @@ export default function SiteNav() {
             </Link>
           ))}
         </nav>
-
-        <Link
-          href="/#assessments"
-          className="flex items-center gap-2 rounded-full bg-[#1C1C1C] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#333]"
-        >
-          <PersonIcon className="h-4 w-4" />
-          Get started
-        </Link>
       </div>
     </header>
   );
