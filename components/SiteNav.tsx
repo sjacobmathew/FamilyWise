@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { LogoMark } from "@/components/HomeIcons";
+import { LogoMark, HomeIcon } from "@/components/HomeIcons";
 
 const LINKS = [
   { label: "Home", href: "/" },
   { label: "How it works", href: "/#how-it-works" },
-  { label: "Family Summary", href: "/family-summary" },
 ];
 
 export default function SiteNav() {
@@ -16,17 +15,30 @@ export default function SiteNav() {
           <span className="font-display text-xl font-semibold">FamilyWise</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {LINKS.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="text-[15px] font-medium text-[#3B3B3B] transition hover:text-[#1C1C1C]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex items-center gap-8">
+          <nav className="hidden items-center gap-8 md:flex">
+            {LINKS.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-[15px] font-medium text-[#3B3B3B] transition hover:text-[#1C1C1C]"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Called out as a button, not a plain nav link — this is a
+              real feature worth surfacing, not something to leave
+              easy to miss in the corner. */}
+          <Link
+            href="/family-summary"
+            className="flex items-center gap-2 rounded-full bg-[#1C1C1C] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#333]"
+          >
+            <HomeIcon className="h-4 w-4" />
+            Family Summary
+          </Link>
+        </div>
       </div>
     </header>
   );
