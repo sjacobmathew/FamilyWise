@@ -2,7 +2,32 @@ import Link from "next/link";
 import Image from "next/image";
 import { getQuizzesByCategory } from "@/lib/quizzes";
 import ExploreCategories from "@/components/ExploreCategories";
-import { HeartIcon, LockIcon, PlayIcon } from "@/components/HomeIcons";
+import {
+  HeartIcon,
+  LockIcon,
+  PlayIcon,
+  PersonIcon,
+  TwoPersonIcon,
+  HomeIcon,
+} from "@/components/HomeIcons";
+
+const HOW_IT_WORKS_STEPS = [
+  {
+    Icon: PersonIcon,
+    title: "Take a quiz",
+    body: "Pick a Parenting, Personality, or Relationships assessment and answer honestly — most take just a few minutes.",
+  },
+  {
+    Icon: TwoPersonIcon,
+    title: "Compare with your spouse",
+    body: "Take it together live, or each upload your own results PDF, and see a side-by-side “How We Compare” view.",
+  },
+  {
+    Icon: HomeIcon,
+    title: "Bring your whole family together",
+    body: "Drop in results from everyone — parents and kids — on the Family Summary page for one shared dashboard.",
+  },
+];
 
 export default function Home() {
   const groups = getQuizzesByCategory();
@@ -42,7 +67,7 @@ export default function Home() {
                 Explore assessments →
               </Link>
               <Link
-                href="#assessments"
+                href="#how-it-works"
                 className="flex items-center gap-2 rounded-full border border-[#D8D3C8] bg-white px-5 py-3.5 text-base font-semibold text-[#1C1C1C] transition hover:border-[#1C1C1C]"
               >
                 <span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#1C1C1C]">
@@ -72,6 +97,46 @@ export default function Home() {
             }}
             className="mx-auto w-full max-w-md"
           />
+        </div>
+      </section>
+
+      {/* ---------- How it works ---------- */}
+      <section id="how-it-works" className="border-t border-[#ECE7DC] bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-semibold sm:text-4xl">
+              See how it works
+            </h2>
+            <p className="mt-3 text-lg text-[#6B6B6B]">
+              From picking an assessment to seeing your whole family&apos;s
+              results together.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-3xl border border-[#ECE7DC] shadow-sm">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/how-it-works.gif"
+              alt="Walkthrough of FamilyWise: browsing assessments, taking the Parenting Style quiz, viewing personalized results, and building a Family Summary dashboard from multiple family members' results"
+              className="w-full"
+            />
+          </div>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            {HOW_IT_WORKS_STEPS.map(({ Icon, title, body }, i) => (
+              <div key={title} className="text-center sm:text-left">
+                <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-[#F6EDE3] text-[#1C1C1C] sm:mx-0">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="font-display mt-4 text-xl font-semibold">
+                  {i + 1}. {title}
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-[#6B6B6B]">
+                  {body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

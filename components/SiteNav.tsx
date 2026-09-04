@@ -3,7 +3,7 @@ import { LogoMark, PersonIcon } from "@/components/HomeIcons";
 
 const LINKS = [
   { label: "Home", href: "/" },
-  { label: "How it works", href: "/#assessments" },
+  { label: "How it works", href: "/#how-it-works" },
   { label: "Family Summary", href: "/family-summary" },
 ];
 
