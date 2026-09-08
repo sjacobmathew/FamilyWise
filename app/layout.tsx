@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito, Fraunces } from "next/font/google";
 import "./globals.css";
 import SiteNav from "@/components/SiteNav";
+import { Analytics } from "@vercel/analytics/next";
 
 const bodyFont = Nunito({
   variable: "--font-body",
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-paper text-walnut">
         <SiteNav />
         {children}
+        <Analytics />
       </body>
     </html>
   );
