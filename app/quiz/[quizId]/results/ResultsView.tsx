@@ -27,6 +27,7 @@ import {
   TwoPersonIcon,
 } from "@/components/HomeIcons";
 import { childAnswersKey, rosterKey } from "@/lib/childRoster";
+import { LOVE_LANGUAGE_SAINTS } from "@/lib/loveLanguageSaints";
 
 const ANSWERS_STORAGE_PREFIX = "familywise:answers:";
 
@@ -233,13 +234,21 @@ function SingleResult({
     secondary && secondary.value > 0 && results[secondary.tag]
       ? normalizeResultContent(results[secondary.tag])
       : null;
+  const primarySaint =
+    quiz.quizId === "love-languages" && LOVE_LANGUAGE_SAINTS[primary.tag]
+      ? { tag: primary.tag, saint: LOVE_LANGUAGE_SAINTS[primary.tag] }
+      : null;
 
   return (
     <div className="flex flex-col gap-6">
       {quiz.quizId === "parenting-style" ? (
         <ParentingStyleResult quiz={quiz} primary={primary} result={primaryResult} />
       ) : (
-        <ResultCard result={primaryResult} eyebrow="Your result" />
+        <ResultCard
+          result={primaryResult}
+          eyebrow="Your result"
+          patronSaint={primarySaint}
+        />
       )}
       {secondaryResult && (
         <div className="rounded-2xl border border-border bg-card p-5">
@@ -408,7 +417,19 @@ function MultiSubjectResultsView({ quiz }: { quiz: Quiz }) {
             />
           ) : (
             <div key={c.name} className="flex flex-col gap-6">
-              <ResultCard result={c.dominant} eyebrow={`${c.name}'s result`} />
+              <ResultCard
+                result={c.dominant}
+                eyebrow={`${c.name}'s result`}
+                patronSaint={
+                  quiz.quizId === "love-languages" &&
+                  LOVE_LANGUAGE_SAINTS[c.dominantTag]
+                    ? {
+                        tag: c.dominantTag,
+                        saint: LOVE_LANGUAGE_SAINTS[c.dominantTag],
+                      }
+                    : null
+                }
+              />
               {c.secondary && (
                 <div className="rounded-2xl border border-border bg-card p-5">
                   <span className="text-base font-semibold uppercase tracking-wide text-walnut-soft">

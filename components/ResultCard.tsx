@@ -1,11 +1,15 @@
 import type { NormalizedResult } from "@/lib/scoring";
+import type { SaintInfo } from "@/lib/loveLanguageSaints";
+import PatronSaintCard from "@/components/PatronSaintCard";
 
 export default function ResultCard({
   result,
   eyebrow,
+  patronSaint,
 }: {
   result: NormalizedResult;
   eyebrow?: string;
+  patronSaint?: { tag: string; saint: SaintInfo } | null;
 }) {
   return (
     <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
@@ -75,6 +79,10 @@ export default function ResultCard({
             ))}
           </ul>
         </div>
+      )}
+
+      {patronSaint && (
+        <PatronSaintCard tag={patronSaint.tag} saint={patronSaint.saint} />
       )}
     </div>
   );
