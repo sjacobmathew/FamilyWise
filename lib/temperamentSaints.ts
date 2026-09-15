@@ -20,6 +20,7 @@ export const TEMPERAMENT_SAINTS: Record<string, TemperamentSaintInfo> = {
     otherSaints: ["St. Peter", "St. Francis Xavier", "St. Francis of Assisi"],
     accent: "#C99A4B",
     accentSoft: "#F5EAD3",
+    image: { src: "/saints/st-teresa-of-avila.png", width: 436, height: 592 },
   },
   choleric: {
     name: "St. Paul",
@@ -33,6 +34,7 @@ export const TEMPERAMENT_SAINTS: Record<string, TemperamentSaintInfo> = {
     ],
     accent: "#D9776E",
     accentSoft: "#FBE1DE",
+    image: { src: "/saints/st-paul.png", width: 426, height: 510 },
   },
   melancholic: {
     name: "St. John the Apostle",
@@ -41,6 +43,7 @@ export const TEMPERAMENT_SAINTS: Record<string, TemperamentSaintInfo> = {
     otherSaints: ["St. John Henry Newman", "St. Therese", "St. Bernard of Clairvaux"],
     accent: "#9B90C9",
     accentSoft: "#EFEBF9",
+    image: { src: "/saints/st-john-the-apostle.png", width: 376, height: 572 },
   },
   phlegmatic: {
     name: "St. Thomas Aquinas",
@@ -49,5 +52,6 @@ export const TEMPERAMENT_SAINTS: Record<string, TemperamentSaintInfo> = {
     otherSaints: ["Pope St. John XXIII", "St. Faustina"],
     accent: "#7EA3A1",
     accentSoft: "#E4EEED",
+    image: { src: "/saints/st-thomas-aquinas.png", width: 386, height: 564 },
   },
 };
