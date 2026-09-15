@@ -23,6 +23,15 @@ const PRAYERS = [
       "May they always know they are deeply loved — by You, by us, and by those who walk in Your grace. Bless their dreams, Lord, and help them to become who You created them to be.",
     ],
   },
+  {
+    title: "A Catholic Couples Prayer",
+    paragraphs: [
+      "Heavenly Father, thank you for the love you have implanted on our hearts. We humbly pray that by the help of your grace we learn love. Lord God, teach us how to love patiently and kindly. To not envy, nor boast nor be proud. To not dishonour one another, to not be self-seeking nor easily angered, to forgive and to keep no record of wrongs. Help us rejoice with the truth and not delight in evil. Teach us love that always protects, always trusts, always hopes, and always perseveres.",
+      "Lord Jesus, in your constant mercy and by your death on the cross you have shown us unconditional love. You prove your selfless love for us over and over again. Please teach us to love one another and love others with the same selfless love you have shown us. Help us reject selfish, self-seeking love. Free us to love differently and guide us by your Holy Spirit to have the wisdom and strength to discern and live out what is asked of us. We pray, above all else, that our love for you and our relationship with you is strengthened — that we may grow ever more close to you, and to each other, every single day.",
+      "Jesus, we invite you to be at the centre of our lives and at the centre of our relationship. Help us to keep our eyes fixed on you, to put you first, depend on you first, and not on each other. As sons and daughters of our Heavenly King, we pray that in our relationship we live the gospel with our whole lives, be witnesses to the world, bring light to others, and most of all bring glory to you, O Lord Jesus. Virgin Mary, Mother of God, and St. Joseph, her most chaste spouse, please pray for us — for a deeper conversion, trust and understanding, chastity, emotional purity, and a God-honouring relationship.",
+      "St. Maria Goretti, St. Ignatius, St. Augustine, St. Thérèse of Lisieux, St. Catherine of Siena, St. Patrick, St. Theresa, St. Francis Xavier — pray for us. Amen.",
+    ],
+  },
 ];
 
 const HOW_IT_WORKS_STEPS = [
@@ -130,11 +139,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-8">
+          <div className="mx-auto mt-10 grid max-w-5xl gap-8 sm:grid-cols-2">
             {PRAYERS.map((prayer) => (
               <div
                 key={prayer.title}
-                className="w-full max-w-md rounded-3xl border border-[#ECE7DC] bg-[#FBF6EC] p-8 shadow-sm sm:p-10"
+                className="rounded-3xl border border-[#ECE7DC] bg-[#FBF6EC] p-8 shadow-sm sm:p-10"
               >
                 <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#7C9473]">
                   <CrossIcon className="h-5 w-5" />
