@@ -29,6 +29,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     patronOf: "Patron saint of showing up.",
     accent: "#7C9473",
     accentSoft: "#E9F0E3",
+    image: { src: "/saints/st-zita.png", width: 1024, height: 1536 },
   },
   gifts: {
     name: "St. Nicholas",
@@ -37,6 +38,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     patronOf: "Patron saint of remembering what you love.",
     accent: "#C99A4B",
     accentSoft: "#F5EAD3",
+    image: { src: "/saints/st-nicholas.png", width: 800, height: 1536 },
   },
   time: {
     name: "St. Mary of Bethany",
@@ -45,6 +47,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     patronOf: "Patron saint of just being there.",
     accent: "#9B90C9",
     accentSoft: "#EFEBF9",
+    image: { src: "/saints/st-mary-of-bethany.png", width: 702, height: 1536 },
   },
   touch: {
     name: "St. Damien of Molokai",
@@ -53,5 +56,6 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     patronOf: "Patron saint of not flinching away.",
     accent: "#7EA3A1",
     accentSoft: "#E4EEED",
+    image: { src: "/saints/st-damien-of-molokai.png", width: 810, height: 1536 },
   },
 };
