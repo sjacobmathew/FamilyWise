@@ -6,6 +6,7 @@ import {
   CheckCircleIcon,
   GiftIcon,
   HandIcon,
+  CrossIcon,
 } from "@/components/HomeIcons";
 
 const LANGUAGE_ICON: Record<
@@ -97,6 +98,14 @@ export default function PatronSaintCard({
           >
             {saint.patronOf}
           </p>
+
+          <span
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-[#FBFAF7] px-3.5 py-1.5 text-sm font-semibold"
+            style={{ color: saint.accent }}
+          >
+            <CrossIcon className="h-3.5 w-3.5" />
+            Your prayer type: {saint.prayerType}
+          </span>
         </div>
       </div>
     </div>

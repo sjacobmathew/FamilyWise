@@ -7,6 +7,7 @@ export type SaintInfo = {
   name: string;
   story: string;
   patronOf: string;
+  prayerType: string;
   accent: string;
   accentSoft: string;
   image?: { src: string; width: number; height: number };
@@ -18,6 +19,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     story:
       "He wrote thousands of personal letters in his lifetime — to strangers, to people struggling in their faith, to anyone who needed encouragement. He believed gentleness did more good than fear ever could, and spent his life proving it.",
     patronOf: "Patron saint of hearing it said out loud.",
+    prayerType: "Vocal Prayer",
     accent: "#D98F89",
     accentSoft: "#FBE9E6",
     image: { src: "/saints/st-francis-de-sales.png", width: 920, height: 1526 },
@@ -27,6 +29,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     story:
       "She spent nearly sixty years in service to one household, doing ordinary work faithfully and without recognition. She shared what little she had with the poor and never expected anything in return.",
     patronOf: "Patron saint of showing up.",
+    prayerType: "Sacrificial Prayer",
     accent: "#7C9473",
     accentSoft: "#E9F0E3",
     image: { src: "/saints/st-zita.png", width: 1024, height: 1536 },
@@ -36,6 +39,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     story:
       "He heard that a poor father couldn't provide for his daughters, so — in the middle of the night, without being seen — he tossed bags of gold through the family's window. When he was finally caught in the act, he simply asked them not to tell anyone.",
     patronOf: "Patron saint of remembering what you love.",
+    prayerType: "Offering / Gratitude Prayer",
     accent: "#C99A4B",
     accentSoft: "#F5EAD3",
     image: { src: "/saints/st-nicholas.png", width: 800, height: 1536 },
@@ -45,6 +49,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     story:
       "While her sister Martha busied herself managing the household, Mary of Bethany chose to simply sit at Jesus's feet and stay there. When Martha complained, Jesus told her Mary had chosen the better part — and it would not be taken from her.",
     patronOf: "Patron saint of just being there.",
+    prayerType: "Meditation",
     accent: "#9B90C9",
     accentSoft: "#EFEBF9",
     image: { src: "/saints/st-mary-of-bethany.png", width: 702, height: 1536 },
@@ -54,6 +59,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     story:
       "He moved to a leper colony in Hawaii when almost no one else would go near it. For sixteen years he tended wounds with his own hands and built homes and a church alongside the people there — and in time, he contracted the disease himself.",
     patronOf: "Patron saint of not flinching away.",
+    prayerType: "Rosary and Adoration",
     accent: "#7EA3A1",
     accentSoft: "#E4EEED",
     image: { src: "/saints/st-damien-of-molokai.png", width: 810, height: 1536 },
