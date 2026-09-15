@@ -81,8 +81,8 @@
       "name": "Relatives / Friends"
     },
     {
-      "id": "jesusyouth",
-      "name": "Jesus Youth Involvement",
+      "id": "ministry",
+      "name": "Church / Group Involvement",
       "optional": true
     }
   ],
@@ -162,7 +162,7 @@
     { "id": "q73", "text": "The degree to which we experience our relationship as growing in holiness", "category": "spirituality" },
     { "id": "q74", "text": "How well we can talk to each other about our spiritual lives", "category": "spirituality" },
     { "id": "q75", "text": "How intentional we are in building the Kingdom of God in our family", "category": "spirituality" },
-    { "id": "q76", "text": "How united we are in sharing Christ's salvation with others (in Jesus Youth, parish, neighbourhood etc)", "category": "spirituality" },
+    { "id": "q76", "text": "How united we are in sharing Christ's salvation with others (through our church, community group, neighbourhood, etc)", "category": "spirituality" },
     { "id": "q77", "text": "Prominence given to Mass, Confession, family prayer, fellowship, bible reading as a family", "category": "spirituality" },
     { "id": "q78", "text": "The degree to which we are good friends", "category": "friendship" },
     { "id": "q79", "text": "The ease with which we laugh and smile together", "category": "friendship" },
@@ -176,17 +176,17 @@
     { "id": "q87", "text": "The closeness we have with your spouse's family is the same as ours", "category": "family" },
     { "id": "q88", "text": "How comfortable am I with my spouse's friends and the time he / she spends with them?", "category": "family" },
     { "id": "q89", "text": "The common friendships you have — are they mutually edifying", "category": "family" },
-    { "id": "q90", "text": "How comfortable am I about my spouse sharing about me in his/her close circles — eg. JY cell", "category": "family" },
-    { "id": "q91", "text": "How united are we in our involvement in Jesus Youth", "category": "jesusyouth" },
-    { "id": "q92", "text": "Do I feel supported by my spouse in my ministry commitments?", "category": "jesusyouth" },
-    { "id": "q93", "text": "Your involvement in Jesus Youth is helping you individually and as a family to love and serve Jesus better", "category": "jesusyouth" },
-    { "id": "q94", "text": "Does my charisms and talents find proper expression in the ministry and fellowship of the movement?", "category": "jesusyouth" },
-    { "id": "q95", "text": "Are we as a family able to balance the ministry and family commitments?", "category": "jesusyouth" },
-    { "id": "q96", "text": "Does our children benefit from their involvement in Jesus Youth activities?", "category": "jesusyouth" },
-    { "id": "q97", "text": "I really feel accepted and loved in Jesus Youth fellowships", "category": "jesusyouth" },
-    { "id": "q98", "text": "I am happy with the way we help youngsters and other families in their faith life?", "category": "jesusyouth" },
-    { "id": "q99", "text": "Involvement in JY activities and living the six pillars is helping in my journey of holiness", "category": "jesusyouth" },
-    { "id": "q100", "text": "I have met people in the movement who challenge me to love God and serve others in a better way", "category": "jesusyouth" }
+    { "id": "q90", "text": "How comfortable am I about my spouse sharing about me in their close circles — eg. a small group or fellowship", "category": "family" },
+    { "id": "q91", "text": "How united are we in our involvement in our church or faith community", "category": "ministry" },
+    { "id": "q92", "text": "Do I feel supported by my spouse in my ministry commitments?", "category": "ministry" },
+    { "id": "q93", "text": "Your involvement in this ministry is helping you individually and as a family to love and serve Jesus better", "category": "ministry" },
+    { "id": "q94", "text": "Does my charisms and talents find proper expression in the ministry and fellowship of this group?", "category": "ministry" },
+    { "id": "q95", "text": "Are we as a family able to balance the ministry and family commitments?", "category": "ministry" },
+    { "id": "q96", "text": "Do our children benefit from their involvement in this group's activities?", "category": "ministry" },
+    { "id": "q97", "text": "I really feel accepted and loved in our church or group fellowship", "category": "ministry" },
+    { "id": "q98", "text": "I am happy with the way we help youngsters and other families in their faith life?", "category": "ministry" },
+    { "id": "q99", "text": "Involvement in this ministry and living out its values is helping in my journey of holiness", "category": "ministry" },
+    { "id": "q100", "text": "I have met people in this group who challenge me to love God and serve others in a better way", "category": "ministry" }
   ],
   "scoring": {
     "method": "average the 1-5 scores within each category; also compute an overall average across all 100 items. Categories averaging below 3 are 'areas to focus on'; 3-4 are 'solid ground'; above 4 are 'a real strength'."

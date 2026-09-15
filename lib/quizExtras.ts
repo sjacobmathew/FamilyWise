@@ -37,7 +37,7 @@ export const CATEGORY_INFO: Record<string, string> = {
   spirituality: "How aligned you are in faith, values, and what you're building your life around.",
   friendship: "How much you genuinely enjoy each other's company as friends.",
   family: "How you navigate boundaries with extended family and friends.",
-  jesusyouth: "Your shared involvement in Jesus Youth and how it fits into your marriage.",
+  ministry: "Your shared involvement in a church or ministry group and how it fits into your marriage.",
 };
 
 export const DEFAULT_CATEGORY_INFO =

@@ -43,7 +43,7 @@ const CATEGORY_ICON: Record<string, (p: { className?: string }) => React.ReactNo
   spirituality: StarIcon,
   friendship: TwoPersonIcon,
   family: HomeIcon,
-  jesusyouth: LeafSprig,
+  ministry: LeafSprig,
 };
 
 function Donut({
