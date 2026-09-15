@@ -15,7 +15,7 @@ const PRAYERS = [
     ],
   },
   {
-    title: "A Catholic Couples Prayer",
+    title: "A Prayer for Our Marriage",
     paragraphs: [
       "Heavenly Father, thank you for the love you have implanted on our hearts. We humbly pray that by the help of your grace we learn love. Lord God, teach us how to love patiently and kindly. To not envy, nor boast nor be proud. To not dishonour one another, to not be self-seeking nor easily angered, to forgive and to keep no record of wrongs. Help us rejoice with the truth and not delight in evil. Teach us love that always protects, always trusts, always hopes, and always perseveres.",
       "Lord Jesus, in your constant mercy and by your death on the cross you have shown us unconditional love. You prove your selfless love for us over and over again. Please teach us to love one another and love others with the same selfless love you have shown us. Help us reject selfish, self-seeking love. Free us to love differently and guide us by your Holy Spirit to have the wisdom and strength to discern and live out what is asked of us. We pray, above all else, that our love for you and our relationship with you is strengthened — that we may grow ever more close to you, and to each other, every single day.",
