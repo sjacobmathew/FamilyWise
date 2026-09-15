@@ -96,7 +96,7 @@ export default function Home() {
               WebkitMaskImage:
                 "radial-gradient(ellipse 68% 68% at center, black 45%, transparent 85%)",
             }}
-            className="mx-auto w-full max-w-md"
+            className="mx-auto w-full"
           />
         </div>
       </section>
