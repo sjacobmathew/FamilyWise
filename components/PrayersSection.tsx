@@ -83,11 +83,7 @@ export default function PrayersSection() {
     <section id="prayers" className="border-t border-[#ECE7DC] bg-[#FBFAF7]">
       <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <div className="text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[#F6EDE3] px-4 py-1.5 text-sm font-medium text-[#5A4C3C]">
-            <CrossIcon className="h-4 w-4" />
-            A Catholic Prayer
-          </span>
-          <h2 className="font-display mt-4 text-3xl font-semibold sm:text-4xl">
+          <h2 className="font-display text-3xl font-semibold sm:text-4xl">
             Prayers for Families
           </h2>
           <p className="mt-3 text-lg text-[#6B6B6B]">
