@@ -5,6 +5,8 @@ import {
   DEFAULT_GLANCE,
   splitTip,
 } from "@/lib/childTemperamentContent";
+import { TEMPERAMENT_SAINTS } from "@/lib/temperamentSaints";
+import TemperamentSaintCard from "@/components/TemperamentSaintCard";
 import {
   BellIcon,
   BrainIcon,
@@ -47,6 +49,8 @@ export default function ChildTemperamentResult({
 }) {
   const ThemeIcon = THEME_ICON[dominantTag] ?? SunIcon;
   const glance = TEMPERAMENT_GLANCE[dominantTag] ?? DEFAULT_GLANCE;
+  const saint =
+    quizId === "temperament" ? TEMPERAMENT_SAINTS[dominantTag] : null;
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
@@ -163,6 +167,8 @@ export default function ChildTemperamentResult({
             </ul>
           </div>
         )}
+
+        {saint && <TemperamentSaintCard tag={dominantTag} saint={saint} />}
       </div>
 
       {/* right sidebar */}
