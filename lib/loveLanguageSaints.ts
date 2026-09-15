@@ -9,6 +9,7 @@ export type SaintInfo = {
   patronOf: string;
   accent: string;
   accentSoft: string;
+  image?: { src: string; width: number; height: number };
 };
 
 export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
@@ -19,6 +20,7 @@ export const LOVE_LANGUAGE_SAINTS: Record<string, SaintInfo> = {
     patronOf: "Patron saint of hearing it said out loud.",
     accent: "#D98F89",
     accentSoft: "#FBE9E6",
+    image: { src: "/saints/st-francis-de-sales.png", width: 920, height: 1526 },
   },
   service: {
     name: "St. Zita",
