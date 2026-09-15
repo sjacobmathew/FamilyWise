@@ -85,10 +85,10 @@ export default function Home() {
           </div>
 
           <Image
-            src="/hero-family.jpeg"
-            alt="Illustration of a family of four embracing"
-            width={1076}
-            height={976}
+            src="/hero-holy-family.png"
+            alt="Illustration of the Holy Family — Mary, Joseph, and the child Jesus holding a lamb"
+            width={1536}
+            height={1024}
             priority
             style={{
               maskImage:
