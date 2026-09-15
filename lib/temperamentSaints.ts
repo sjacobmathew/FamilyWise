@@ -7,6 +7,7 @@ export type TemperamentSaintInfo = {
   bibleVerse: string;
   bibleReference: string;
   otherSaints: string[];
+  bestFormsOfPrayer: string[];
   accent: string;
   accentSoft: string;
   image?: { src: string; width: number; height: number };
@@ -18,6 +19,11 @@ export const TEMPERAMENT_SAINTS: Record<string, TemperamentSaintInfo> = {
     bibleVerse: "Rejoice in the Lord always!",
     bibleReference: "Phil 4:4",
     otherSaints: ["St. Peter", "St. Francis Xavier", "St. Francis of Assisi"],
+    bestFormsOfPrayer: [
+      "Short daily devotions to build consistency",
+      "Journaling to process feelings",
+      "Listening to praise and worship",
+    ],
     accent: "#C99A4B",
     accentSoft: "#F5EAD3",
     image: { src: "/saints/st-teresa-of-avila.png", width: 436, height: 592 },
@@ -32,6 +38,11 @@ export const TEMPERAMENT_SAINTS: Record<string, TemperamentSaintInfo> = {
       "St. Jerome",
       "Mother Angelica",
     ],
+    bestFormsOfPrayer: [
+      "Fasting and mortifications",
+      "Intercessory prayer",
+      "Liturgy of the Hours",
+    ],
     accent: "#D9776E",
     accentSoft: "#FBE1DE",
     image: { src: "/saints/st-paul.png", width: 426, height: 510 },
@@ -41,6 +52,11 @@ export const TEMPERAMENT_SAINTS: Record<string, TemperamentSaintInfo> = {
     bibleVerse: "Weeping may endure for a night but joy comes with the morning.",
     bibleReference: "Psalm 30:6",
     otherSaints: ["St. John Henry Newman", "St. Therese", "St. Bernard of Clairvaux"],
+    bestFormsOfPrayer: [
+      "Mental prayer",
+      "Ignatian contemplation",
+      "The Rosary and Divine Mercy Chaplet",
+    ],
     accent: "#9B90C9",
     accentSoft: "#EFEBF9",
     image: { src: "/saints/st-john-the-apostle.png", width: 376, height: 572 },
@@ -50,6 +66,11 @@ export const TEMPERAMENT_SAINTS: Record<string, TemperamentSaintInfo> = {
     bibleVerse: "Blessed are the peacemakers, for they will be called children of God.",
     bibleReference: "Matt 5:9",
     otherSaints: ["Pope St. John XXIII", "St. Faustina"],
+    bestFormsOfPrayer: [
+      "Spiritual reading",
+      "Silent adoration",
+      "Simple daily prayer habits, like a daily examen",
+    ],
     accent: "#7EA3A1",
     accentSoft: "#E4EEED",
     image: { src: "/saints/st-thomas-aquinas.png", width: 386, height: 564 },
