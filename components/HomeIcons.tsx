@@ -395,6 +395,14 @@ export function HandIcon({ className = "h-6 w-6" }: IconProps) {
   );
 }
 
+export function CrossIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M12 3v18M7 9h10" />
+    </svg>
+  );
+}
+
 export function ChevronRightIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg {...base} strokeWidth={2} className={className} aria-hidden="true">

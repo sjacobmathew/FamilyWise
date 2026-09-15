@@ -9,7 +9,21 @@ import {
   PersonIcon,
   TwoPersonIcon,
   HomeIcon,
+  CrossIcon,
 } from "@/components/HomeIcons";
+
+const PRAYERS = [
+  {
+    title: "A Prayer for Our Children",
+    paragraphs: [
+      "Heavenly Father, we come before You with grateful hearts, lifting up our children into Your loving hands. You are the Giver of life, the Source of wisdom, and the Keeper of every promise.",
+      "Lord, surround our children with Your divine protection. Shield them from harm, evil influences, and fear. Let Your angels guard their steps wherever they go, and let Your light guide their path each day.",
+      "Grant them wisdom to make right choices, a heart that loves truth and goodness, and faith that grows stronger even in difficult times.",
+      "Fill their minds with peace, their hearts with compassion, and their spirits with courage to stand firm in righteousness.",
+      "May they always know they are deeply loved — by You, by us, and by those who walk in Your grace. Bless their dreams, Lord, and help them to become who You created them to be.",
+    ],
+  },
+];
 
 const HOW_IT_WORKS_STEPS = [
   {
@@ -97,6 +111,50 @@ export default function Home() {
             }}
             className="mx-auto w-full max-w-md"
           />
+        </div>
+      </section>
+
+      {/* ---------- Prayers ---------- */}
+      <section id="prayers" className="border-t border-[#ECE7DC] bg-[#FBFAF7]">
+        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+          <div className="text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-[#F6EDE3] px-4 py-1.5 text-sm font-medium text-[#5A4C3C]">
+              <CrossIcon className="h-4 w-4" />
+              A Catholic Prayer
+            </span>
+            <h2 className="font-display mt-4 text-3xl font-semibold sm:text-4xl">
+              Prayers for Families
+            </h2>
+            <p className="mt-3 text-lg text-[#6B6B6B]">
+              A few words to carry with you, for the people you love most.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-10 flex max-w-4xl flex-wrap justify-center gap-8">
+            {PRAYERS.map((prayer) => (
+              <div
+                key={prayer.title}
+                className="w-full max-w-md rounded-3xl border border-[#ECE7DC] bg-[#FBF6EC] p-8 shadow-sm sm:p-10"
+              >
+                <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-white text-[#7C9473]">
+                  <CrossIcon className="h-5 w-5" />
+                </span>
+                <h3 className="font-display mt-5 text-center text-2xl font-semibold">
+                  {prayer.title}
+                </h3>
+                <div className="mt-5 flex flex-col gap-4">
+                  {prayer.paragraphs.map((p, i) => (
+                    <p
+                      key={i}
+                      className="text-center text-base italic leading-relaxed text-[#4A4A4A]"
+                    >
+                      {p}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
