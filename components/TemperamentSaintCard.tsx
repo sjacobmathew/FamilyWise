@@ -96,11 +96,11 @@ export default function TemperamentSaintCard({
           <p className="mt-4 text-sm font-semibold uppercase tracking-wide text-walnut-soft">
             Best forms of prayer for {label}s
           </p>
-          <ul className="mt-1 flex flex-col gap-1">
+          <ul className="mt-1 inline-flex flex-col items-start gap-1 text-left">
             {saint.bestFormsOfPrayer.map((form) => (
               <li
                 key={form}
-                className="flex items-start justify-center gap-2 text-base text-walnut-soft sm:justify-start"
+                className="flex items-start gap-2 text-base text-walnut-soft"
               >
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: saint.accent }} />
                 {form}
