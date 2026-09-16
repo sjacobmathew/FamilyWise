@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Nunito, Fraunces } from "next/font/google";
 import "./globals.css";
 import SiteNav from "@/components/SiteNav";
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-paper text-walnut">
         <SiteNav />
         {children}
+        <Analytics />
       </body>
     </html>
   );
