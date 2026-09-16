@@ -97,7 +97,7 @@ export default function SteppedQuestionsFlow({
 
   return (
     <div className="flex-1 bg-paper">
-      <div className="border-b border-border bg-card">
+      <div className="sticky top-[73px] z-20 border-b border-border bg-card shadow-sm">
         <div className="mx-auto max-w-5xl px-6 py-4">
           <Link
             href={isPerChild ? `/quiz/${quiz.quizId}` : "/"}
