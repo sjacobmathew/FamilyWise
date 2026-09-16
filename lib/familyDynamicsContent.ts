@@ -143,6 +143,22 @@ export const PARENTING_STYLE_FAMILY_HEADLINE: Record<string, Headline> = {
     title: "Room to Reconnect",
     description: "There's an opportunity to build more regular one-on-one time.",
   },
+  helicopter: {
+    title: "Hands-On Support",
+    description: "Every problem gets noticed and addressed quickly in this family.",
+  },
+  positive: {
+    title: "Warm & Boundaried",
+    description: "Firm limits are held with empathy, not force.",
+  },
+  freerange: {
+    title: "Room to Grow",
+    description: "Kids here get real independence to build confidence on their own.",
+  },
+  attachment: {
+    title: "Close Connection",
+    description: "Physical closeness and quick responsiveness anchor this family.",
+  },
 };
 
 /** Given tag → count maps, returns the tag with the highest count (ties
