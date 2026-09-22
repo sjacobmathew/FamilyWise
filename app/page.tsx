@@ -101,6 +101,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ---------- Our Why ---------- */}
+      <section className="border-t border-[#ECE7DC] bg-white">
+        <div className="mx-auto max-w-3xl px-6 py-16 text-center sm:py-20">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#F6EDE3] px-4 py-1.5 text-sm font-medium text-[#5A4C3C]">
+            <HeartIcon className="h-4 w-4" />
+            Why FamilyWise
+          </span>
+
+          <blockquote className="mt-8">
+            <p className="font-display text-2xl font-medium italic leading-snug text-[#1C1C1C] sm:text-3xl">
+              &ldquo;The family has the mission to become more and more what
+              it is, that is, a community of life and love.&rdquo;
+            </p>
+            <cite className="mt-3 block text-base not-italic text-[#8A8A8A]">
+              — St. John Paul II
+            </cite>
+          </blockquote>
+
+          <div className="mx-auto mt-10 flex max-w-2xl flex-col gap-5 text-lg leading-relaxed text-[#5B5B5B]">
+            <p>
+              Our families are one of the greatest gifts God has entrusted to
+              us — and also one of the places where we learn to love,
+              forgive, serve, grow and become more like Christ.
+            </p>
+            <p>
+              FamilyWise was created with this in mind: a space to help you
+              understand the people you love a little better — your
+              temperament, your spouse&apos;s love language, your marriage,
+              your parenting style, and your children&apos;s unique
+              personalities.
+            </p>
+            <p>
+              Along the way, you can also discover saints who share similar
+              personality traits, and different ways to pray.
+            </p>
+            <p className="font-display text-xl font-semibold text-[#1C1C1C]">
+              The hope is simple: to understand one another better, love one
+              another more intentionally, and grow together as a family
+              rooted in Christ.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ---------- Prayers ---------- */}
       <PrayersSection />
 
