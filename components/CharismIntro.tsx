@@ -108,11 +108,13 @@ export default function CharismIntro({
                 ))}
               </div>
             )}
-            <p>
-              It teaches that there are different spiritual gifts, forms of service, and
-              workings, but the same Spirit and the same Lord — and that the manifestation
-              of the Spirit is given for the benefit of others.
-            </p>
+            {SCRIPTURE_TEXT.length === 0 && (
+              <p>
+                It teaches that there are different spiritual gifts, forms of service,
+                and workings, but the same Spirit and the same Lord — and that the
+                manifestation of the Spirit is given for the benefit of others.
+              </p>
+            )}
           </IntroCard>
 
           <IntroCard icon={<StarIcon className="h-5 w-5" />} title="About the assessment">

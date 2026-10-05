@@ -79,10 +79,12 @@ export function ordinal(rank: number): string {
  * paragraph. While empty, the intro shows the invitation to pray without it. */
 export const OPENING_PRAYER: string[] = [];
 
-/** 1 Corinthians 12:4–11, in the exact wording used by that same source PDF.
+/** The scripture passage, in the exact wording used by that same source PDF.
  * One string per paragraph. While empty, the intro shows the reference and a
  * summary only. */
-export const SCRIPTURE_TEXT: string[] = [];
+export const SCRIPTURE_TEXT: string[] = [
+  "\u201CThere are different kinds of spiritual gifts but the same Spirit; there are different forms of service but the same Lord; there are different workings but the same God who produces all of them in everyone. To each individual the manifestation of the Spirit is given for some benefit.\u201D",
+];
 
 export const SCRIPTURE_REFERENCE = "1 Corinthians 12:4–11";
 
