@@ -73,12 +73,6 @@ export function ordinal(rank: number): string {
 // Intro / results copy
 // ---------------------------------------------------------------------------
 
-/** The opening prayer, verbatim from the Saint Bernadette Catholic Church
- * Spiritual Gifts Assessment's introductory pages (the build spec asks for
- * their exact wording, not a rewrite). Paste it here, one string per
- * paragraph. While empty, the intro shows the invitation to pray without it. */
-export const OPENING_PRAYER: string[] = [];
-
 /** The scripture passage, in the exact wording used by that same source PDF.
  * One string per paragraph. While empty, the intro shows the reference and a
  * summary only. */

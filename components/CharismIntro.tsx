@@ -4,7 +4,6 @@ import Link from "next/link";
 import type { Quiz } from "@/lib/types";
 import {
   DISCERNMENT_NOTE,
-  OPENING_PRAYER,
   SCRIPTURE_REFERENCE,
   SCRIPTURE_TEXT,
 } from "@/lib/charism";
@@ -88,13 +87,6 @@ export default function CharismIntro({
               the gifts God has given you, to seek His will, and to be guided by the Holy
               Spirit as you answer honestly.
             </p>
-            {OPENING_PRAYER.length > 0 && (
-              <div className="flex flex-col gap-3 rounded-2xl bg-[#FBF6EC] p-5 text-center italic text-[#4A4A4A]">
-                {OPENING_PRAYER.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            )}
           </IntroCard>
 
           <IntroCard icon={<BookmarkIcon className="h-5 w-5" />} title="Scripture foundation">
