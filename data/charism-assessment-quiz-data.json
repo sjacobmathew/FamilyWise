@@ -5,6 +5,7 @@
   "flow": "rating-scale-then-result",
   "category": "Personality",
   "answerDisplay": "numbers",
+  "compact": true,
   "answerPrompt": "Choose how true this is of you as you actually are.",
   "estimatedMinutes": "15–20",
   "answerOptions": [

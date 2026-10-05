@@ -70,6 +70,9 @@ export type Quiz = {
   answerPrompt?: string;
   // Overrides the "Takes about N min" estimate, e.g. "15–20".
   estimatedMinutes?: string;
+  // Tighter type and spacing in the stepped flow so a whole question, its
+  // choices, and the Next button fit on one screen without scrolling.
+  compact?: boolean;
   categories?: QuizCategory[];
   questions: (RatingQuestion | ForcedChoiceQuestion)[];
   scoring?: { method?: string };

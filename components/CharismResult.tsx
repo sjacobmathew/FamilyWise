@@ -10,6 +10,7 @@ import {
   rankCharisms,
   strongestIndicatedCharisms,
 } from "@/lib/charism";
+import { CHARISM_VERSE_TEXT, VERSE_TRANSLATION } from "@/lib/charismVerses";
 import { BookmarkIcon, CrossIcon, LeafSprig, StarIcon } from "@/components/HomeIcons";
 
 // Accent per podium position; anything tied into the top group beyond the
@@ -104,7 +105,7 @@ export default function CharismResult({
                   {card.description}
                 </p>
 
-                <dl className="mt-6 grid gap-3 sm:grid-cols-2">
+                <dl className="mt-6 grid items-start gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
                   {card.saint && (
                     <div className="rounded-2xl bg-white/70 p-4">
                       <dt className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-walnut-soft">
@@ -121,6 +122,11 @@ export default function CharismResult({
                         Scripture
                       </dt>
                       <dd className="mt-1 text-lg font-semibold text-walnut">{card.scripture}</dd>
+                      {CHARISM_VERSE_TEXT[r.tag] && (
+                        <dd className="mt-2 text-base italic leading-relaxed text-walnut-soft">
+                          &ldquo;{CHARISM_VERSE_TEXT[r.tag]}&rdquo;
+                        </dd>
+                      )}
                     </div>
                   )}
                 </dl>
@@ -128,6 +134,10 @@ export default function CharismResult({
             );
           })}
         </div>
+        <p className="mt-4 text-xs text-walnut-soft">
+          Scripture quotations are from the {VERSE_TRANSLATION}, which is in the
+          public domain.
+        </p>
       </section>
 
       <section className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
