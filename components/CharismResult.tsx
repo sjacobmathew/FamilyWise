@@ -10,8 +10,15 @@ import {
   rankCharisms,
   strongestIndicatedCharisms,
 } from "@/lib/charism";
+import { CHARISM_EXAMPLES } from "@/lib/charismExamples";
 import { CHARISM_VERSE_TEXT, VERSE_TRANSLATION } from "@/lib/charismVerses";
-import { BookmarkIcon, CrossIcon, LeafSprig, StarIcon } from "@/components/HomeIcons";
+import {
+  BookmarkIcon,
+  CrossIcon,
+  LeafSprig,
+  SproutIcon,
+  StarIcon,
+} from "@/components/HomeIcons";
 
 // Accent per podium position; anything tied into the top group beyond the
 // third colour reuses the last one.
@@ -130,6 +137,29 @@ export default function CharismResult({
                     </div>
                   )}
                 </dl>
+
+                {CHARISM_EXAMPLES[r.tag] && (
+                  <div className="mt-3 rounded-2xl bg-white/70 p-4">
+                    <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-walnut-soft">
+                      <SproutIcon className="h-4 w-4" />
+                      Ways you might live this gift
+                    </h4>
+                    <ul className="mt-3 flex flex-col gap-2">
+                      {CHARISM_EXAMPLES[r.tag].map((example) => (
+                        <li
+                          key={example}
+                          className="flex items-start gap-3 text-base leading-relaxed text-walnut-soft"
+                        >
+                          <span
+                            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                            style={{ backgroundColor: theme.accent }}
+                          />
+                          {example}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </article>
             );
           })}
