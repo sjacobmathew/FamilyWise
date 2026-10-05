@@ -33,11 +33,11 @@ export const CHARISM_EXAMPLES: Record<string, string[]> = {
     "Bring drama, poetry, or photography into youth or children's ministry",
   ],
   teaching: [
-    "Teach children's faith formation, RCIA, or a youth class",
+    "Teach children's faith formation or a youth class",
     "Lead a Bible study or parish faith-sharing group",
     "Explain the faith to your children in everyday moments",
     "Tutor or coach students who are struggling",
-    "Prepare talks or lessons for parents, couples, or catechumens",
+    "Prepare talks or lessons for parents, couples, or newcomers to the faith",
   ],
   knowledge: [
     "Research and prepare material for a Bible study or faith-formation team",
@@ -120,7 +120,7 @@ export const CHARISM_EXAMPLES: Record<string, string[]> = {
     "Invite a friend or neighbor to Mass or a parish event",
     "Join an outreach team or a mission trip",
     "Share your faith story when the moment is natural",
-    "Help welcome seekers through RCIA or an introductory faith course",
+    "Help welcome seekers through an introductory faith course",
     "Witness to the faith through the way your family lives and serves",
   ],
   giving: [
