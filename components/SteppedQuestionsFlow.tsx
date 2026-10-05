@@ -78,6 +78,7 @@ const SIDEBAR_ILLUSTRATION: Record<string, string> = {
   "love-languages-child": "/kid-thinking.png",
   "parenting-style": "/parenting-family.png",
   temperament: "/temperament-couple.png",
+  "charism-assessment": "/charism-dove.png",
 };
 
 // Real pixel dimensions per quiz's illustration, so it doesn't get
@@ -88,6 +89,7 @@ const ILLUSTRATION_SIZE: Record<string, [number, number]> = {
   "love-languages-child": [520, 347],
   "parenting-style": [475, 340],
   temperament: [1536, 1024],
+  "charism-assessment": [571, 571],
 };
 
 export default function SteppedQuestionsFlow({
@@ -166,7 +168,7 @@ export default function SteppedQuestionsFlow({
               alt=""
               width={ILLUSTRATION_SIZE[quiz.quizId]?.[0] ?? 520}
               height={ILLUSTRATION_SIZE[quiz.quizId]?.[1] ?? 347}
-              className="w-full"
+              className={quiz.compact ? "mx-auto w-32" : "w-full"}
             />
           )}
           {quiz.category && (

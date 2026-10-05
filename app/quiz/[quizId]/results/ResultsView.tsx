@@ -293,6 +293,7 @@ const HEADER_ILLUSTRATION: Record<string, string> = {
   "love-languages-child": "/kid-thinking.png",
   "parenting-style": "/parenting-family.png",
   temperament: "/temperament-couple.png",
+  "charism-assessment": "/charism-dove.png",
 };
 
 const ILLUSTRATION_SIZE: Record<string, [number, number]> = {
@@ -300,6 +301,7 @@ const ILLUSTRATION_SIZE: Record<string, [number, number]> = {
   "/kid-thinking.png": [520, 347],
   "/parenting-family.png": [475, 340],
   "/temperament-couple.png": [1536, 1024],
+  "/charism-dove.png": [571, 571],
 };
 
 function ResultsHeaderIcon({ quizId }: { quizId: string }) {
@@ -312,7 +314,7 @@ function ResultsHeaderIcon({ quizId }: { quizId: string }) {
       alt=""
       width={width}
       height={height}
-      className="hidden w-64 shrink-0 sm:block"
+      className={`hidden shrink-0 sm:block ${width === height ? "w-44" : "w-64"}`}
     />
   );
 }

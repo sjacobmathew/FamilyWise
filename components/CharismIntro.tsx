@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import type { Quiz } from "@/lib/types";
 import {
   DISCERNMENT_NOTE,
@@ -68,6 +69,14 @@ export default function CharismIntro({
 
       <div className="mx-auto max-w-3xl px-6 pt-10">
         <div className="text-center">
+          <Image
+            src="/charism-dove.png"
+            alt=""
+            width={571}
+            height={571}
+            priority
+            className="mx-auto w-44 sm:w-48"
+          />
           <span className="inline-flex items-center gap-2 rounded-full bg-[#F6EDE3] px-4 py-1.5 text-sm font-medium text-[#5A4C3C]">
             <CrossIcon className="h-4 w-4" />
             Before you begin
