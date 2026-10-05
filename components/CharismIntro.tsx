@@ -70,7 +70,7 @@ export default function CharismIntro({
       <div className="mx-auto max-w-3xl px-6 pt-10">
         <div className="text-center">
           <Image
-            src="/charism-dove.png"
+            src="/charism-spirit-dove.png"
             alt=""
             width={571}
             height={571}

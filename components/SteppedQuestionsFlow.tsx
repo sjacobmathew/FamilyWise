@@ -78,7 +78,7 @@ const SIDEBAR_ILLUSTRATION: Record<string, string> = {
   "love-languages-child": "/kid-thinking.png",
   "parenting-style": "/parenting-family.png",
   temperament: "/temperament-couple.png",
-  "charism-assessment": "/charism-dove.png",
+  "charism-assessment": "/charism-spirit-dove.png",
 };
 
 // Real pixel dimensions per quiz's illustration, so it doesn't get
