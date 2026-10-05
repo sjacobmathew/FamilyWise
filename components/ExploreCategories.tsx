@@ -8,6 +8,7 @@ import {
   HeartIcon,
   PersonIcon,
   SmileyIcon,
+  StarIcon,
   TwoPersonIcon,
 } from "@/components/HomeIcons";
 
@@ -56,6 +57,8 @@ function iconForQuiz(quiz: Quiz) {
     case "parenting-style":
     case "temperament":
       return TwoPersonIcon;
+    case "charism-assessment":
+      return StarIcon;
     default:
       return PersonIcon;
   }

@@ -15,6 +15,8 @@ export const QUIZ_TIPS: Record<string, string> = {
     "Encourage picking whichever one feels more true, even if neither is exactly right.",
   "marriage-compatibility":
     "Think about how things usually are between you, not just recent events.",
+  "charism-assessment":
+    "Answer as you actually are, not as you think you should be — no charism is more spiritual than another. Your first honest response is usually the most useful.",
 };
 
 export const DEFAULT_TIP =

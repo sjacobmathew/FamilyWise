@@ -32,6 +32,9 @@ const SENTIMENT = [
   { bg: "#FBE9E6", color: "#D9776E", Icon: SadFaceIcon },
 ];
 
+// Neutral badge for quizzes whose scale shouldn't read as good/bad.
+const NUMERIC_BADGE = { bg: "#E9F0E3", color: "#7C9473" };
+
 // Per-quiz sidebar illustration — only quizzes with a matching image get
 // one; everything else falls back to the plain text intro.
 const SIDEBAR_ILLUSTRATION: Record<string, string> = {
@@ -147,7 +150,7 @@ export default function SteppedQuestionsFlow({
           <div className="mt-6 flex flex-col gap-3 text-sm text-walnut-soft">
             <span className="flex items-center gap-2">
               <ClockIcon className="h-5 w-5 text-forest" />
-              Takes about {estMinutes} min
+              Takes about {quiz.estimatedMinutes ?? estMinutes} min
             </span>
             <span className="flex items-center gap-2">
               <LockIcon className="h-4 w-4 text-forest" />
@@ -202,12 +205,15 @@ export default function SteppedQuestionsFlow({
                   {question.text}
                 </h2>
                 <p className="mt-2 text-base text-walnut-soft">
-                  Choose the answer that best describes it.
+                  {quiz.answerPrompt ?? "Choose the answer that best describes it."}
                 </p>
                 <div className="mt-6 flex flex-col gap-3">
                   {(quiz.answerOptions ?? []).map((option, i) => {
-                    const style = SENTIMENT[i % SENTIMENT.length];
-                    const Icon = style.Icon;
+                    const numeric = quiz.answerDisplay === "numbers";
+                    const style = numeric
+                      ? NUMERIC_BADGE
+                      : SENTIMENT[i % SENTIMENT.length];
+                    const Icon = numeric ? null : SENTIMENT[i % SENTIMENT.length].Icon;
                     const isSelected = selected === option.points;
                     return (
                       <button
@@ -224,7 +230,11 @@ export default function SteppedQuestionsFlow({
                           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
                           style={{ backgroundColor: style.bg, color: style.color }}
                         >
-                          <Icon className="h-5 w-5" />
+                          {Icon ? (
+                            <Icon className="h-5 w-5" />
+                          ) : (
+                            <span className="text-base font-bold">{option.points}</span>
+                          )}
                         </span>
                         <span className="text-lg text-walnut">
                           {option.label}

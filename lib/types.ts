@@ -32,6 +32,9 @@ export type ResultContent = {
   growthEdges?: string[];
   tips?: string[];
   parentingTips?: string[];
+  // Charism Assessment cards
+  saint?: string;
+  scripture?: string;
 };
 
 export type QuizCategory = {
@@ -59,6 +62,14 @@ export type Quiz = {
   category?: string;
   instructions?: string;
   answerOptions?: AnswerOption[];
+  // How each answer option's badge is drawn in the stepped flow: mood faces
+  // (default) or the option's numeric value, for scales where a frown would
+  // read as a judgment (e.g. "Rarely" on a gifts inventory).
+  answerDisplay?: "faces" | "numbers";
+  // The line shown under each question. Defaults to a generic prompt.
+  answerPrompt?: string;
+  // Overrides the "Takes about N min" estimate, e.g. "15–20".
+  estimatedMinutes?: string;
   categories?: QuizCategory[];
   questions: (RatingQuestion | ForcedChoiceQuestion)[];
   scoring?: { method?: string };

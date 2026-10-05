@@ -17,6 +17,8 @@ import ChildTemperamentResult from "@/components/ChildTemperamentResult";
 import MarriageResultCard from "@/components/MarriageResultCard";
 import MarriageCompareCard from "@/components/MarriageCompareCard";
 import ParentingStyleResult from "@/components/ParentingStyleResult";
+import CharismResult from "@/components/CharismResult";
+import { CHARISM_QUIZ_ID } from "@/lib/charism";
 import TemperamentCompareCard from "@/components/TemperamentCompareCard";
 import LoveLanguageCompareCard from "@/components/LoveLanguageCompareCard";
 import PrivacyNote from "@/components/PrivacyNote";
@@ -69,6 +71,7 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
 
   const isCategoryQuiz = quiz.flow === "rating-scale-by-category";
   const isParentingStyle = quiz.quizId === "parenting-style";
+  const isCharism = quiz.quizId === CHARISM_QUIZ_ID;
 
   return (
     <ResultsShell
@@ -79,7 +82,9 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
           ? "Here's a personalized look at your relationship and how you can grow together."
           : isParentingStyle
             ? "Here's your unique parenting style, along with your strengths, growth edges and personalized tips."
-            : undefined
+            : isCharism
+              ? "A prayerful look at the gifts the Holy Spirit may be developing in you."
+              : undefined
       }
       headerIcon={<ResultsHeaderIcon quizId={quiz.quizId} />}
       maxWidthClass={isCategoryQuiz || isParentingStyle ? "max-w-5xl" : "max-w-3xl"}
@@ -89,6 +94,8 @@ function SingleSubjectResultsView({ quiz }: { quiz: Quiz }) {
           quiz={quiz}
           answers={answers as Record<string, number>}
         />
+      ) : isCharism ? (
+        <CharismResult quiz={quiz} answers={answers as Record<string, number>} />
       ) : (
         <SingleResult quiz={quiz} answers={answers} />
       )}
