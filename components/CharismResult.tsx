@@ -10,6 +10,7 @@ import {
   rankCharisms,
   strongestIndicatedCharisms,
 } from "@/lib/charism";
+import CharismReferral from "@/components/CharismReferral";
 import { CHARISM_EXAMPLES } from "@/lib/charismExamples";
 import { CHARISM_VERSE_TEXT, VERSE_TRANSLATION } from "@/lib/charismVerses";
 import {
@@ -233,6 +234,8 @@ export default function CharismResult({
           <p className="mt-2 text-base leading-relaxed text-walnut-soft">{DISCERNMENT_NOTE}</p>
         </div>
       </section>
+
+      <CharismReferral />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import {
   SCRIPTURE_REFERENCE,
   SCRIPTURE_TEXT,
 } from "@/lib/charism";
+import CharismReferral from "@/components/CharismReferral";
 import {
   ArrowIcon,
   BackArrowIcon,
@@ -186,6 +187,8 @@ export default function CharismIntro({
           >
             <p>{DISCERNMENT_NOTE}</p>
           </IntroCard>
+
+          <CharismReferral />
         </div>
 
         <div className="mt-10 flex flex-col items-center gap-4">

@@ -85,5 +85,14 @@ export const SCRIPTURE_REFERENCE = "1 Corinthians 12:4–11";
 export const RESULTS_NOTE =
   "Your responses suggest these may be some of the spiritual gifts God is developing in you. This assessment is a tool for reflection and discernment rather than a definitive determination of a charism.";
 
+/** Further reading on the charisms, offered as a referral. */
+export const CHARISM_REFERRAL = {
+  url: "https://www.manypartsministries.com/what-are-the-24-charisms-of-the-holy-spirit",
+  source: "Many Parts Ministries",
+  title: "What Are the 24 Charisms of the Holy Spirit?",
+  blurb:
+    "Want to explore further? Many Parts Ministries offers a wider look at the charisms of the Holy Spirit. Their list covers 24, while this assessment looks at 18.",
+};
+
 export const DISCERNMENT_NOTE =
   "A charism is given for the good of others and for the building up of the Church. The results should therefore be approached prayerfully and relationally, not as a personality label or a fixed identity. The assessment can help identify areas for further discernment, but the result itself should not be presented as proof that a person definitely possesses a particular charism.";
